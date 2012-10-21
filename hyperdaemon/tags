@@ -1,0 +1,442 @@
+!_TAG_FILE_FORMAT	2	/extended format; --format=1 will not append ;" to lines/
+!_TAG_FILE_SORTED	1	/0=unsorted, 1=sorted, 2=foldcase/
+!_TAG_PROGRAM_AUTHOR	Darren Hiebert	/dhiebert@users.sourceforge.net/
+!_TAG_PROGRAM_NAME	Exuberant Ctags	//
+!_TAG_PROGRAM_URL	http://ctags.sourceforge.net	/official site/
+!_TAG_PROGRAM_VERSION	5.9~svn20110310	//
+CONCAT	./replication_manager.cc	85;"	d	file:
+DAEMON_TOKEN_FILE	./daemon.cc	/^static const char* DAEMON_TOKEN_FILE = "token.hd";$/;"	v	file:
+HOLD_LOCK_FOR_KEY	./replication_manager.cc	90;"	d	file:
+REBASE	./replication_manager.cc	838;"	d	file:
+STATE_FILE_NAME	./datalayer.cc	/^const char* hyperdaemon :: datalayer :: STATE_FILE_NAME = "datalayer_state.hd";$/;"	m	class:hyperdaemon::datalayer	file:
+STATE_FILE_NAME	./datalayer.h	/^        static const char* STATE_FILE_NAME;$/;"	m	class:hyperdaemon::datalayer
+STATE_FILE_VER	./datalayer.cc	/^const int hyperdaemon :: datalayer :: STATE_FILE_VER = 1;$/;"	m	class:hyperdaemon::datalayer	file:
+STATE_FILE_VER	./datalayer.h	/^        static const int STATE_FILE_VER;$/;"	m	class:hyperdaemon::datalayer
+_CONCAT	./replication_manager.cc	84;"	d	file:
+__STDC_LIMIT_MACROS	./datalayer.cc	28;"	d	file:
+__STDC_LIMIT_MACROS	./datatypes.cc	28;"	d	file:
+__STDC_LIMIT_MACROS	./logical.cc	28;"	d	file:
+__STDC_LIMIT_MACROS	./ongoing_state_transfers.cc	28;"	d	file:
+__STDC_LIMIT_MACROS	./replication_manager.cc	28;"	d	file:
+_cmp	./datatypes.cc	/^_cmp(T a, T b)$/;"	f
+_sort_comparator	./datatypes.cc	/^_sort_comparator(int (*compare_micros)(const hyperdex::microop* lhs, const hyperdex::microop* rhs),$/;"	f	file:
+_sort_ops	./datatypes.cc	/^_sort_ops(hyperdex::microop* begin, hyperdex::microop* end,$/;"	f	file:
+acked	./replication_manager_pending.h	/^        bool acked;$/;"	m	class:hyperdaemon::replication_manager::pending
+add_trigger	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: add_trigger(const hyperdex::regionid& reg,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+append_blocked	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: append_blocked(uint64_t version,$/;"	f	class:hyperdaemon::replication_manager::keyholder
+apply_int64	./datatypes.cc	/^apply_int64(const e::slice& old_value,$/;"	f	file:
+apply_list	./datatypes.cc	/^apply_list(bool (*validate_elem)(const uint8_t** ptr,$/;"	f	file:
+apply_list_int64	./datatypes.cc	/^apply_list_int64(const e::slice& old_value,$/;"	f	file:
+apply_list_string	./datatypes.cc	/^apply_list_string(const e::slice& old_value,$/;"	f	file:
+apply_map_add_remove	./datatypes.cc	/^apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, const uint8_t* end),$/;"	f	file:
+apply_map_int64_int64	./datatypes.cc	/^apply_map_int64_int64(const e::slice& old_value,$/;"	f	file:
+apply_map_int64_string	./datatypes.cc	/^apply_map_int64_string(const e::slice& old_value,$/;"	f	file:
+apply_map_microop	./datatypes.cc	/^apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, const uint8_t* end),$/;"	f	file:
+apply_map_set	./datatypes.cc	/^apply_map_set(bool (*validate_map)(const e::slice& data),$/;"	f	file:
+apply_map_string_int64	./datatypes.cc	/^apply_map_string_int64(const e::slice& old_value,$/;"	f	file:
+apply_map_string_string	./datatypes.cc	/^apply_map_string_string(const e::slice& old_value,$/;"	f	file:
+apply_microops	./datatypes.cc	/^hyperdaemon :: apply_microops(hyperdatatype type,$/;"	f	class:hyperdaemon
+apply_set_add_remove	./datatypes.cc	/^apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz, const uint8_t* end),$/;"	f	file:
+apply_set_int64	./datatypes.cc	/^apply_set_int64(const e::slice& old_value,$/;"	f	file:
+apply_set_intersect	./datatypes.cc	/^apply_set_intersect(bool (*validate_set)(const e::slice& data),$/;"	f	file:
+apply_set_set	./datatypes.cc	/^apply_set_set(bool (*validate_set)(const e::slice& data),$/;"	f	file:
+apply_set_string	./datatypes.cc	/^apply_set_string(const e::slice& old_value,$/;"	f	file:
+apply_set_union	./datatypes.cc	/^apply_set_union(bool (*validate_set)(const e::slice& data),$/;"	f	file:
+apply_string	./datatypes.cc	/^apply_string(const e::slice& old_value,$/;"	f	file:
+apply_string_wrapper	./datatypes.cc	/^apply_string_wrapper(const e::slice& old_value,$/;"	f	file:
+backing	./ongoing_state_transfers.cc	/^                std::tr1::shared_ptr<e::buffer> backing;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+backing	./replication_manager_deferred.h	/^        std::tr1::shared_ptr<e::buffer> backing;$/;"	m	class:hyperdaemon::replication_manager::deferred
+backing	./replication_manager_pending.h	/^        std::tr1::shared_ptr<e::buffer> backing;$/;"	m	class:hyperdaemon::replication_manager::pending
+backing	./searches.h	/^        const std::auto_ptr<e::buffer> backing;$/;"	m	class:hyperdaemon::searches::search_state
+backing2	./replication_manager_pending.h	/^        e::intrusive_ptr<pending> backing2;$/;"	m	class:hyperdaemon::replication_manager::pending
+blocked_list_t	./replication_manager_keyholder.h	/^                blocked_list_t;$/;"	t	class:hyperdaemon::replication_manager::keyholder
+chain_ack	./replication_manager.cc	/^hyperdaemon :: replication_manager :: chain_ack(const entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+chain_common	./replication_manager.cc	/^hyperdaemon :: replication_manager :: chain_common(bool has_value,$/;"	f	class:hyperdaemon::replication_manager
+chain_del	./replication_manager.cc	/^hyperdaemon :: replication_manager :: chain_del(const entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+chain_put	./replication_manager.cc	/^hyperdaemon :: replication_manager :: chain_put(const entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+chain_subspace	./replication_manager.cc	/^hyperdaemon :: replication_manager :: chain_subspace(const entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+check_for_deferred_operations	./replication_manager.cc	/^hyperdaemon :: replication_manager :: check_for_deferred_operations(const hyperdex::regionid& r,$/;"	f	class:hyperdaemon::replication_manager
+cleanup	./datalayer.cc	/^hyperdaemon :: datalayer :: cleanup(const configuration& newconfig, const instance& us)$/;"	f	class:hyperdaemon::datalayer
+cleanup	./logical.cc	/^hyperdaemon :: logical :: cleanup(const configuration&, const hyperdex::instance&)$/;"	f	class:hyperdaemon::logical
+cleanup	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: cleanup(const configuration& newconfig,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+cleanup	./replication_manager.cc	/^hyperdaemon :: replication_manager :: cleanup(const configuration&, const instance&)$/;"	f	class:hyperdaemon::replication_manager
+cleanup	./searches.cc	/^hyperdaemon :: searches :: cleanup(const hyperdex::configuration&,$/;"	f	class:hyperdaemon::searches
+client	./searches.h	/^        hyperdex::entityid client;$/;"	m	class:hyperdaemon::searches::search_id
+client_atomic	./replication_manager.cc	/^hyperdaemon :: replication_manager :: client_atomic(const hyperdex::entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+client_common	./replication_manager.cc	/^hyperdaemon :: replication_manager :: client_common(const hyperdex::network_msgtype opcode,$/;"	f	class:hyperdaemon::replication_manager
+client_condput	./replication_manager.cc	/^hyperdaemon :: replication_manager :: client_condput(const hyperdex::entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+client_del	./replication_manager.cc	/^hyperdaemon :: replication_manager :: client_del(const entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+client_put	./replication_manager.cc	/^hyperdaemon :: replication_manager :: client_put(const hyperdex::entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+clientop	./replication/clientop.h	/^class clientop$/;"	c	namespace:hyperdaemon::replication
+clientop	./replication/clientop.h	/^clientop :: clientop()$/;"	f	class:hyperdaemon::replication::clientop
+clientop	./replication/clientop.h	/^clientop :: clientop(const hyperdex::regionid& r,$/;"	f	class:hyperdaemon::replication::clientop
+co	./replication_manager_pending.h	/^        hyperdaemon::replication::clientop co;$/;"	m	class:hyperdaemon::replication_manager::pending
+committable_list_t	./replication_manager_keyholder.h	/^                committable_list_t;$/;"	t	class:hyperdaemon::replication_manager::keyholder
+compare	./replication/clientop.h	/^clientop :: compare(const clientop& rhs) const$/;"	f	class:hyperdaemon::replication::clientop
+compare	./searches.h	/^        int compare(const search_id& other) const$/;"	f	class:hyperdaemon::searches::search_id
+compare_int64	./datatypes.cc	/^compare_int64(const uint8_t* a_ptr, uint32_t a_sz,$/;"	f	file:
+compare_int64_micro_arg1	./datatypes.cc	/^compare_int64_micro_arg1(const uint8_t* ptr, uint32_t ptr_sz,$/;"	f	file:
+compare_int64_micro_arg2	./datatypes.cc	/^compare_int64_micro_arg2(const uint8_t* ptr, uint32_t ptr_sz,$/;"	f	file:
+compare_int64_micros_arg1	./datatypes.cc	/^compare_int64_micros_arg1(const hyperdex::microop* lhs,$/;"	f	file:
+compare_int64_micros_arg2	./datatypes.cc	/^compare_int64_micros_arg2(const hyperdex::microop* lhs,$/;"	f	file:
+compare_string	./datatypes.cc	/^compare_string(const uint8_t* a_ptr, uint32_t a_sz,$/;"	f	file:
+compare_string_micro_arg1	./datatypes.cc	/^compare_string_micro_arg1(const uint8_t* ptr, uint32_t ptr_sz,$/;"	f	file:
+compare_string_micro_arg2	./datatypes.cc	/^compare_string_micro_arg2(const uint8_t* ptr, uint32_t ptr_sz,$/;"	f	file:
+compare_string_micros_arg1	./datatypes.cc	/^compare_string_micros_arg1(const hyperdex::microop* lhs,$/;"	f	file:
+compare_string_micros_arg2	./datatypes.cc	/^compare_string_micros_arg2(const hyperdex::microop* lhs,$/;"	f	file:
+config_version	./logical.cc	/^        uint64_t config_version;$/;"	m	class:hyperdaemon::logical::early_message	file:
+copy_int64_from_micro_arg1	./datatypes.cc	/^copy_int64_from_micro_arg1(uint8_t* writeto, const hyperdex::microop* op)$/;"	f	file:
+copy_int64_from_micro_arg2	./datatypes.cc	/^copy_int64_from_micro_arg2(uint8_t* writeto, const hyperdex::microop* op)$/;"	f	file:
+copy_int64_from_serialized	./datatypes.cc	/^copy_int64_from_serialized(uint8_t* writeto, const uint8_t* ptr, uint32_t ptr_sz)$/;"	f	file:
+copy_string_from_micro_arg1	./datatypes.cc	/^copy_string_from_micro_arg1(uint8_t* writeto, const hyperdex::microop* op)$/;"	f	file:
+copy_string_from_micro_arg2	./datatypes.cc	/^copy_string_from_micro_arg2(uint8_t* writeto, const hyperdex::microop* op)$/;"	f	file:
+copy_string_from_serialized	./datatypes.cc	/^copy_string_from_serialized(uint8_t* writeto, const uint8_t* ptr, uint32_t ptr_sz)$/;"	f	file:
+create_disk	./datalayer.cc	/^hyperdaemon :: datalayer :: create_disk(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+daemon	./daemon.cc	/^hyperdaemon :: daemon(const char* progname,$/;"	f	class:hyperdaemon
+datalayer	./datalayer.cc	/^hyperdaemon :: datalayer :: datalayer(coordinatorlink* cl, const po6::pathname& base)$/;"	f	class:hyperdaemon::datalayer
+datalayer	./datalayer.h	/^class datalayer$/;"	c	namespace:hyperdaemon
+dec	./ongoing_state_transfers.cc	/^                void dec() { if (__sync_sub_and_fetch(&m_ref, 1) == 0) delete this; }$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+dec	./ongoing_state_transfers.cc	/^        void dec() { if (__sync_sub_and_fetch(&m_ref, 1) == 0) delete this; }$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+dec	./ongoing_state_transfers.cc	/^        void dec() { if (__sync_sub_and_fetch(&m_ref, 1) == 0) delete this; }$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+dec	./replication_manager_deferred.h	/^        void dec() { if (--m_ref == 0) delete this; }$/;"	f	class:hyperdaemon::replication_manager::deferred
+dec	./replication_manager_keyholder.h	/^        void dec() { if (__sync_sub_and_fetch(&m_ref, 1) == 0) delete this; }$/;"	f	class:hyperdaemon::replication_manager::keyholder
+dec	./replication_manager_pending.h	/^        void dec() { if (--m_ref == 0) delete this; }$/;"	f	class:hyperdaemon::replication_manager::pending
+dec	./searches.h	/^        void dec() { if (__sync_sub_and_fetch(&m_ref, 1) == 0) delete this; }$/;"	f	class:hyperdaemon::searches::search_state
+deferred	./replication_manager_deferred.h	/^class hyperdaemon::replication_manager::deferred$/;"	c	class:hyperdaemon::replication_manager
+deferred	./replication_manager_deferred.h	/^hyperdaemon :: replication_manager :: deferred :: deferred(const bool hv,$/;"	f	class:hyperdaemon::replication_manager::deferred
+deferred_list_t	./replication_manager_keyholder.h	/^                deferred_list_t;$/;"	t	class:hyperdaemon::replication_manager::keyholder
+del	./datalayer.cc	/^hyperdaemon :: datalayer :: del(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+disk_map_t	./datalayer.cc	/^typedef std::map<hyperdex::regionid, disk_ptr> disk_map_t;$/;"	t	file:
+disk_map_t	./datalayer.cc	/^typedef std::map<hyperdex::regionid, e::intrusive_ptr<hyperdisk::disk> > disk_map_t;$/;"	t	file:
+disk_map_t	./datalayer.h	/^                disk_map_t;$/;"	t	class:hyperdaemon::datalayer
+disk_ptr	./datalayer.cc	/^typedef e::intrusive_ptr<hyperdisk::disk> disk_ptr;$/;"	t	file:
+disk_queue_t	./datalayer.cc	/^typedef std::queue<hyperdex::regionid> disk_queue_t;$/;"	t	file:
+do_mandatory_io	./datalayer.cc	/^hyperdaemon :: datalayer :: do_mandatory_io(const regionid& ri)$/;"	f	class:hyperdaemon::datalayer
+drop_disk	./datalayer.cc	/^hyperdaemon :: datalayer :: drop_disk(const regionid& ri)$/;"	f	class:hyperdaemon::datalayer
+dump_state	./datalayer.cc	/^hyperdaemon :: datalayer :: dump_state(const configuration& config, const instance& us)$/;"	f	class:hyperdaemon::datalayer
+early_message	./logical.cc	/^class hyperdaemon::logical::early_message$/;"	c	class:hyperdaemon::logical	file:
+early_message	./logical.cc	/^hyperdaemon :: logical :: early_message :: early_message()$/;"	f	class:hyperdaemon::logical::early_message
+early_message	./logical.cc	/^hyperdaemon :: logical :: early_message :: early_message(uint64_t v,$/;"	f	class:hyperdaemon::logical::early_message
+empty	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: empty()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+erase_keyholder	./replication_manager.cc	/^hyperdaemon :: replication_manager :: erase_keyholder(const hyperdex::regionid& reg,$/;"	f	class:hyperdaemon::replication_manager
+failed	./ongoing_state_transfers.cc	/^        bool failed;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+failed	./ongoing_state_transfers.cc	/^        bool failed;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+finish_transfers	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: finish_transfers()$/;"	f	class:hyperdaemon::ongoing_state_transfers
+flush	./datalayer.cc	/^hyperdaemon :: datalayer :: flush(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+flush_thread	./datalayer.cc	/^hyperdaemon :: datalayer :: flush_thread()$/;"	f	class:hyperdaemon::datalayer
+fresh	./replication_manager_pending.h	/^        bool fresh;$/;"	m	class:hyperdaemon::replication_manager::pending
+from	./replication/clientop.h	/^        hyperdex::entityid from;$/;"	m	class:hyperdaemon::replication::clientop
+from_disk	./replication_manager.cc	/^hyperdaemon :: replication_manager :: from_disk(const regionid& r,$/;"	f	class:hyperdaemon::replication_manager
+from_ent	./replication_manager_deferred.h	/^        const hyperdex::entityid from_ent;$/;"	m	class:hyperdaemon::replication_manager::deferred
+from_inst	./replication_manager_deferred.h	/^        const hyperdex::instance from_inst;$/;"	m	class:hyperdaemon::replication_manager::deferred
+get	./datalayer.cc	/^hyperdaemon :: datalayer :: get(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+get_by_version	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: get_by_version(uint64_t version)$/;"	f	class:hyperdaemon::replication_manager::keyholder
+get_keyholder	./replication_manager.cc	/^hyperdaemon :: replication_manager :: get_keyholder(const hyperdex::regionid& reg,$/;"	f	class:hyperdaemon::replication_manager
+get_lock_num	./replication_manager.cc	/^hyperdaemon :: replication_manager :: get_lock_num(const hyperdex::regionid& reg,$/;"	f	class:hyperdaemon::replication_manager
+go_live	./ongoing_state_transfers.cc	/^        bool go_live;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+handle_connectfail	./logical.cc	/^hyperdaemon :: logical :: handle_connectfail(const po6::net::location& loc)$/;"	f	class:hyperdaemon::logical
+handle_disconnect	./logical.cc	/^hyperdaemon :: logical :: handle_disconnect(const po6::net::location& loc)$/;"	f	class:hyperdaemon::logical
+has_blocked_ops	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: has_blocked_ops()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+has_committable_ops	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: has_committable_ops()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+has_deferred_ops	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: has_deferred_ops()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+has_value	./ongoing_state_transfers.cc	/^                bool has_value;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+has_value	./replication_manager_deferred.h	/^        const bool has_value;$/;"	m	class:hyperdaemon::replication_manager::deferred
+has_value	./replication_manager_pending.h	/^        const bool has_value;$/;"	m	class:hyperdaemon::replication_manager::pending
+hash	./replication/clientop.h	/^clientop :: hash(const clientop& co)$/;"	f	class:hyperdaemon::replication::clientop
+hash	./replication/keypair.h	/^keypair :: hash(const keypair& kp)$/;"	f	class:hyperdaemon::replication::keypair
+hash	./searches.cc	/^hyperdaemon :: searches :: hash(const search_id& si)$/;"	f	class:hyperdaemon::searches
+header_size	./logical.cc	/^hyperdaemon :: logical :: header_size() const$/;"	f	class:hyperdaemon::logical
+hyperdaemon	./daemon.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./datalayer.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./datatypes.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./logical.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./network_worker.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./ongoing_state_transfers.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./replication/clientop.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./replication/keypair.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./replication_manager.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./runtimeconfig.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon	./searches.h	/^namespace hyperdaemon$/;"	n
+hyperdaemon_daemon_h_	./daemon.h	32;"	d
+hyperdaemon_datalayer_h_	./datalayer.h	29;"	d
+hyperdaemon_datatypes_h_	./datatypes.h	29;"	d
+hyperdaemon_logical_h_	./logical.h	29;"	d
+hyperdaemon_network_worker_h_	./network_worker.h	29;"	d
+hyperdaemon_ongoing_state_transfers_h_	./ongoing_state_transfers.h	29;"	d
+hyperdaemon_replication_clientop_h_	./replication/clientop.h	29;"	d
+hyperdaemon_replication_keypair_h_	./replication/keypair.h	29;"	d
+hyperdaemon_replication_manager_deferred	./replication_manager_deferred.h	29;"	d
+hyperdaemon_replication_manager_h_	./replication_manager.h	29;"	d
+hyperdaemon_replication_manager_keyholder	./replication_manager_keyholder.h	29;"	d
+hyperdaemon_replication_manager_pending	./replication_manager_pending.h	29;"	d
+hyperdaemon_runtimeconfig_h_	./runtimeconfig.h	29;"	d
+hyperdaemon_searches_h_	./searches.h	29;"	d
+hyperdex	./datalayer.h	/^namespace hyperdex$/;"	n
+hyperdex	./logical.h	/^namespace hyperdex$/;"	n
+hyperdex	./ongoing_state_transfers.h	/^namespace hyperdex$/;"	n
+hyperdex	./replication_manager.h	/^namespace hyperdex$/;"	n
+hyperdex	./searches.h	/^namespace hyperdex$/;"	n
+id	./logical.h	/^        static uint64_t id(const uint64_t& i) { return i; }$/;"	f	class:hyperdaemon::logical
+inc	./ongoing_state_transfers.cc	/^                void inc() { __sync_add_and_fetch(&m_ref, 1); }$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+inc	./ongoing_state_transfers.cc	/^        void inc() { __sync_add_and_fetch(&m_ref, 1); }$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+inc	./ongoing_state_transfers.cc	/^        void inc() { __sync_add_and_fetch(&m_ref, 1); }$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+inc	./replication_manager_deferred.h	/^        void inc() { ++m_ref; }$/;"	f	class:hyperdaemon::replication_manager::deferred
+inc	./replication_manager_keyholder.h	/^        void inc() { __sync_add_and_fetch(&m_ref, 1); }$/;"	f	class:hyperdaemon::replication_manager::keyholder
+inc	./replication_manager_pending.h	/^        void inc() { ++m_ref; }$/;"	f	class:hyperdaemon::replication_manager::pending
+inc	./searches.h	/^        void inc() { __sync_add_and_fetch(&m_ref, 1); }$/;"	f	class:hyperdaemon::searches::search_state
+insert_deferred	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: insert_deferred(uint64_t version,$/;"	f	class:hyperdaemon::replication_manager::keyholder
+inst	./logical.h	/^        hyperdex::instance inst() const { return m_us; }$/;"	f	class:hyperdaemon::logical
+int64_slice_from_serialized	./datatypes.cc	/^int64_slice_from_serialized(const uint8_t* ptr, uint32_t ptr_sz, std::vector<uint8_t>*)$/;"	f	file:
+key	./ongoing_state_transfers.cc	/^                const e::slice key;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+key	./replication/keypair.h	/^        const std::string key;$/;"	m	class:hyperdaemon::replication::keypair
+key	./replication_manager_deferred.h	/^        const e::slice key;$/;"	m	class:hyperdaemon::replication_manager::deferred
+key	./replication_manager_pending.h	/^        e::slice key;$/;"	m	class:hyperdaemon::replication_manager::pending
+keyholder	./replication_manager_keyholder.h	/^class hyperdaemon::replication_manager::keyholder$/;"	c	class:hyperdaemon::replication_manager
+keyholder	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: keyholder()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+keyholder_map_t	./replication_manager.h	/^                keyholder_map_t;$/;"	t	class:hyperdaemon::replication_manager
+keypair	./replication/keypair.h	/^class keypair$/;"	c	namespace:hyperdaemon::replication
+keypair	./replication/keypair.h	/^keypair :: keypair()$/;"	f	class:hyperdaemon::replication::keypair
+keypair	./replication/keypair.h	/^keypair :: keypair(const hyperdex::regionid& r, const e::slice& k)$/;"	f	class:hyperdaemon::replication::keypair
+load_state	./datalayer.cc	/^hyperdaemon :: datalayer :: load_state()$/;"	f	class:hyperdaemon::datalayer
+loc	./logical.cc	/^        po6::net::location loc;$/;"	m	class:hyperdaemon::logical::early_message	file:
+lock	./ongoing_state_transfers.cc	/^        po6::threads::mutex lock;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+lock	./ongoing_state_transfers.cc	/^        po6::threads::mutex lock;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+lock	./searches.h	/^        po6::threads::mutex lock;$/;"	m	class:hyperdaemon::searches::search_state
+logical	./logical.cc	/^hyperdaemon :: logical :: logical(coordinatorlink* cl, const po6::net::ipaddr& ip,$/;"	f	class:hyperdaemon::logical
+logical	./logical.h	/^class logical$/;"	c	namespace:hyperdaemon
+m_base	./datalayer.h	/^        po6::pathname m_base;$/;"	m	class:hyperdaemon::datalayer
+m_blocked	./replication_manager_keyholder.h	/^        blocked_list_t m_blocked;$/;"	m	class:hyperdaemon::replication_manager::keyholder
+m_busybee	./logical.h	/^        busybee_mta m_busybee;$/;"	m	class:hyperdaemon::logical
+m_cl	./datalayer.h	/^        hyperdex::coordinatorlink* m_cl;$/;"	m	class:hyperdaemon::datalayer
+m_cl	./logical.h	/^        hyperdex::coordinatorlink* m_cl;$/;"	m	class:hyperdaemon::logical
+m_cl	./ongoing_state_transfers.h	/^        hyperdex::coordinatorlink* m_cl;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_cl	./replication_manager.h	/^        hyperdex::coordinatorlink* m_cl;$/;"	m	class:hyperdaemon::replication_manager
+m_cl	./searches.h	/^        hyperdex::coordinatorlink* m_cl;$/;"	m	class:hyperdaemon::searches
+m_client_counter	./logical.h	/^        uint64_t m_client_counter;$/;"	m	class:hyperdaemon::logical
+m_client_locs	./logical.h	/^        e::lockfree_hash_map<uint64_t, po6::net::location, id> m_client_locs;$/;"	m	class:hyperdaemon::logical
+m_client_nums	./logical.h	/^        e::lockfree_hash_map<po6::net::location, uint64_t, po6::net::location::hash> m_client_nums;$/;"	m	class:hyperdaemon::logical
+m_comm	./network_worker.h	/^        logical* m_comm;$/;"	m	class:hyperdaemon::network_worker
+m_comm	./ongoing_state_transfers.h	/^        hyperdaemon::logical* m_comm;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_comm	./replication_manager.h	/^        logical* m_comm;$/;"	m	class:hyperdaemon::replication_manager
+m_comm	./searches.h	/^        logical* m_comm;$/;"	m	class:hyperdaemon::searches
+m_committable	./replication_manager_keyholder.h	/^        committable_list_t m_committable;$/;"	m	class:hyperdaemon::replication_manager::keyholder
+m_config	./logical.h	/^        hyperdex::configuration m_config;$/;"	m	class:hyperdaemon::logical
+m_config	./ongoing_state_transfers.h	/^        hyperdex::configuration m_config;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_config	./replication_manager.h	/^        hyperdex::configuration m_config;$/;"	m	class:hyperdaemon::replication_manager
+m_config	./searches.h	/^        hyperdex::configuration m_config;$/;"	m	class:hyperdaemon::searches
+m_continue	./network_worker.h	/^        bool m_continue;$/;"	m	class:hyperdaemon::network_worker
+m_data	./network_worker.h	/^        datalayer* m_data;$/;"	m	class:hyperdaemon::network_worker
+m_data	./ongoing_state_transfers.h	/^        hyperdaemon::datalayer* m_data;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_data	./replication_manager.h	/^        datalayer* m_data;$/;"	m	class:hyperdaemon::replication_manager
+m_data	./searches.h	/^        datalayer* m_data;$/;"	m	class:hyperdaemon::searches
+m_deferred	./replication_manager_keyholder.h	/^        deferred_list_t m_deferred;$/;"	m	class:hyperdaemon::replication_manager::keyholder
+m_disks	./datalayer.h	/^        disk_map_t m_disks;$/;"	m	class:hyperdaemon::datalayer
+m_early_messages	./logical.h	/^        e::lockfree_fifo<early_message> m_early_messages;$/;"	m	class:hyperdaemon::logical
+m_flush_threads	./datalayer.h	/^        std::vector<std::tr1::shared_ptr<po6::threads::thread> > m_flush_threads;$/;"	m	class:hyperdaemon::datalayer
+m_flushed_recently	./datalayer.h	/^        volatile bool m_flushed_recently;$/;"	m	class:hyperdaemon::datalayer
+m_keyholders	./replication_manager.h	/^        keyholder_map_t m_keyholders;$/;"	m	class:hyperdaemon::replication_manager
+m_keyholders_lock	./replication_manager.h	/^        po6::threads::mutex m_keyholders_lock;$/;"	m	class:hyperdaemon::replication_manager
+m_last_dose_of_optimism	./datalayer.h	/^        uint64_t m_last_dose_of_optimism;$/;"	m	class:hyperdaemon::datalayer
+m_last_preallocation	./datalayer.h	/^        uint64_t m_last_preallocation;$/;"	m	class:hyperdaemon::datalayer
+m_locks	./replication_manager.h	/^        e::striped_lock<po6::threads::mutex> m_locks;$/;"	m	class:hyperdaemon::replication_manager
+m_optimistic_io_thread	./datalayer.h	/^        po6::threads::thread m_optimistic_io_thread;$/;"	m	class:hyperdaemon::datalayer
+m_optimistic_rr	./datalayer.h	/^        std::list<hyperdex::regionid> m_optimistic_rr;$/;"	m	class:hyperdaemon::datalayer
+m_ost	./network_worker.h	/^        ongoing_state_transfers* m_ost;$/;"	m	class:hyperdaemon::network_worker
+m_ost	./replication_manager.h	/^        ongoing_state_transfers* m_ost;$/;"	m	class:hyperdaemon::replication_manager
+m_periodic_lock	./ongoing_state_transfers.h	/^        po6::threads::mutex m_periodic_lock;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_periodic_thread	./ongoing_state_transfers.h	/^        po6::threads::thread m_periodic_thread;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_periodic_thread	./replication_manager.h	/^        po6::threads::thread m_periodic_thread;$/;"	m	class:hyperdaemon::replication_manager
+m_preallocate_rr	./datalayer.h	/^        std::list<hyperdex::regionid> m_preallocate_rr;$/;"	m	class:hyperdaemon::datalayer
+m_quiesce	./datalayer.h	/^        bool m_quiesce;$/;"	m	class:hyperdaemon::datalayer
+m_quiesce	./replication_manager.h	/^        volatile bool m_quiesce; \/\/ acessed from multiple threads$/;"	m	class:hyperdaemon::replication_manager
+m_quiesce_state_id	./datalayer.h	/^        std::string m_quiesce_state_id;$/;"	m	class:hyperdaemon::datalayer
+m_quiesce_state_id	./replication_manager.h	/^        std::string m_quiesce_state_id;$/;"	m	class:hyperdaemon::replication_manager
+m_quiesce_state_id_lock	./replication_manager.h	/^        po6::threads::mutex m_quiesce_state_id_lock; $/;"	m	class:hyperdaemon::replication_manager
+m_ref	./ongoing_state_transfers.cc	/^                size_t m_ref;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+m_ref	./ongoing_state_transfers.cc	/^        size_t m_ref;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+m_ref	./ongoing_state_transfers.cc	/^        size_t m_ref;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+m_ref	./replication_manager_deferred.h	/^        size_t m_ref;$/;"	m	class:hyperdaemon::replication_manager::deferred
+m_ref	./replication_manager_keyholder.h	/^        size_t m_ref;$/;"	m	class:hyperdaemon::replication_manager::keyholder
+m_ref	./replication_manager_pending.h	/^        size_t m_ref;$/;"	m	class:hyperdaemon::replication_manager::pending
+m_ref	./searches.h	/^        size_t m_ref;$/;"	m	class:hyperdaemon::searches::search_state
+m_repl	./network_worker.h	/^        replication_manager* m_repl;$/;"	m	class:hyperdaemon::network_worker
+m_repl	./ongoing_state_transfers.h	/^        hyperdaemon::replication_manager* m_repl;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_searches	./searches.h	/^        e::lockfree_hash_map<search_id, e::intrusive_ptr<search_state>, hash> m_searches;$/;"	m	class:hyperdaemon::searches
+m_shutdown	./datalayer.h	/^        volatile bool m_shutdown;$/;"	m	class:hyperdaemon::datalayer
+m_shutdown	./ongoing_state_transfers.h	/^        bool m_shutdown;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_shutdown	./replication_manager.h	/^        volatile bool m_shutdown; \/\/ acessed from multiple threads$/;"	m	class:hyperdaemon::replication_manager
+m_ssss	./network_worker.h	/^        searches* m_ssss;$/;"	m	class:hyperdaemon::network_worker
+m_transfers_in	./ongoing_state_transfers.h	/^        transfers_in_map_t m_transfers_in;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_transfers_out	./ongoing_state_transfers.h	/^        transfers_out_map_t m_transfers_out;$/;"	m	class:hyperdaemon::ongoing_state_transfers
+m_us	./logical.h	/^        hyperdex::instance m_us;$/;"	m	class:hyperdaemon::logical
+m_us	./replication_manager.h	/^        hyperdex::instance m_us;$/;"	m	class:hyperdaemon::replication_manager
+m_version_on_disk	./replication_manager_keyholder.h	/^        uint64_t m_version_on_disk;$/;"	m	class:hyperdaemon::replication_manager::keyholder
+make_rolling_snapshot	./datalayer.cc	/^hyperdaemon :: datalayer :: make_rolling_snapshot(const regionid& ri)$/;"	f	class:hyperdaemon::datalayer
+make_snapshot	./datalayer.cc	/^hyperdaemon :: datalayer :: make_snapshot(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+mapiter	./logical.cc	/^typedef std::map<hyperdex::entityid, hyperdex::instance>::iterator mapiter;$/;"	t	file:
+most_recent_blocked_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: most_recent_blocked_op()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+most_recent_blocked_version	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: most_recent_blocked_version()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+most_recent_committable_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: most_recent_committable_op()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+most_recent_committable_version	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: most_recent_committable_version()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+move_operations_between_queues	./replication_manager.cc	/^hyperdaemon :: replication_manager :: move_operations_between_queues(const hyperdex::entityid& us,$/;"	f	class:hyperdaemon::replication_manager
+msg	./logical.cc	/^        std::auto_ptr<e::buffer> msg;$/;"	m	class:hyperdaemon::logical::early_message	file:
+network_worker	./network_worker.cc	/^hyperdaemon :: network_worker :: network_worker(datalayer* data,$/;"	f	class:hyperdaemon::network_worker
+network_worker	./network_worker.h	/^class network_worker$/;"	c	namespace:hyperdaemon
+next	./searches.cc	/^hyperdaemon :: searches :: next(const hyperdex::entityid& us,$/;"	f	class:hyperdaemon::searches
+nonce	./replication/clientop.h	/^        uint64_t nonce;$/;"	m	class:hyperdaemon::replication::clientop
+oldest_blocked_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: oldest_blocked_op() const$/;"	f	class:hyperdaemon::replication_manager::keyholder
+oldest_blocked_version	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: oldest_blocked_version() const$/;"	f	class:hyperdaemon::replication_manager::keyholder
+oldest_committable_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: oldest_committable_op() const$/;"	f	class:hyperdaemon::replication_manager::keyholder
+oldest_committable_version	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: oldest_committable_version() const$/;"	f	class:hyperdaemon::replication_manager::keyholder
+oldest_deferred_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: oldest_deferred_op() const$/;"	f	class:hyperdaemon::replication_manager::keyholder
+oldest_deferred_version	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: oldest_deferred_version() const$/;"	f	class:hyperdaemon::replication_manager::keyholder
+ongoing_state_transfers	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: ongoing_state_transfers(datalayer* data,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+ongoing_state_transfers	./ongoing_state_transfers.h	/^class ongoing_state_transfers$/;"	c	namespace:hyperdaemon
+op	./ongoing_state_transfers.cc	/^                op(bool hv, uint64_t ver,$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_in::op
+op	./ongoing_state_transfers.cc	/^        class op$/;"	c	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+open_disk	./datalayer.cc	/^hyperdaemon :: datalayer :: open_disk(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+operator !=	./replication/clientop.h	/^        bool operator != (const clientop& rhs) const { return compare(rhs) != 0; }$/;"	f	class:hyperdaemon::replication::clientop
+operator !=	./searches.h	/^        bool operator != (const search_id& rhs) const { return compare(rhs) != 0; }$/;"	f	class:hyperdaemon::searches::search_id
+operator <	./replication/clientop.h	/^        bool operator < (const clientop& rhs) const { return compare(rhs) < 0; }$/;"	f	class:hyperdaemon::replication::clientop
+operator <	./replication/keypair.h	/^keypair :: operator < (const keypair& rhs) const$/;"	f	class:hyperdaemon::replication::keypair
+operator <	./searches.h	/^        bool operator < (const search_id& rhs) const { return compare(rhs) < 0; }$/;"	f	class:hyperdaemon::searches::search_id
+operator <=	./replication/clientop.h	/^        bool operator <= (const clientop& rhs) const { return compare(rhs) <= 0; }$/;"	f	class:hyperdaemon::replication::clientop
+operator <=	./searches.h	/^        bool operator <= (const search_id& rhs) const { return compare(rhs) <= 0; }$/;"	f	class:hyperdaemon::searches::search_id
+operator ==	./replication/clientop.h	/^        bool operator == (const clientop& rhs) const { return compare(rhs) == 0; }$/;"	f	class:hyperdaemon::replication::clientop
+operator ==	./replication/keypair.h	/^keypair :: operator == (const keypair& rhs) const$/;"	f	class:hyperdaemon::replication::keypair
+operator ==	./searches.h	/^        bool operator == (const search_id& rhs) const { return compare(rhs) == 0; }$/;"	f	class:hyperdaemon::searches::search_id
+operator >	./replication/clientop.h	/^        bool operator > (const clientop& rhs) const { return compare(rhs) > 0; }$/;"	f	class:hyperdaemon::replication::clientop
+operator >	./searches.h	/^        bool operator > (const search_id& rhs) const { return compare(rhs) > 0; }$/;"	f	class:hyperdaemon::searches::search_id
+operator >=	./replication/clientop.h	/^        bool operator >= (const clientop& rhs) const { return compare(rhs) >= 0; }$/;"	f	class:hyperdaemon::replication::clientop
+operator >=	./searches.h	/^        bool operator >= (const search_id& rhs) const { return compare(rhs) >= 0; }$/;"	f	class:hyperdaemon::searches::search_id
+ops	./ongoing_state_transfers.cc	/^        std::map<uint64_t, e::intrusive_ptr<op> > ops;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+optimistic_io_thread	./datalayer.cc	/^hyperdaemon :: datalayer :: optimistic_io_thread()$/;"	f	class:hyperdaemon::datalayer
+pause	./logical.h	/^        void pause() { m_busybee.pause(); }$/;"	f	class:hyperdaemon::logical
+pending	./replication_manager_pending.h	/^class hyperdaemon::replication_manager::pending$/;"	c	class:hyperdaemon::replication_manager
+pending	./replication_manager_pending.h	/^hyperdaemon :: replication_manager :: pending :: pending(bool hv,$/;"	f	class:hyperdaemon::replication_manager::pending
+periodic	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: periodic()$/;"	f	class:hyperdaemon::ongoing_state_transfers
+periodic	./replication_manager.cc	/^hyperdaemon :: replication_manager :: periodic()$/;"	f	class:hyperdaemon::replication_manager
+point_next	./replication_manager_pending.h	/^        uint64_t point_next;$/;"	m	class:hyperdaemon::replication_manager::pending
+point_next_next	./replication_manager_pending.h	/^        uint64_t point_next_next;$/;"	m	class:hyperdaemon::replication_manager::pending
+point_prev	./replication_manager_pending.h	/^        uint64_t point_prev;$/;"	m	class:hyperdaemon::replication_manager::pending
+point_this	./replication_manager_pending.h	/^        uint64_t point_this;$/;"	m	class:hyperdaemon::replication_manager::pending
+prepare	./datalayer.cc	/^hyperdaemon :: datalayer :: prepare(const configuration& newconfig, const instance& us)$/;"	f	class:hyperdaemon::datalayer
+prepare	./logical.cc	/^hyperdaemon :: logical :: prepare(const configuration&, const hyperdex::instance&)$/;"	f	class:hyperdaemon::logical
+prepare	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: prepare(const configuration& newconfig,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+prepare	./replication_manager.cc	/^hyperdaemon :: replication_manager :: prepare(const configuration&, const instance&)$/;"	f	class:hyperdaemon::replication_manager
+prepare	./searches.cc	/^hyperdaemon :: searches :: prepare(const hyperdex::configuration&,$/;"	f	class:hyperdaemon::searches
+prev_and_next	./replication_manager.cc	/^hyperdaemon :: replication_manager :: prev_and_next(const regionid& r,$/;"	f	class:hyperdaemon::replication_manager
+put	./datalayer.cc	/^hyperdaemon :: datalayer :: put(const regionid& ri,$/;"	f	class:hyperdaemon::datalayer
+put_to_disk	./replication_manager.cc	/^hyperdaemon :: replication_manager :: put_to_disk(const regionid& pending_in,$/;"	f	class:hyperdaemon::replication_manager
+reconfigure	./datalayer.cc	/^hyperdaemon :: datalayer :: reconfigure(const configuration& newconfig, const instance& us)$/;"	f	class:hyperdaemon::datalayer
+reconfigure	./logical.cc	/^hyperdaemon :: logical :: reconfigure(const configuration& newconfig,$/;"	f	class:hyperdaemon::logical
+reconfigure	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: reconfigure(const configuration& config,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+reconfigure	./replication_manager.cc	/^hyperdaemon :: replication_manager :: reconfigure(const configuration& newconfig, const instance& us)$/;"	f	class:hyperdaemon::replication_manager
+reconfigure	./searches.cc	/^hyperdaemon :: searches :: reconfigure(const hyperdex::configuration& newconfig,$/;"	f	class:hyperdaemon::searches
+recv	./logical.cc	/^hyperdaemon :: logical :: recv(hyperdex::entityid* from,$/;"	f	class:hyperdaemon::logical
+recv_e	./replication_manager_pending.h	/^        hyperdex::entityid recv_e; \/\/ We recv from here$/;"	m	class:hyperdaemon::replication_manager::pending
+recv_i	./replication_manager_pending.h	/^        hyperdex::instance recv_i; \/\/ We recv from here$/;"	m	class:hyperdaemon::replication_manager::pending
+ref	./replication_manager_deferred.h	/^        hyperdisk::reference ref;$/;"	m	class:hyperdaemon::replication_manager::deferred
+ref	./replication_manager_pending.h	/^        hyperdisk::reference ref;$/;"	m	class:hyperdaemon::replication_manager::pending
+region	./replication/clientop.h	/^        hyperdex::regionid region;$/;"	m	class:hyperdaemon::replication::clientop
+region	./replication/keypair.h	/^        const hyperdex::regionid region;$/;"	m	class:hyperdaemon::replication::keypair
+region	./searches.h	/^        const hyperdex::regionid region;$/;"	m	class:hyperdaemon::searches::search_state
+region	./searches.h	/^        hyperdex::regionid region;$/;"	m	class:hyperdaemon::searches::search_id
+region_transfer_done	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: region_transfer_done(const entityid& from,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+region_transfer_recv	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: region_transfer_recv(const hyperdex::entityid& from,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+region_transfer_send	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: region_transfer_send(const entityid& from,$/;"	f	class:hyperdaemon::ongoing_state_transfers
+regionid_hash	./datalayer.h	/^        static uint64_t regionid_hash(const hyperdex::regionid& r) { return r.hash(); }$/;"	f	class:hyperdaemon::datalayer
+remove_oldest_committable_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: remove_oldest_committable_op()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+remove_oldest_deferred_op	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: remove_oldest_deferred_op()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+replicate_from	./ongoing_state_transfers.cc	/^        const hyperdex::entityid replicate_from;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+replication	./replication/clientop.h	/^namespace replication$/;"	n	namespace:hyperdaemon
+replication	./replication/keypair.h	/^namespace replication$/;"	n	namespace:hyperdaemon
+replication_manager	./replication_manager.cc	/^hyperdaemon :: replication_manager :: replication_manager(coordinatorlink* cl,$/;"	f	class:hyperdaemon::replication_manager
+replication_manager	./replication_manager.h	/^class replication_manager$/;"	c	namespace:hyperdaemon
+respond_to_client	./replication_manager.cc	/^hyperdaemon :: replication_manager :: respond_to_client(const entityid& us,$/;"	f	class:hyperdaemon::replication_manager
+retcode	./replication_manager_pending.h	/^        hyperdex::network_msgtype retcode;$/;"	m	class:hyperdaemon::replication_manager::pending
+retransmit	./replication_manager.cc	/^hyperdaemon :: replication_manager :: retransmit()$/;"	f	class:hyperdaemon::replication_manager
+run	./network_worker.cc	/^hyperdaemon :: network_worker :: run()$/;"	f	class:hyperdaemon::network_worker
+s_continue	./daemon.cc	/^static bool s_continue = true;$/;"	v	file:
+search_coord	./searches.h	/^        const hyperspacehashing::mask::coordinate search_coord;$/;"	m	class:hyperdaemon::searches::search_state
+search_id	./searches.h	/^        search_id(const hyperdex::regionid re,$/;"	f	class:hyperdaemon::searches::search_id
+search_id	./searches.h	/^class searches::search_id$/;"	c	class:hyperdaemon::searches
+search_number	./searches.h	/^        uint64_t search_number;$/;"	m	class:hyperdaemon::searches::search_id
+search_state	./searches.cc	/^hyperdaemon :: searches :: search_state :: search_state(const regionid& r,$/;"	f	class:hyperdaemon::searches::search_state
+search_state	./searches.h	/^class searches::search_state$/;"	c	class:hyperdaemon::searches
+searches	./searches.cc	/^hyperdaemon :: searches :: searches(coordinatorlink* cl,$/;"	f	class:hyperdaemon::searches
+searches	./searches.h	/^class searches$/;"	c	namespace:hyperdaemon
+send	./logical.cc	/^hyperdaemon :: logical :: send(const hyperdex::entityid& from,$/;"	f	class:hyperdaemon::logical
+send_ack	./replication_manager.cc	/^hyperdaemon :: replication_manager :: send_ack(const entityid& from,$/;"	f	class:hyperdaemon::replication_manager
+send_message	./replication_manager.cc	/^hyperdaemon :: replication_manager :: send_message(const entityid& us,$/;"	f	class:hyperdaemon::replication_manager
+sent_e	./replication_manager_pending.h	/^        hyperdex::entityid sent_e; \/\/ We sent to here$/;"	m	class:hyperdaemon::replication_manager::pending
+sent_i	./replication_manager_pending.h	/^        hyperdex::instance sent_i; \/\/ We sent to here$/;"	m	class:hyperdaemon::replication_manager::pending
+set_replication_manager	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: set_replication_manager(replication_manager* repl)$/;"	f	class:hyperdaemon::ongoing_state_transfers
+set_version_on_disk	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: set_version_on_disk(uint64_t version)$/;"	f	class:hyperdaemon::replication_manager::keyholder
+shutdown	./datalayer.cc	/^hyperdaemon :: datalayer :: shutdown()$/;"	f	class:hyperdaemon::datalayer
+shutdown	./logical.h	/^        void shutdown() { m_busybee.shutdown(); }$/;"	f	class:hyperdaemon::logical
+shutdown	./network_worker.cc	/^hyperdaemon :: network_worker :: shutdown()$/;"	f	class:hyperdaemon::network_worker
+shutdown	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: shutdown()$/;"	f	class:hyperdaemon::ongoing_state_transfers
+shutdown	./replication_manager.cc	/^hyperdaemon :: replication_manager :: shutdown()$/;"	f	class:hyperdaemon::replication_manager
+sig_handle	./daemon.cc	/^sig_handle(int \/*signum*\/)$/;"	f
+sizeof_microop	./datatypes.cc	/^hyperdaemon :: sizeof_microop(const hyperdex::microop& op)$/;"	f	class:hyperdaemon
+snap	./ongoing_state_transfers.cc	/^        e::intrusive_ptr<hyperdisk::rolling_snapshot> snap;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+snap	./searches.h	/^        e::intrusive_ptr<hyperdisk::snapshot> snap;$/;"	m	class:hyperdaemon::searches::search_state
+start	./searches.cc	/^hyperdaemon :: searches :: start(const hyperdex::entityid& us,$/;"	f	class:hyperdaemon::searches
+start_transfers	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: start_transfers()$/;"	f	class:hyperdaemon::ongoing_state_transfers
+started	./ongoing_state_transfers.cc	/^        bool started;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+stop	./searches.cc	/^hyperdaemon :: searches :: stop(const hyperdex::entityid& us,$/;"	f	class:hyperdaemon::searches
+string_slice_from_serialized	./datatypes.cc	/^string_slice_from_serialized(const uint8_t* ptr, uint32_t ptr_sz, std::vector<uint8_t>*)$/;"	f	file:
+subspace_next	./replication_manager_pending.h	/^        uint16_t subspace_next;$/;"	m	class:hyperdaemon::replication_manager::pending
+subspace_prev	./replication_manager_pending.h	/^        uint16_t subspace_prev;$/;"	m	class:hyperdaemon::replication_manager::pending
+terms	./searches.h	/^        hyperspacehashing::search terms;$/;"	m	class:hyperdaemon::searches::search_state
+thread_ptr	./daemon.cc	/^typedef std::tr1::shared_ptr<po6::threads::thread> thread_ptr;$/;"	t	file:
+transfer_blocked_to_committable	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: transfer_blocked_to_committable()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+transfer_in	./ongoing_state_transfers.cc	/^class hyperdaemon::ongoing_state_transfers::transfer_in$/;"	c	class:hyperdaemon::ongoing_state_transfers	file:
+transfer_in	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: transfer_in :: transfer_in(const hyperdex::entityid& from)$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_in
+transfer_in_hash	./ongoing_state_transfers.h	/^        static uint64_t transfer_in_hash(const uint16_t& ti) { return ti; }$/;"	f	class:hyperdaemon::ongoing_state_transfers
+transfer_out	./ongoing_state_transfers.cc	/^class hyperdaemon::ongoing_state_transfers::transfer_out$/;"	c	class:hyperdaemon::ongoing_state_transfers	file:
+transfer_out	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: transfer_out :: transfer_out(e::intrusive_ptr<hyperdisk::rolling_snapshot> s)$/;"	f	class:hyperdaemon::ongoing_state_transfers::transfer_out
+transfer_out_hash	./ongoing_state_transfers.h	/^        static uint64_t transfer_out_hash(const uint16_t& to) { return to; }$/;"	f	class:hyperdaemon::ongoing_state_transfers
+transfers_in_map_t	./ongoing_state_transfers.h	/^                transfers_in_map_t;$/;"	t	class:hyperdaemon::ongoing_state_transfers
+transfers_out_map_t	./ongoing_state_transfers.h	/^                transfers_out_map_t;$/;"	t	class:hyperdaemon::ongoing_state_transfers
+triggered	./ongoing_state_transfers.cc	/^        bool triggered;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+triggers	./ongoing_state_transfers.cc	/^        std::map<std::pair<e::slice, uint64_t>, std::tr1::shared_ptr<e::buffer> > triggers;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+unpack_attributes	./replication_manager.cc	/^unpack_attributes(const std::vector<std::pair<uint16_t, e::slice> >& value,$/;"	f	file:
+unpause	./logical.h	/^        void unpause() { m_busybee.unpause(); }$/;"	f	class:hyperdaemon::logical
+validate_datatype	./datatypes.cc	/^hyperdaemon :: validate_datatype(hyperdatatype datatype, const e::slice& data)$/;"	f	class:hyperdaemon
+validate_int64	./datatypes.cc	/^validate_int64(const uint8_t** ptr, uint32_t* sz, const uint8_t* end)$/;"	f	file:
+validate_int64_micro_arg1	./datatypes.cc	/^validate_int64_micro_arg1(const hyperdex::microop* op)$/;"	f	file:
+validate_int64_micro_arg2	./datatypes.cc	/^validate_int64_micro_arg2(const hyperdex::microop* op)$/;"	f	file:
+validate_list	./datatypes.cc	/^validate_list(bool (*validate_elem)(const uint8_t** ptr,$/;"	f	file:
+validate_list_int64	./datatypes.cc	/^validate_list_int64(const e::slice& list)$/;"	f	file:
+validate_list_string	./datatypes.cc	/^validate_list_string(const e::slice& list)$/;"	f	file:
+validate_map	./datatypes.cc	/^validate_map(bool (*validate_key)(const uint8_t** ptr,$/;"	f	file:
+validate_map_int64_int64	./datatypes.cc	/^validate_map_int64_int64(const e::slice& map)$/;"	f	file:
+validate_map_int64_string	./datatypes.cc	/^validate_map_int64_string(const e::slice& map)$/;"	f	file:
+validate_map_string_int64	./datatypes.cc	/^validate_map_string_int64(const e::slice& map)$/;"	f	file:
+validate_map_string_string	./datatypes.cc	/^validate_map_string_string(const e::slice& map)$/;"	f	file:
+validate_set	./datatypes.cc	/^validate_set(bool (*validate_elem)(const uint8_t** ptr,$/;"	f	file:
+validate_set_int64	./datatypes.cc	/^validate_set_int64(const e::slice& set)$/;"	f	file:
+validate_set_string	./datatypes.cc	/^validate_set_string(const e::slice& set)$/;"	f	file:
+validate_string	./datatypes.cc	/^validate_string(const uint8_t** ptr, uint32_t* sz, const uint8_t* end)$/;"	f	file:
+validate_string_micro	./datatypes.cc	/^validate_string_micro(const hyperdex::microop* \/*op*\/)$/;"	f	file:
+value	./ongoing_state_transfers.cc	/^                const std::vector<e::slice> value;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+value	./replication_manager_deferred.h	/^        const std::vector<e::slice> value;$/;"	m	class:hyperdaemon::replication_manager::deferred
+value	./replication_manager_pending.h	/^        std::vector<e::slice> value;$/;"	m	class:hyperdaemon::replication_manager::pending
+version	./ongoing_state_transfers.cc	/^                uint64_t version;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in::op	file:
+version_on_disk	./replication_manager_keyholder.h	/^        uint64_t version_on_disk() const { return m_version_on_disk; }$/;"	f	class:hyperdaemon::replication_manager::keyholder
+xfer_num	./ongoing_state_transfers.cc	/^        uint64_t xfer_num;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_in	file:
+xfer_num	./ongoing_state_transfers.cc	/^        uint64_t xfer_num;$/;"	m	class:hyperdaemon::ongoing_state_transfers::transfer_out	file:
+~datalayer	./datalayer.cc	/^hyperdaemon :: datalayer :: ~datalayer() throw ()$/;"	f	class:hyperdaemon::datalayer
+~deferred	./replication_manager_deferred.h	/^hyperdaemon :: replication_manager :: deferred :: ~deferred()$/;"	f	class:hyperdaemon::replication_manager::deferred
+~early_message	./logical.cc	/^hyperdaemon :: logical :: early_message :: ~early_message() throw ()$/;"	f	class:hyperdaemon::logical::early_message
+~keyholder	./replication_manager_keyholder.h	/^hyperdaemon :: replication_manager :: keyholder :: ~keyholder()$/;"	f	class:hyperdaemon::replication_manager::keyholder
+~logical	./logical.cc	/^hyperdaemon :: logical :: ~logical() throw ()$/;"	f	class:hyperdaemon::logical
+~network_worker	./network_worker.cc	/^hyperdaemon :: network_worker :: ~network_worker() throw ()$/;"	f	class:hyperdaemon::network_worker
+~ongoing_state_transfers	./ongoing_state_transfers.cc	/^hyperdaemon :: ongoing_state_transfers :: ~ongoing_state_transfers() throw ()$/;"	f	class:hyperdaemon::ongoing_state_transfers
+~pending	./replication_manager_pending.h	/^hyperdaemon :: replication_manager :: pending :: ~pending()$/;"	f	class:hyperdaemon::replication_manager::pending
+~replication_manager	./replication_manager.cc	/^hyperdaemon :: replication_manager :: ~replication_manager() throw ()$/;"	f	class:hyperdaemon::replication_manager
+~search_id	./searches.h	/^        ~search_id() throw () {}$/;"	f	class:hyperdaemon::searches::search_id
+~search_state	./searches.cc	/^hyperdaemon :: searches :: search_state :: ~search_state() throw ()$/;"	f	class:hyperdaemon::searches::search_state
+~searches	./searches.cc	/^hyperdaemon :: searches :: ~searches() throw ()$/;"	f	class:hyperdaemon::searches

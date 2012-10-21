@@ -1,0 +1,17 @@
+Log file created at: 2012/10/18 23:00:22
+Running on machine: adamyang
+Log line format: [IWEF]mmdd hh:mm:ss.uuuuuu threadid file:line] msg
+I1018 23:00:22.927564  2336 datalayer.cc:165] Could not open datalayer state file ./datalayer_state.hd; starting with fresh state: No such file or directory [2]
+W1018 23:00:22.930981  2341 datalayer.cc:571] Started data-flush thread.
+W1018 23:00:22.931350  2340 datalayer.cc:571] Started data-flush thread.
+W1018 23:00:22.931494  2339 datalayer.cc:571] Started data-flush thread.
+W1018 23:00:22.931638  2338 datalayer.cc:571] Started data-flush thread.
+W1018 23:00:22.931800  2337 datalayer.cc:470] Started optimistic-I/O thread.
+W1018 23:00:22.999361  2342 ongoing_state_transfers.cc:557] State transfer "cron" thread started.
+I1018 23:00:23.000169  2336 daemon.cc:197] Starting network workers.
+I1018 23:00:23.000653  2336 daemon.cc:209] Network workers started.
+W1018 23:00:23.001593  2343 replication_manager.cc:1543] Replication "cron" thread started.
+I1018 23:00:23.016047  2336 daemon.cc:239] Installing new configuration version 0
+E1018 23:00:23.017060  2336 daemon.cc:248] We've been configured to a dummy node.
+I1018 23:00:23.023190  2336 daemon.cc:264] Pausing communication for reconfiguration.
+I1018 23:00:23.068408  2336 daemon.cc:279] Reconfiguration complete; unpausing communication.
