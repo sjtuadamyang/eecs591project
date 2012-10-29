@@ -180,6 +180,14 @@ hyperdaemon :: network_worker :: run()
 
             m_repl->client_put(from, to, nonce, msg, key, attrs);
         }
+        else if (type == hyperdex::REQ_TRIGET)
+	{
+            LOG(INFO) << "test of req trigger get success.";
+	}
+        else if (type == hyperdex::REQ_TRIPUT)
+	{
+            LOG(INFO) << "test of req trigger put success.";
+	}
         else if (type == hyperdex::REQ_CONDPUT)
         {
             uint32_t cond_sz;

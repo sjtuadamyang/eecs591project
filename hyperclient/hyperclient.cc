@@ -73,7 +73,7 @@ hyperclient :: hyperclient(const char* coordinator, in_port_t port)
 hyperclient :: ~hyperclient() throw ()
 {
 }
-
+    
 int64_t
 hyperclient :: get(const char* space, const char* key, size_t key_sz,
                    hyperclient_returncode* status,

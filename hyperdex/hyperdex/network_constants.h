@@ -65,6 +65,13 @@ enum network_msgtype
     REQ_ATOMIC      = 16,
     RESP_ATOMIC     = 17,
 
+    //defines get&trigger and response to it
+    REQ_TRIGET      = 18,
+    RESP_TRIGET     = 19,
+    
+    REQ_TRIPUT      = 20,
+    RESP_TRIPUT     = 21,
+
     REQ_SEARCH_START    = 32,
     REQ_SEARCH_NEXT     = 33,
     REQ_SEARCH_STOP     = 34,

@@ -28,6 +28,8 @@ int main()
     hyperclient test_client("127.0.0.1", 1234);
     int64_t ret = test_client.put("phonebook", key, strlen(key), test_attr, 3, &retcode);
 
+    cout<<"put ret is "<<ret<<" return code is "<<retcode<<endl;
+
     //define the container for the attribute get
     hyperclient_attribute *test_get_attr;
     size_t get_size = 0;
@@ -45,7 +47,7 @@ int main()
         cout<<"we get nothing"<<endl;
     }
 
-    cout<<"ret is "<<ret<<" return code is "<<retcode<<endl;
+    cout<<"get ret is "<<ret<<" return code is "<<retcode<<endl;
 
     return 0;
 }
