@@ -1,6 +1,6 @@
 hyperclient/c/hyperclient_c_testcompile-testcompile.o: \
  hyperclient/c/testcompile.c \
- /home/adamyang/hyperdex-0.4.0/hyperclient/hyperclient.h \
+ /home/adamyang/eecs591project/hyperclient/hyperclient.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
  /usr/include/features.h /usr/include/x86_64-linux-gnu/bits/predefs.h \
  /usr/include/x86_64-linux-gnu/sys/cdefs.h \
@@ -36,7 +36,7 @@ hyperclient/c/hyperclient_c_testcompile-testcompile.o: \
  /usr/include/x86_64-linux-gnu/bits/socket2.h \
  /usr/include/x86_64-linux-gnu/bits/in.h hyperdex.h
 
-/home/adamyang/hyperdex-0.4.0/hyperclient/hyperclient.h:
+/home/adamyang/eecs591project/hyperclient/hyperclient.h:
 
 /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h:
 

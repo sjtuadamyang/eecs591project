@@ -71,7 +71,7 @@ hyperspacehashing/libhyperspacehashing_la-search.lo: \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/atomic_word.h \
  /usr/include/c++/4.6/bits/basic_string.tcc \
  hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/local/include/e/bitfield.h /usr/local/include/e/buffer.h \
  /usr/include/c++/4.6/cstdlib /usr/include/stdlib.h \
  /usr/include/x86_64-linux-gnu/bits/waitflags.h \
@@ -287,7 +287,7 @@ hyperspacehashing/hashes_internal.h:
 
 hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/local/include/e/bitfield.h:
 

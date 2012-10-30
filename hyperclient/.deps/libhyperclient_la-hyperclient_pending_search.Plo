@@ -140,8 +140,8 @@ hyperclient/libhyperclient_la-hyperclient_pending_search.lo: \
  hyperdex/hyperdex/ids.h /usr/local/include/e/tuple_compare.h \
  hyperspacehashing/hyperspacehashing/prefix.h \
  /usr/local/include/e/bitfield.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  hyperdex/hyperdex/instance.h hyperdex/hyperdex/network_constants.h \
  hyperclient/util.h hyperdex/hyperdex/configuration.h \
  /usr/include/c++/4.6/tr1/functional /usr/include/c++/4.6/tr1/tuple \
@@ -539,9 +539,9 @@ hyperspacehashing/hyperspacehashing/prefix.h:
 
 /usr/local/include/e/bitfield.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 hyperdex/hyperdex/instance.h:
 

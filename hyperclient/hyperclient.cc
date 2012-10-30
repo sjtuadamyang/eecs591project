@@ -683,6 +683,9 @@ int64_t
 hyperclient :: add_keyop(const char* space, const char* key, size_t key_sz,
                          std::auto_ptr<e::buffer> msg, e::intrusive_ptr<pending> op)
 {
+    // tested by Adam
+    //std::cout<<"we are adding keys here "<<std::endl;
+
     hyperdex::spaceid si = m_config->space(space);
 
     if (si == hyperdex::spaceid())

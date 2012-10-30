@@ -114,8 +114,8 @@ hyperdisk/libhyperdisk_la-shard.lo: hyperdisk/shard.cc \
  /usr/include/c++/4.6/iostream /usr/include/c++/4.6/stdexcept \
  /usr/local/include/po6/noncopyable.h \
  hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/include/c++/4.6/vector \
  /usr/include/c++/4.6/bits/stl_uninitialized.h \
  /usr/include/c++/4.6/bits/stl_vector.h \
@@ -442,9 +442,9 @@ hyperdisk/libhyperdisk_la-shard.lo: hyperdisk/shard.cc \
 
 hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/include/c++/4.6/vector:
 

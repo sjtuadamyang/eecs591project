@@ -99,8 +99,8 @@ hyperdisk/utils/hyperdisk_utils_shard_dumphashes-shard-dumphashes.o: \
  /usr/local/include/po6/noncopyable.h \
  /usr/local/include/e/intrusive_ptr.h /usr/include/c++/4.6/cstddef \
  hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_construct.h \
  /usr/include/c++/4.6/bits/stl_uninitialized.h \
  /usr/include/c++/4.6/bits/stl_vector.h \
@@ -385,9 +385,9 @@ hyperdisk/utils/hyperdisk_utils_shard_dumphashes-shard-dumphashes.o: \
 
 hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/include/c++/4.6/vector:
 

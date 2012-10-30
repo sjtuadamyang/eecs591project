@@ -167,13 +167,13 @@ hyperdaemon/hyperdex_daemon-network_worker.o: \
  /usr/include/x86_64-linux-gnu/bits/stat.h \
  /usr/include/x86_64-linux-gnu/bits/fcntl2.h \
  /usr/local/include/po6/threads/mutex.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/local/include/e/bitfield.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/reference.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/returncode.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/snapshot.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/reference.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/returncode.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/snapshot.h \
  hyperdisk/hyperdisk/returncode.h hyperdex/hyperdex/ids.h \
  /usr/local/include/e/tuple_compare.h \
  hyperspacehashing/hyperspacehashing/prefix.h hyperdaemon/logical.h \
@@ -654,19 +654,19 @@ hyperdisk/hyperdisk/disk.h:
 
 /usr/local/include/po6/threads/mutex.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/local/include/e/bitfield.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/reference.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/reference.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/returncode.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/returncode.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/snapshot.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/snapshot.h:
 
 hyperdisk/hyperdisk/returncode.h:
 

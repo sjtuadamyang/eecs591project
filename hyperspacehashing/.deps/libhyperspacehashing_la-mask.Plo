@@ -76,8 +76,8 @@ hyperspacehashing/libhyperspacehashing_la-mask.lo: \
  /usr/include/c++/4.6/bits/basic_ios.tcc \
  /usr/include/c++/4.6/bits/ostream.tcc /usr/include/c++/4.6/istream \
  /usr/include/c++/4.6/bits/istream.tcc \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_construct.h \
  /usr/include/c++/4.6/bits/stl_uninitialized.h \
  /usr/include/c++/4.6/bits/stl_vector.h \
@@ -299,9 +299,9 @@ hyperspacehashing/hyperspacehashing/mask.h:
 
 /usr/include/c++/4.6/bits/istream.tcc:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/include/c++/4.6/vector:
 

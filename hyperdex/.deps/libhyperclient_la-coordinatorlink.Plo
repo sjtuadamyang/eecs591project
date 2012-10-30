@@ -137,8 +137,8 @@ hyperdex/libhyperclient_la-coordinatorlink.lo: \
  /usr/include/c++/4.6/tr1/type_traits \
  /usr/include/c++/4.6/tr1/functional_hash.h \
  hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/local/include/e/bitfield.h \
  hyperspacehashing/hyperspacehashing/prefix.h \
  hyperspacehashing/hyperspacehashing/search.h \
@@ -514,9 +514,9 @@ hyperdex/hyperdex/configuration.h:
 
 hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/local/include/e/bitfield.h:
 

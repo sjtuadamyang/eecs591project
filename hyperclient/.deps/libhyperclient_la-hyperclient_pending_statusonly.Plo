@@ -101,8 +101,8 @@ hyperclient/libhyperclient_la-hyperclient_pending_statusonly.lo: \
  /usr/local/include/e/tuple_compare.h \
  hyperspacehashing/hyperspacehashing/prefix.h \
  /usr/local/include/e/bitfield.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  hyperdex/hyperdex/instance.h /usr/local/include/po6/net/ipaddr.h \
  /usr/include/arpa/inet.h /usr/include/netinet/in.h \
  /usr/include/x86_64-linux-gnu/sys/socket.h \
@@ -409,9 +409,9 @@ hyperspacehashing/hyperspacehashing/prefix.h:
 
 /usr/local/include/e/bitfield.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 hyperdex/hyperdex/instance.h:
 

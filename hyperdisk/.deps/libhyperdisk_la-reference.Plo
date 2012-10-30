@@ -111,8 +111,8 @@ hyperdisk/libhyperdisk_la-reference.lo: hyperdisk/reference.cc \
  /usr/include/c++/4.6/tr1/shared_ptr.h /usr/local/include/e/buffer.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
  /usr/local/include/e/slice.h hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/local/include/e/bitfield.h hyperdisk/shard.h \
  /usr/local/include/po6/pathname.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include-fixed/limits.h \
@@ -432,9 +432,9 @@ hyperdisk/log_entry.h:
 
 hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/local/include/e/bitfield.h:
 

@@ -104,8 +104,8 @@ hyperdisk/libhyperdisk_la-disk.lo: hyperdisk/disk.cc \
  /usr/include/c++/4.6/x86_64-linux-gnu/./bits/c++io.h \
  /usr/include/c++/4.6/bits/fstream.tcc /usr/local/include/e/guard.h \
  hyperspacehashing/hyperspacehashing/mask.h /usr/include/c++/4.6/iostream \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/include/c++/4.6/vector /usr/include/c++/4.6/bits/stl_construct.h \
  /usr/include/c++/4.6/bits/stl_uninitialized.h \
  /usr/include/c++/4.6/bits/stl_vector.h \
@@ -153,10 +153,10 @@ hyperdisk/libhyperdisk_la-disk.lo: hyperdisk/disk.cc \
  /usr/include/c++/4.6/bits/stl_multiset.h /usr/local/include/e/atomic.h \
  /usr/local/include/e/locking_iterable_fifo.h \
  /usr/local/include/po6/threads/spinlock.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/reference.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/returncode.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/snapshot.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/reference.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/returncode.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/snapshot.h \
  hyperdisk/log_entry.h hyperdisk/offset_update.h \
  /usr/local/include/e/tuple_compare.h hyperdisk/shard.h \
  hyperdisk/hyperdisk/returncode.h hyperdisk/shard_snapshot.h \
@@ -430,9 +430,9 @@ hyperspacehashing/hyperspacehashing/mask.h:
 
 /usr/include/c++/4.6/iostream:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/include/c++/4.6/vector:
 
@@ -582,13 +582,13 @@ hyperdisk/hyperdisk/disk.h:
 
 /usr/local/include/po6/threads/spinlock.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/reference.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/reference.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/returncode.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/returncode.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/snapshot.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/snapshot.h:
 
 hyperdisk/log_entry.h:
 

@@ -5,6 +5,7 @@ using namespace std;
 
 int main()
 {
+    cout<<"test start "<<endl;
     //define hyper attribute
     hyperclient_attribute test_attr[3];
 
@@ -26,6 +27,8 @@ int main()
     hyperclient_returncode retcode;
     const char *key = "adamyang";
     hyperclient test_client("127.0.0.1", 1234);
+
+    cout<<retcode;
     int64_t ret = test_client.put("phonebook", key, strlen(key), test_attr, 3, &retcode);
 
     cout<<"put ret is "<<ret<<" return code is "<<retcode<<endl;

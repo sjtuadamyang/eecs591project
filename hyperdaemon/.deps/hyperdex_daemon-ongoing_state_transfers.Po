@@ -114,9 +114,9 @@ hyperdaemon/hyperdex_daemon-ongoing_state_transfers.o: \
  /usr/local/include/po6/threads/spinlock.h \
  /usr/local/include/po6/noncopyable.h /usr/local/include/e/guard.h \
  /usr/local/include/e/slice.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/local/include/e/bitfield.h /usr/local/include/e/buffer.h \
  hyperdex/hyperdex/configuration.h /usr/include/c++/4.6/set \
  /usr/include/c++/4.6/bits/stl_set.h \
@@ -174,9 +174,9 @@ hyperdaemon/hyperdex_daemon-ongoing_state_transfers.o: \
  /usr/include/x86_64-linux-gnu/bits/posix2_lim.h \
  /usr/include/x86_64-linux-gnu/bits/xopen_lim.h \
  /usr/include/x86_64-linux-gnu/bits/stdio_lim.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/reference.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/returncode.h \
- /home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/snapshot.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/reference.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/returncode.h \
+ /home/adamyang/eecs591project/hyperdisk/hyperdisk/snapshot.h \
  hyperdisk/hyperdisk/returncode.h hyperdaemon/logical.h \
  /usr/local/include/e/lockfree_fifo.h /usr/local/include/busybee_mta.h \
  /usr/local/include/e/nonblocking_bounded_fifo.h \
@@ -505,11 +505,11 @@ hyperdisk/hyperdisk/snapshot.h:
 
 /usr/local/include/e/slice.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/local/include/e/bitfield.h:
 
@@ -671,11 +671,11 @@ hyperdisk/hyperdisk/disk.h:
 
 /usr/include/x86_64-linux-gnu/bits/stdio_lim.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/reference.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/reference.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/returncode.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/returncode.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperdisk/hyperdisk/snapshot.h:
+/home/adamyang/eecs591project/hyperdisk/hyperdisk/snapshot.h:
 
 hyperdisk/hyperdisk/returncode.h:
 

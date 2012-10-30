@@ -106,9 +106,9 @@ hyperdisk/libhyperdisk_la-snapshot.lo: hyperdisk/snapshot.cc \
  /usr/include/c++/4.6/stdexcept /usr/local/include/po6/noncopyable.h \
  /usr/local/include/e/guard.h /usr/local/include/e/slice.h \
  /usr/lib/gcc/x86_64-linux-gnu/4.6/include/stdint.h /usr/include/stdint.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h \
- /home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h \
+ /home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h \
  /usr/local/include/e/bitfield.h /usr/local/include/e/buffer.h \
  hyperdisk/log_entry.h /usr/include/c++/4.6/tr1/memory \
  /usr/include/c++/4.6/typeinfo /usr/include/c++/4.6/ext/concurrence.h \
@@ -419,11 +419,11 @@ hyperdisk/hyperdisk/snapshot.h:
 
 /usr/include/stdint.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/mask.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/mask.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/hashes.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/hashes.h:
 
-/home/adamyang/hyperdex-0.4.0/hyperspacehashing/hyperspacehashing/search.h:
+/home/adamyang/eecs591project/hyperspacehashing/hyperspacehashing/search.h:
 
 /usr/local/include/e/bitfield.h:
 

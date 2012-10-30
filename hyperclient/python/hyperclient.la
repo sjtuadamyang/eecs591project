@@ -17,7 +17,7 @@ old_library='hyperclient.a'
 inherited_linker_flags=''
 
 # Libraries that this one depends upon.
-dependency_libs=' -L/usr/local/lib /home/adamyang/hyperdex-0.4.0/libhyperclient.la /home/adamyang/hyperdex-0.4.0/libhyperspacehashing.la /usr/local/lib/libcityhash.la /usr/local/lib/libe.la -L/usr/lib -lpython2.7'
+dependency_libs=' -L/usr/local/lib /home/adamyang/eecs591project/libhyperclient.la /home/adamyang/eecs591project/libhyperspacehashing.la /usr/local/lib/libcityhash.la /usr/local/lib/libe.la -L/usr/lib -lpython2.7'
 
 # Names of additional weak libraries provided by this library
 weak_library_names=''
@@ -39,4 +39,4 @@ dlpreopen=''
 
 # Directory that this library needs to be installed in:
 libdir='/usr/local/lib/python2.7/dist-packages'
-relink_command="(cd /home/adamyang/hyperdex-0.4.0; /bin/bash /home/adamyang/hyperdex-0.4.0/libtool  --silent --tag CC --mode=relink gcc -g -O2 -module -avoid-version -export-symbols-regex inithyperclient -o hyperclient/python/hyperclient.la -rpath /usr/local/lib/python2.7/dist-packages hyperclient/python/hyperclient_python_hyperclient_la-hyperclient.lo libhyperspacehashing.la libhyperclient.la -L/usr/lib -lpython2.7 @inst_prefix_dir@)"
+relink_command="(cd /home/adamyang/eecs591project; /bin/bash /home/adamyang/eecs591project/libtool  --silent --tag CC --mode=relink gcc -g -O2 -module -avoid-version -export-symbols-regex inithyperclient -o hyperclient/python/hyperclient.la -rpath /usr/local/lib/python2.7/dist-packages hyperclient/python/hyperclient_python_hyperclient_la-hyperclient.lo libhyperspacehashing.la libhyperclient.la -L/usr/lib -lpython2.7 @inst_prefix_dir@)"
