@@ -65,7 +65,7 @@ enum network_msgtype
     REQ_ATOMIC      = 16,
     RESP_ATOMIC     = 17,
 
-    //defines get&trigger and response to it
+    //defines get&trigger and response to it, used by hyperclient.cc
     REQ_TRIGET      = 18,
     RESP_TRIGET     = 19,
     

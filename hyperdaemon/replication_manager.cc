@@ -459,6 +459,7 @@ hyperdaemon :: replication_manager :: client_atomic(const hyperdex::entityid& fr
         if (op->attr < next_to_copy || op->attr >= dims.size())
         {
             // Fail it for bad micro ops
+            LOG(INFO) << "bad micros flag1";
             respond_to_client(to, from, nonce, hyperdex::RESP_ATOMIC, hyperdex::NET_BADMICROS);
             g.dismiss();
             return;
@@ -472,6 +473,7 @@ hyperdaemon :: replication_manager :: client_atomic(const hyperdex::entityid& fr
                     end->action == hyperdex::OP_FAIL)
             {
                 // Fail it for bad micro ops
+                LOG(INFO) << "bad micros flag2";
                 respond_to_client(to, from, nonce, hyperdex::RESP_ATOMIC, hyperdex::NET_BADMICROS);
                 g.dismiss();
                 return;

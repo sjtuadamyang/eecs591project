@@ -60,6 +60,7 @@ hyperclient :: pending_statusonly :: handle_response(hyperclient* cl,
 
     if (type != m_resptype)
     {
+        std::cout<<"flag 0 "<<std::endl;
         cl->killall(sender, HYPERCLIENT_SERVERERROR);
         return 0;
     }
@@ -70,6 +71,7 @@ hyperclient :: pending_statusonly :: handle_response(hyperclient* cl,
 
     if (up.error())
     {
+        std::cout<<"flag 1 "<<std::endl;
         cl->killall(sender, HYPERCLIENT_SERVERERROR);
         return 0;
     }
@@ -84,6 +86,7 @@ hyperclient :: pending_statusonly :: handle_response(hyperclient* cl,
             break;
         case hyperdex::NET_BADDIMSPEC:
         case hyperdex::NET_BADMICROS:
+            std::cout<<"flag 2 "<<std::endl;
             set_status(HYPERCLIENT_SERVERERROR);
             break;
         case hyperdex::NET_NOTUS:
@@ -100,6 +103,7 @@ hyperclient :: pending_statusonly :: handle_response(hyperclient* cl,
             break;
         case hyperdex::NET_SERVERERROR:
         default:
+            std::cout<<"flag 3 "<<std::endl;
             cl->killall(sender, HYPERCLIENT_SERVERERROR);
             return 0;
     }

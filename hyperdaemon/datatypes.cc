@@ -43,6 +43,9 @@
 #include "hyperdex.h"
 #include "hyperdaemon/datatypes.h"
 
+// iostream
+#include <iostream>
+
 // The below functions often make use of a call to "validate" with the following
 // prototype:
 //
@@ -451,6 +454,7 @@ apply_int64(const e::slice& old_value,
 
         if (!validate_int64_micro_arg1(op))
         {
+            std::cout<<"flag flag"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }

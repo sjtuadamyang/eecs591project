@@ -529,6 +529,7 @@ hyperclient :: loop(int timeout, hyperclient_returncode* status)
 
         if (up.error())
         {
+            std::cout<<"parsing error "<<std::endl;
             killall(sender, HYPERCLIENT_SERVERERROR);
             continue;
         }
@@ -539,6 +540,7 @@ hyperclient :: loop(int timeout, hyperclient_returncode* status)
 
         if (it == m_incomplete.end())
         {
+            std::cout<<"nonce not found error "<<std::endl;
             killall(sender, HYPERCLIENT_SERVERERROR);
             continue;
         }
@@ -575,6 +577,7 @@ hyperclient :: loop(int timeout, hyperclient_returncode* status)
         }
         else
         {
+            std::cout<<"address not match error"<<std::endl;
             killall(sender, HYPERCLIENT_SERVERERROR);
         }
     }
@@ -683,9 +686,6 @@ int64_t
 hyperclient :: add_keyop(const char* space, const char* key, size_t key_sz,
                          std::auto_ptr<e::buffer> msg, e::intrusive_ptr<pending> op)
 {
-    // tested by Adam
-    //std::cout<<"we are adding keys here "<<std::endl;
-
     hyperdex::spaceid si = m_config->space(space);
 
     if (si == hyperdex::spaceid())

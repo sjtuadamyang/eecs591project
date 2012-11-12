@@ -147,7 +147,7 @@ hyperclient_destroy(struct hyperclient* client);
 /* All values return a 64-bit integer, which uniquely identifies the request
  * until its completion.  Positive values indicate valid identifiers.  Negative
  * values indicate that the request fails immediately for the reason stored in
- * status.
+ * status
  *
  * Each call to "hyperclient_loop" will return the identifier corresponding to
  * the request which made progress.  get/put/del requests are completed
