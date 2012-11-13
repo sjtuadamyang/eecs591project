@@ -52,6 +52,9 @@
 #include "hyperdaemon/replication_manager.h"
 #include "hyperdaemon/searches.h"
 
+// Dynamic lib
+#include <dlfcn.h>
+
 using hyperdex::entityid;
 using hyperdex::network_msgtype;
 using hyperdex::network_returncode;
@@ -186,7 +189,41 @@ hyperdaemon :: network_worker :: run()
 	    }
         else if (type == hyperdex::REQ_TRIPUT)
 	    {
-            LOG(WARNING) << "test of req trigger put success.";
+            uint32_t attrs_sz;
+            e::slice key;
+            e::slice trigger;
+            std::vector<std::pair<uint16_t, e::slice> > attrs;
+            up = up >> nonce >> key >> trigger >> attrs_sz;
+
+            for (uint32_t i = 0; i < attrs_sz; ++i)
+            {
+                uint16_t dimnum;
+                e::slice val;
+                up = up >> dimnum >> val;
+                attrs.push_back(std::make_pair(dimnum, val));
+            }
+
+            if (up.error())
+            {
+                LOG(WARNING) << "unpack of REQ_PUT failed; here's some hex:  " << msg->hex();
+                continue;
+            }
+
+            void *handle;
+            handle = dlopen("/home/adamyang/eecs591project/clib_test/testlib.so", RTLD_NOW);
+
+            if(!handle)
+            {
+                LOG(WARNING) << "open so file failed";
+                continue;
+            }
+            else
+            {
+                LOG(INFO) << "open so file succeeded";
+            }
+
+            m_repl->client_put(from, to, nonce, msg, key, attrs);
+            LOG(INFO) << "test of req trigger put success.";
 	    }
         else if (type == hyperdex::REQ_CONDPUT)
         {

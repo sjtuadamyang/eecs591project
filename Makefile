@@ -49,8 +49,8 @@ TESTS = $(am__EXEEXT_6) $(am__EXEEXT_7)
 #am__append_1 = libhyperclient-java.la
 
 ################################ Python Bindings ###############################
-am__append_2 = \
-			hyperclient/python/hyperclient.la
+#am__append_2 = \
+#			hyperclient/python/hyperclient.la
 
 #am__append_3 = hyperdex-trace-player
 subdir = .
@@ -122,8 +122,8 @@ hyperclient_python_hyperclient_la_LINK = $(LIBTOOL) $(AM_V_lt) \
 	--tag=CC $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=link \
 	$(CCLD) $(AM_CFLAGS) $(CFLAGS) \
 	$(hyperclient_python_hyperclient_la_LDFLAGS) $(LDFLAGS) -o $@
-am_hyperclient_python_hyperclient_la_rpath =  \
-	-rpath $(pyexecdir)
+#am_hyperclient_python_hyperclient_la_rpath =  \
+#	-rpath $(pyexecdir)
 libhyperclient_java_la_DEPENDENCIES = libhyperspacehashing.la \
 	libhyperclient.la $(am__DEPENDENCIES_1) $(am__DEPENDENCIES_1)
 am_libhyperclient_java_la_OBJECTS =  \
@@ -454,7 +454,7 @@ LCOV =
 LD = /usr/bin/ld -m elf_x86_64
 LDFLAGS = 
 LIBOBJS = 
-LIBS = 
+LIBS = -lpopt 
 LIBTOOL = $(SHELL) $(top_builddir)/libtool
 LIPO = 
 LN_S = ln -s
@@ -481,14 +481,14 @@ PKG_CONFIG_PATH =
 PO6_CFLAGS = -I/usr/local/include  
 PO6_LIBS = -L/usr/local/lib  
 PYTHON = /usr/bin/python
-PYTHON_CPPFLAGS = -I/usr/include/python2.7
+PYTHON_CPPFLAGS = 
 PYTHON_EXEC_PREFIX = ${exec_prefix}
-PYTHON_EXTRA_LDFLAGS = -Xlinker -export-dynamic -Wl,-O1 -Wl,-Bsymbolic-functions
-PYTHON_EXTRA_LIBS = -lssl -lcrypto  -lssl -lcrypto      -L/usr/lib -lz -lpthread -ldl  -lutil
-PYTHON_LDFLAGS = -L/usr/lib -lpython2.7
+PYTHON_EXTRA_LDFLAGS = 
+PYTHON_EXTRA_LIBS = 
+PYTHON_LDFLAGS = 
 PYTHON_PLATFORM = linux2
 PYTHON_PREFIX = ${prefix}
-PYTHON_SITE_PKG = /usr/lib/python2.7/dist-packages
+PYTHON_SITE_PKG = 
 PYTHON_VERSION = 2.7
 RANLIB = ranlib
 SED = /bin/sed
@@ -884,7 +884,7 @@ hyperdex_daemon_LDADD = \
 			$(BUSYBEE_LIBS) \
 			-lbusybee-mta \
 			$(COVERAGE_LDADD) \
-			-lcityhash -lpopt -lglog -lrt -lpthread
+			-lcityhash -lpopt -lglog -ldl -lrt -lpthread
 
 hyperdex_daemon_CPPFLAGS = \
 			-I$(abs_top_srcdir)/hyperspacehashing \
@@ -1560,12 +1560,12 @@ mostlyclean-compile:
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_get.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_get.lo
-	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.$(OBJEXT)
-	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_search.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_search.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_statusonly.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_statusonly.lo
+	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.$(OBJEXT)
+	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.lo
 	-rm -f hyperclient/libhyperclient_la-util.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-util.lo
 	-rm -f hyperclient/python/hyperclient_python_hyperclient_la-hyperclient.$(OBJEXT)
@@ -1641,9 +1641,9 @@ include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient.Plo
 include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_c_wrappers.Plo
 include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending.Plo
 include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_get.Plo
-include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Plo
 include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_search.Plo
 include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_statusonly.Plo
+include hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Plo
 include hyperclient/$(DEPDIR)/libhyperclient_la-util.Plo
 include hyperclient/c/$(DEPDIR)/hyperclient_c_testcompile-testcompile.Po
 include hyperclient/java/$(DEPDIR)/libhyperclient_java_la-hyperclient_wrap.Plo

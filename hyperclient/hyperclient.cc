@@ -165,7 +165,7 @@ hyperclient :: tri_put(const char* space, const char* key, size_t key_sz,
     }
 
     e::intrusive_ptr<pending> op;
-    op = new pending_statusonly(hyperdex::REQ_TRIPUT, hyperdex::RESP_TRIPUT, status);
+    op = new pending_statusonly(hyperdex::REQ_TRIPUT, hyperdex::RESP_PUT, status);
     size_t sz = HYPERCLIENT_HEADER_SIZE
               + sizeof(uint32_t)
               + key_sz

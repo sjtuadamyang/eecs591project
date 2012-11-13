@@ -884,7 +884,7 @@ hyperdex_daemon_LDADD = \
 			$(BUSYBEE_LIBS) \
 			-lbusybee-mta \
 			$(COVERAGE_LDADD) \
-			-lcityhash -lpopt -lglog -lrt -lpthread
+			-lcityhash -lpopt -lglog -ldl -lrt -lpthread
 
 hyperdex_daemon_CPPFLAGS = \
 			-I$(abs_top_srcdir)/hyperspacehashing \
@@ -1560,12 +1560,12 @@ mostlyclean-compile:
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_get.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_get.lo
-	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.$(OBJEXT)
-	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_search.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_search.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_statusonly.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_statusonly.lo
+	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.$(OBJEXT)
+	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.lo
 	-rm -f hyperclient/libhyperclient_la-util.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-util.lo
 	-rm -f hyperclient/python/hyperclient_python_hyperclient_la-hyperclient.$(OBJEXT)
@@ -1641,9 +1641,9 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_c_wrappers.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_get.Plo@am__quote@
-@AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_search.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_statusonly.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-util.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/c/$(DEPDIR)/hyperclient_c_testcompile-testcompile.Po@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/java/$(DEPDIR)/libhyperclient_java_la-hyperclient_wrap.Plo@am__quote@

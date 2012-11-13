@@ -198,7 +198,8 @@ hyperdaemon/hyperdex_daemon-network_worker.o: \
  /usr/include/c++/4.6/tr1/unordered_map.h \
  /usr/local/include/e/lockfree_hash_set.h \
  hyperdaemon/replication/clientop.h hyperdaemon/replication/keypair.h \
- /usr/local/include/city.h hyperdaemon/searches.h
+ /usr/local/include/city.h hyperdaemon/searches.h /usr/include/dlfcn.h \
+ /usr/include/x86_64-linux-gnu/bits/dlfcn.h
 
 /usr/include/netinet/in.h:
 
@@ -737,3 +738,7 @@ hyperdaemon/replication/keypair.h:
 /usr/local/include/city.h:
 
 hyperdaemon/searches.h:
+
+/usr/include/dlfcn.h:
+
+/usr/include/x86_64-linux-gnu/bits/dlfcn.h:

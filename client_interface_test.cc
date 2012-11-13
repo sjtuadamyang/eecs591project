@@ -12,7 +12,7 @@ int main()
     test_attr[0].attr = "phone";
     test_attr[0].value = "123455";
     test_attr[0].value_sz = strlen(test_attr[0].value);
-    test_attr[0].datatype = HYPERDATATYPE_INT64;
+    test_attr[0].datatype = HYPERDATATYPE_STRING;
 
     test_attr[1].attr = "last";
     test_attr[1].value = "Yang";
@@ -30,6 +30,7 @@ int main()
     const char *trigger = "testtrigger";
 
     int64_t ret = test_client.tri_put("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, test_attr, 3);
+    //int64_t ret = test_client.put("phonebook", key, strlen(key), test_attr, 3, &retcode);
 
 
     hyperclient_returncode loop_status;
@@ -62,7 +63,7 @@ int main()
         cout<<"we get something "<<endl;
         for(int i=0; i<get_size; i++)
         {
-            cout<<"attr "<<i<<": "<<test_get_attr[i].attr<<", "<<test_get_attr[i].value<<endl;
+            cout<<"attr "<<i<<": "<<test_get_attr[i].attr<<", value : "<<string(test_get_attr[i].value, test_get_attr[i].value_sz)<<endl;
         }
     }
     else

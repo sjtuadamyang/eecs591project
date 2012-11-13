@@ -47,7 +47,7 @@
 #define HAVE_NETINET_IN_H 1
 
 /* If available, contains the Python version number currently in use. */
-#define HAVE_PYTHON "2.7"
+/* #undef HAVE_PYTHON */
 
 /* Define to 1 if you have the `rmdir' function. */
 #define HAVE_RMDIR 1
