@@ -61,6 +61,9 @@
 // util
 #include <util/atomicfile.h>
 
+// HyperClient
+#include "hyperclient/hyperclient.h"
+
 // Configuration
 static const char* DAEMON_TOKEN_FILE = "token.hd";
 typedef std::tr1::shared_ptr<po6::threads::thread> thread_ptr;
@@ -131,9 +134,6 @@ hyperdaemon :: daemon(const char* progname,
         return EXIT_FAILURE;
     }
 
-    // modifed by Adam
-    std::cout<<"get here 1"<<std::endl;
-
     // Token uniquely identifies a daemon. It is generated once on first start and used for the life 
     // of daemon, even after restart or daemon move. 
     std::string token;
@@ -184,9 +184,6 @@ hyperdaemon :: daemon(const char* progname,
 
     num_threads = s_continue ? num_threads : 0;
 
-    // modifed by Adam
-    std::cout<<"get here 2"<<std::endl;
-
     // Setup our link to the coordinator.
     hyperdex::coordinatorlink cl(coordinator);
     // Setup the data component.
@@ -195,6 +192,9 @@ hyperdaemon :: daemon(const char* progname,
     logical comm(&cl, bind_to, incoming, outgoing, num_threads);
     // Create our announce string.
     std::ostringstream announce;
+    // Create the messenger
+    // fixed the coordinator's location
+    hyperclient messenger("127.0.0.1", 1234);
     announce << "instance\t" << comm.inst().address << "\t"
                              << comm.inst().inbound_port << "\t"
                              << comm.inst().outbound_port << "\t"
@@ -209,11 +209,9 @@ hyperdaemon :: daemon(const char* progname,
     replication_manager repl(&cl, &data, &comm, &ost);
     // Give the ongoing_state_transfers a view into the replication component
     ost.set_replication_manager(&repl);
-    // modified by Adam
-    std::cout<<"get here"<<std::endl;
     // Start the network workers.
     LOG(INFO) << "Starting network workers.";
-    network_worker nw(&data, &comm, &ssss, &ost, &repl);
+    network_worker nw(&data, &comm, &messenger, &ssss, &ost, &repl);
     std::tr1::function<void (network_worker*)> fnw(&network_worker::run);
     std::vector<thread_ptr> threads;
 

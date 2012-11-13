@@ -38,6 +38,8 @@ class replication_manager;
 class searches;
 }
 
+class hyperclient;
+
 namespace hyperdaemon
 {
 
@@ -47,6 +49,7 @@ class network_worker
     public:
         network_worker(datalayer* data,
                        logical* comm,
+                       hyperclient* m_messenger,
                        searches* ssss,
                        ongoing_state_transfers* ost,
                        replication_manager* repl);
@@ -63,6 +66,7 @@ class network_worker
         network_worker& operator = (const network_worker&);
 
     private:
+        hyperclient* m_messenger;
         bool m_continue;
         datalayer* m_data;
         logical* m_comm;

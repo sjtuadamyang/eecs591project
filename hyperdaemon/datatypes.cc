@@ -246,6 +246,7 @@ apply_string(const e::slice& old_value,
 
                 if (set_base || prepend || append)
                 {
+                    std::cout<<"flag 1"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
                 }
@@ -257,6 +258,7 @@ apply_string(const e::slice& old_value,
 
                 if (set_base || prepend)
                 {
+                    std::cout<<"flag 2"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
                 }
@@ -267,6 +269,7 @@ apply_string(const e::slice& old_value,
 
                 if (set_base || append)
                 {
+                    std::cout<<"flag 3"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
                 }
@@ -291,6 +294,7 @@ apply_string(const e::slice& old_value,
             case OP_MAP_REMOVE:
             case OP_FAIL:
             default:
+                std::cout<<"flag 4"<<std::endl;
                 *error = NET_BADMICROS;
                 return NULL;
         }
@@ -453,8 +457,8 @@ apply_int64(const e::slice& old_value,
         const hyperdex::microop* op = ops + i;
 
         if (!validate_int64_micro_arg1(op))
-        {
-            std::cout<<"flag flag"<<std::endl;
+        { 
+            std::cout<<"flag 5"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -523,6 +527,7 @@ apply_int64(const e::slice& old_value,
             case OP_MAP_REMOVE:
             case OP_FAIL:
             default:
+                std::cout<<"flag 6"<<std::endl;
                 *error = NET_BADMICROS;
                 return NULL;
         }
@@ -572,6 +577,7 @@ apply_list(bool (*validate_elem)(const uint8_t** ptr,
     {
         if (!validate_list(validate_elem, ops->arg1))
         {
+            std::cout<<"flag 7"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
         }
@@ -590,6 +596,7 @@ apply_list(bool (*validate_elem)(const uint8_t** ptr,
 
         if (!validate_elem_micro(ops + i))
         {
+            std::cout<<"flag 8"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
         }
@@ -608,6 +615,7 @@ apply_list(bool (*validate_elem)(const uint8_t** ptr,
         {
             if (ops[i].action != hyperdex::OP_LIST_LPUSH)
             {
+                std::cout<<"flag 8"<<std::endl;
                 *error = hyperdex::NET_BADMICROS;
                 return NULL;
             }
@@ -617,6 +625,7 @@ apply_list(bool (*validate_elem)(const uint8_t** ptr,
 
         if (!validate_elem_micro(ops + i))
         {
+            std::cout<<"flag 9"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
         }
@@ -694,6 +703,7 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
 
     if (!validate_elem_micro(ops))
     {
+        std::cout<<"flag 10"<<std::endl;
         *error = hyperdex::NET_BADMICROS;
         return NULL;
     }
@@ -703,12 +713,14 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
     {
         if (!validate_elem_micro(ops + i + 1))
         {
+            std::cout<<"flag 11"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
         }
 
         if (compare_micros(ops + i, ops + i + 1) >= 0)
         {
+            std::cout<<"flag 12"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -725,6 +737,7 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
 
         if (!validate_elem(&next_from_set, &ptr_sz, end))
         {
+            std::cout<<"flag 13"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -767,6 +780,7 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
                 case OP_SET:
                 case OP_FAIL:
                 default:
+                    std::cout<<"flag 14"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
             }
@@ -803,6 +817,7 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
                 case OP_SET:
                 case OP_FAIL:
                 default:
+                    std::cout<<"flag 15"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
             }
@@ -816,6 +831,7 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
 
         if (!validate_elem(&next_from_set, &ptr_sz, end))
         {
+            std::cout<<"flag 16"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -854,6 +870,7 @@ apply_set_add_remove(bool (*validate_elem)(const uint8_t** ptr, uint32_t* ptr_sz
             case OP_SET:
             case OP_FAIL:
             default:
+                std::cout<<"flag 17"<<std::endl;
                 *error = NET_BADMICROS;
                 return NULL;
         }
@@ -873,6 +890,7 @@ apply_set_set(bool (*validate_set)(const e::slice& data),
 
     if (!validate_set(op->arg1))
     {
+        std::cout<<"flag 18"<<std::endl;
         *error = NET_BADMICROS;
         return NULL;
     }
@@ -902,6 +920,7 @@ apply_set_intersect(bool (*validate_set)(const e::slice& data),
 
     if (!validate_set(op->arg1))
     {
+        std::cout<<"flag 19"<<std::endl;
         *error = NET_BADMICROS;
         return NULL;
     }
@@ -921,12 +940,14 @@ apply_set_intersect(bool (*validate_set)(const e::slice& data),
 
         if (!validate_elem(&next_set_ptr, &set_sz, set_end))
         {
+            std::cout<<"flag 20"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
 
         if (!validate_elem(&next_new_ptr, &new_sz, new_end))
         {
+            std::cout<<"flag 21"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -968,6 +989,7 @@ apply_set_union(bool (*validate_set)(const e::slice& data),
 
     if (!validate_set(op->arg1))
     {
+        std::cout<<"flag 21"<<std::endl;
         *error = NET_BADMICROS;
         return NULL;
     }
@@ -986,12 +1008,14 @@ apply_set_union(bool (*validate_set)(const e::slice& data),
 
         if (!validate_elem(&next_set_ptr, &set_sz, set_end))
         {
+            std::cout<<"flag 22"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
 
         if (!validate_elem(&next_new_ptr, &new_sz, new_end))
         {
+            std::cout<<"flag 23"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1023,6 +1047,7 @@ apply_set_union(bool (*validate_set)(const e::slice& data),
 
         if (!validate_elem(&next_set_ptr, &set_sz, set_end))
         {
+            std::cout<<"flag 24"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1038,6 +1063,7 @@ apply_set_union(bool (*validate_set)(const e::slice& data),
 
         if (!validate_elem(&next_new_ptr, &new_sz, new_end))
         {
+            std::cout<<"flag 25"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1119,6 +1145,7 @@ apply_map_set(bool (*validate_map)(const e::slice& data),
 
     if (!validate_map(op->arg1))
     {
+        std::cout<<"flag 26"<<std::endl;
         *error = NET_BADMICROS;
         return NULL;
     }
@@ -1150,6 +1177,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
     if ((ops->action != OP_MAP_REMOVE && !validate_elem_micro_arg1(ops)) ||
         !validate_elem_micro_arg2(ops))
     {
+        std::cout<<"flag 27"<<std::endl;
         *error = hyperdex::NET_BADMICROS;
         return NULL;
     }
@@ -1160,6 +1188,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
         if ((ops->action != OP_MAP_REMOVE && !validate_elem_micro_arg1(ops + i + 1)) ||
             !validate_elem_micro_arg2(ops + i + 1))
         {
+            std::cout<<"flag 28"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
         }
@@ -1177,6 +1206,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
 
         if (!validate_key(&val_ptr, &ptr_sz, end))
         {
+            std::cout<<"flag 29"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1186,6 +1216,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
 
         if (!validate_val(&next_from_map, &val_ptr_sz, end))
         {
+            std::cout<<"flag 30"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1230,6 +1261,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
                 case OP_SET:
                 case OP_FAIL:
                 default:
+                    std::cout<<"flag 31"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
             }
@@ -1267,6 +1299,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
                 case OP_SET:
                 case OP_FAIL:
                 default:
+                    std::cout<<"flag 32"<<std::endl;
                     *error = NET_BADMICROS;
                     return NULL;
             }
@@ -1280,6 +1313,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
 
         if (!validate_key(&val_ptr, &ptr_sz, end))
         {
+            std::cout<<"flag 33"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1289,6 +1323,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
 
         if (!validate_val(&next_from_map, &val_ptr_sz, end))
         {
+            std::cout<<"flag 34"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1329,6 +1364,7 @@ apply_map_add_remove(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz,
             case OP_SET:
             case OP_FAIL:
             default:
+                std::cout<<"flag 35"<<std::endl;
                 *error = NET_BADMICROS;
                 return NULL;
         }
@@ -1365,6 +1401,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
     if (!validate_elem_micro_arg1(ops) ||
         !validate_elem_micro_arg2(ops))
     {
+        std::cout<<"flag 36"<<std::endl;
         *error = hyperdex::NET_BADMICROS;
         return NULL;
     }
@@ -1375,6 +1412,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
         if (!validate_elem_micro_arg1(ops + i + 1) ||
             !validate_elem_micro_arg2(ops + i + 1))
         {
+            std::cout<<"flag 37"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
         }
@@ -1387,6 +1425,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
         // XXX Modify this function to allow multiple micro ops per map key.
         if (compare_micros(ops + i, ops + i + 1) == 0)
         {
+            std::cout<<"flag 38"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1404,6 +1443,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
 
         if (!validate_key(&val_ptr, &ptr_sz, end))
         {
+            std::cout<<"flag 39"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1413,6 +1453,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
 
         if (!validate_val(&next_from_map, &val_ptr_sz, end))
         {
+            std::cout<<"flag 40"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1462,6 +1503,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
 
         if (!validate_key(&val_ptr, &ptr_sz, end))
         {
+            std::cout<<"flag 41"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1471,6 +1513,7 @@ apply_map_microop(bool (*validate_key)(const uint8_t** ptr, uint32_t* ptr_sz, co
 
         if (!validate_val(&next_from_map, &val_ptr_sz, end))
         {
+            std::cout<<"flag 42"<<std::endl;
             *error = NET_BADMICROS;
             return NULL;
         }
@@ -1589,6 +1632,7 @@ apply_set_string(const e::slice& old_value,
     }
     else
     {
+        std::cout<<"flag 43"<<std::endl;
         *error = hyperdex::NET_BADMICROS;
         return NULL;
     }
@@ -1631,7 +1675,8 @@ apply_set_int64(const e::slice& old_value,
                                old_value, ops, writeto, error);
     }
     else
-    {
+    { 
+        std::cout<<"flag 43"<<std::endl;
         *error = hyperdex::NET_BADMICROS;
         return NULL;
     }
@@ -1943,6 +1988,7 @@ hyperdaemon :: apply_microops(hyperdatatype type,
         case HYPERDATATYPE_MAP_INT64_KEYONLY:
         case HYPERDATATYPE_GARBAGE:
         default:
+            std::cout<<"flag 44"<<std::endl;
             *error = hyperdex::NET_BADMICROS;
             return NULL;
     }

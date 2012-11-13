@@ -46,9 +46,11 @@ int main()
 
     //define the container for the attribute get
     
+    const char *key2 = "andywang";
+
     hyperclient_attribute *test_get_attr;
     size_t get_size = 0;
-    ret = test_client.get("phonebook", key, strlen(key), &retcode, &test_get_attr, &get_size);
+    ret = test_client.get("phonebook", key2, strlen(key2), &retcode, &test_get_attr, &get_size);
     
     loop_id = test_client.loop(-1, &loop_status);
 

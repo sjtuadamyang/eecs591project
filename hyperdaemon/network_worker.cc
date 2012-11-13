@@ -55,18 +55,23 @@
 // Dynamic lib
 #include <dlfcn.h>
 
+// hyperclient
+#include "hyperclient/hyperclient.h"
+
 using hyperdex::entityid;
 using hyperdex::network_msgtype;
 using hyperdex::network_returncode;
 
 hyperdaemon :: network_worker :: network_worker(datalayer* data,
                                                 logical* comm,
+                                                hyperclient* messenger,
                                                 searches* ssss,
                                                 ongoing_state_transfers* ost,
                                                 replication_manager* repl)
     : m_continue(true)
     , m_data(data)
     , m_comm(comm)
+    , m_messenger(messenger)
     , m_ssss(ssss)
     , m_ost(ost)
     , m_repl(repl)
@@ -212,14 +217,40 @@ hyperdaemon :: network_worker :: run()
             void *handle;
             handle = dlopen("/home/adamyang/eecs591project/clib_test/testlib.so", RTLD_NOW);
 
-            if(!handle)
+            if(handle)
             {
-                LOG(WARNING) << "open so file failed";
-                continue;
-            }
-            else
-            {
-                LOG(INFO) << "open so file succeeded";
+                LOG(INFO) << "open so file success";
+                int (*test)() = (int (*)())dlsym(handle, "test_func");
+                test();
+                hyperclient_returncode retcode;
+                hyperclient_attribute test_attr[3];
+                test_attr[0].attr = "phone";
+                test_attr[0].value = "1234";
+                test_attr[0].value_sz = strlen(test_attr[0].value);
+                test_attr[0].datatype = HYPERDATATYPE_STRING;
+                test_attr[1].attr = "last";
+                test_attr[1].value = "andy";
+                test_attr[1].value_sz = strlen(test_attr[1].value);
+                test_attr[1].datatype = HYPERDATATYPE_STRING;
+                test_attr[2].attr = "first";
+                test_attr[2].value = "wang";
+                test_attr[2].value_sz = strlen(test_attr[2].value);
+                test_attr[2].datatype = HYPERDATATYPE_STRING;
+
+                const char *key = "andywang";
+                int64_t ret=m_messenger->put("phonebook", key, strlen(key), test_attr, 3, &retcode);
+
+                hyperclient_returncode loopstatus;
+                int64_t loop_id = m_messenger->loop(-1, &loopstatus);
+                
+                if(loop_id != ret)
+                {
+                    LOG(INFO) << "test client in daemon failed here";
+                }
+                else
+                {
+                    LOG(INFO) << "test client in daemon succeeded here";
+                }
             }
 
             m_repl->client_put(from, to, nonce, msg, key, attrs);
