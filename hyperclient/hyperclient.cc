@@ -49,6 +49,7 @@
 #include "hyperclient/hyperclient_completedop.h"
 #include "hyperclient/hyperclient_pending.h"
 #include "hyperclient/hyperclient_pending_get.h"
+#include "hyperclient/hyperclient_pending_triget.h"
 #include "hyperclient/hyperclient_pending_search.h"
 #include "hyperclient/hyperclient_pending_statusonly.h"
 #include "hyperclient/util.h"
@@ -115,6 +116,66 @@ hyperclient :: put(const char* space, const char* key, size_t key_sz,
     std::auto_ptr<e::buffer> msg(e::buffer::create(sz));
     e::buffer::packer p = msg->pack_at(HYPERCLIENT_HEADER_SIZE);
     p = p << e::slice(key, key_sz);
+
+    int64_t ret = pack_attrs(space, &p, attrs, attrs_sz, status);
+
+    if (ret < 0)
+    {
+        return ret;
+    }
+
+    return add_keyop(space, key, key_sz, msg, op);
+}
+
+int64_t
+hyperclient :: tri_get(const char* space, const char* key, size_t key_sz,
+                       const char* trigger, size_t trigger_sz,
+                       hyperclient_returncode* status,
+                       struct hyperclient_attribute** attrs, size_t* attrs_sz)
+{
+    if (maintain_coord_connection(status) < 0)
+    {
+        return -1;
+    }
+
+    e::intrusive_ptr<pending> op;
+    op = new pending_triget(status, attrs, attrs_sz);
+    size_t sz = HYPERCLIENT_HEADER_SIZE
+              + sizeof(uint32_t)
+              + key_sz
+              + sizeof(uint32_t)
+              + trigger_sz;
+    std::auto_ptr<e::buffer> msg(e::buffer::create(sz));
+    e::buffer::packer p = msg->pack_at(HYPERCLIENT_HEADER_SIZE);
+    p = p << e::slice(key, key_sz);
+    p = p << e::slice(trigger, trigger_sz);
+    assert(!p.error());
+    return add_keyop(space, key, key_sz, msg, op);
+}
+
+int64_t
+hyperclient :: tri_put(const char* space, const char* key, size_t key_sz,
+                       const char* trigger, size_t trigger_sz,
+                       hyperclient_returncode* status,
+                       struct hyperclient_attribute* attrs, size_t attrs_sz)
+{
+    if (maintain_coord_connection(status) < 0)
+    {
+        return -1;
+    }
+
+    e::intrusive_ptr<pending> op;
+    op = new pending_statusonly(hyperdex::REQ_TRIPUT, hyperdex::RESP_TRIPUT, status);
+    size_t sz = HYPERCLIENT_HEADER_SIZE
+              + sizeof(uint32_t)
+              + key_sz
+              + sizeof(uint32_t)
+              + trigger_sz
+              + pack_attrs_sz(attrs, attrs_sz);
+    std::auto_ptr<e::buffer> msg(e::buffer::create(sz));
+    e::buffer::packer p = msg->pack_at(HYPERCLIENT_HEADER_SIZE);
+    p = p << e::slice(key, key_sz);
+    p = p << e::slice(trigger, trigger_sz);
 
     int64_t ret = pack_attrs(space, &p, attrs, attrs_sz, status);
 

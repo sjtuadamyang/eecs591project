@@ -150,6 +150,7 @@ am_libhyperclient_la_OBJECTS =  \
 	hyperclient/libhyperclient_la-hyperclient_c_wrappers.lo \
 	hyperclient/libhyperclient_la-hyperclient_pending.lo \
 	hyperclient/libhyperclient_la-hyperclient_pending_get.lo \
+	hyperclient/libhyperclient_la-hyperclient_pending_triget.lo \
 	hyperclient/libhyperclient_la-hyperclient_pending_search.lo \
 	hyperclient/libhyperclient_la-hyperclient_pending_statusonly.lo \
 	hyperclient/libhyperclient_la-util.lo $(am__objects_1)
@@ -910,6 +911,7 @@ libhyperclient_noinst_headers = \
 			hyperclient/hyperclient_completedop.h \
 			hyperclient/hyperclient_pending.h \
 			hyperclient/hyperclient_pending_get.h \
+			hyperclient/hyperclient_pending_triget.h \
 			hyperclient/hyperclient_pending_search.h \
 			hyperclient/hyperclient_pending_statusonly.h \
 			hyperclient/util.h
@@ -919,6 +921,7 @@ libhyperclient_la_SOURCES = \
 			hyperclient/hyperclient_c_wrappers.cc \
 			hyperclient/hyperclient_pending.cc \
 			hyperclient/hyperclient_pending_get.cc \
+			hyperclient/hyperclient_pending_triget.cc \
 			hyperclient/hyperclient_pending_search.cc \
 			hyperclient/hyperclient_pending_statusonly.cc \
 			hyperclient/util.cc \
@@ -1225,6 +1228,9 @@ hyperclient/libhyperclient_la-hyperclient_pending.lo:  \
 	hyperclient/$(am__dirstamp) \
 	hyperclient/$(DEPDIR)/$(am__dirstamp)
 hyperclient/libhyperclient_la-hyperclient_pending_get.lo:  \
+	hyperclient/$(am__dirstamp) \
+	hyperclient/$(DEPDIR)/$(am__dirstamp)
+hyperclient/libhyperclient_la-hyperclient_pending_triget.lo:  \
 	hyperclient/$(am__dirstamp) \
 	hyperclient/$(DEPDIR)/$(am__dirstamp)
 hyperclient/libhyperclient_la-hyperclient_pending_search.lo:  \
@@ -1554,6 +1560,8 @@ mostlyclean-compile:
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_get.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_get.lo
+	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.$(OBJEXT)
+	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_triget.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_search.$(OBJEXT)
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_search.lo
 	-rm -f hyperclient/libhyperclient_la-hyperclient_pending_statusonly.$(OBJEXT)
@@ -1633,6 +1641,7 @@ distclean-compile:
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_c_wrappers.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_get.Plo@am__quote@
+@AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_search.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_statusonly.Plo@am__quote@
 @AMDEP_TRUE@@am__include@ @am__quote@hyperclient/$(DEPDIR)/libhyperclient_la-util.Plo@am__quote@
@@ -1804,6 +1813,14 @@ hyperclient/libhyperclient_la-hyperclient_pending_get.lo: hyperclient/hyperclien
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='hyperclient/hyperclient_pending_get.cc' object='hyperclient/libhyperclient_la-hyperclient_pending_get.lo' libtool=yes @AMDEPBACKSLASH@
 @AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
 @am__fastdepCXX_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhyperclient_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hyperclient/libhyperclient_la-hyperclient_pending_get.lo `test -f 'hyperclient/hyperclient_pending_get.cc' || echo '$(srcdir)/'`hyperclient/hyperclient_pending_get.cc
+
+hyperclient/libhyperclient_la-hyperclient_pending_triget.lo: hyperclient/hyperclient_pending_triget.cc
+@am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhyperclient_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hyperclient/libhyperclient_la-hyperclient_pending_triget.lo -MD -MP -MF hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Tpo -c -o hyperclient/libhyperclient_la-hyperclient_pending_triget.lo `test -f 'hyperclient/hyperclient_pending_triget.cc' || echo '$(srcdir)/'`hyperclient/hyperclient_pending_triget.cc
+@am__fastdepCXX_TRUE@	$(AM_V_at)$(am__mv) hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Tpo hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_triget.Plo
+@am__fastdepCXX_FALSE@	$(AM_V_CXX) @AM_BACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	source='hyperclient/hyperclient_pending_triget.cc' object='hyperclient/libhyperclient_la-hyperclient_pending_triget.lo' libtool=yes @AMDEPBACKSLASH@
+@AMDEP_TRUE@@am__fastdepCXX_FALSE@	DEPDIR=$(DEPDIR) $(CXXDEPMODE) $(depcomp) @AMDEPBACKSLASH@
+@am__fastdepCXX_FALSE@	$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhyperclient_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -c -o hyperclient/libhyperclient_la-hyperclient_pending_triget.lo `test -f 'hyperclient/hyperclient_pending_triget.cc' || echo '$(srcdir)/'`hyperclient/hyperclient_pending_triget.cc
 
 hyperclient/libhyperclient_la-hyperclient_pending_search.lo: hyperclient/hyperclient_pending_search.cc
 @am__fastdepCXX_TRUE@	$(AM_V_CXX)$(LIBTOOL) $(AM_V_lt) --tag=CXX $(AM_LIBTOOLFLAGS) $(LIBTOOLFLAGS) --mode=compile $(CXX) $(DEFS) $(DEFAULT_INCLUDES) $(INCLUDES) $(libhyperclient_la_CPPFLAGS) $(CPPFLAGS) $(AM_CXXFLAGS) $(CXXFLAGS) -MT hyperclient/libhyperclient_la-hyperclient_pending_search.lo -MD -MP -MF hyperclient/$(DEPDIR)/libhyperclient_la-hyperclient_pending_search.Tpo -c -o hyperclient/libhyperclient_la-hyperclient_pending_search.lo `test -f 'hyperclient/hyperclient_pending_search.cc' || echo '$(srcdir)/'`hyperclient/hyperclient_pending_search.cc

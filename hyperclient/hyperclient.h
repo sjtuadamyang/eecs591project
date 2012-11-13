@@ -649,6 +649,14 @@ class hyperclient
         int64_t put(const char* space, const char* key, size_t key_sz,
                     const struct hyperclient_attribute* attrs, size_t attrs_sz,
                     hyperclient_returncode* status);
+        int64_t tri_get(const char* space, const char* key, size_t key_sz,
+                    const char* trigger, size_t trigger_sz,
+                    hyperclient_returncode* status,
+                    struct hyperclient_attribute** attrs, size_t* attrs_sz);
+        int64_t tri_put(const char* space, const char* key, size_t key_sz,
+                    const char* trigger, size_t trigger_sz,
+                    hyperclient_returncode* status,
+                    struct hyperclient_attribute* attrs, size_t attrs_sz);
         int64_t condput(const char* space, const char* key, size_t key_sz,
 			const struct hyperclient_attribute* condattrs, size_t condattrs_sz,
 			const struct hyperclient_attribute* attrs, size_t attrs_sz,
@@ -750,6 +758,7 @@ class hyperclient
         class completedop;
         class pending;
         class pending_get;
+        class pending_triget;
         class pending_search;
         class pending_statusonly;
         typedef std::map<int64_t, e::intrusive_ptr<pending> > incomplete_map_t;

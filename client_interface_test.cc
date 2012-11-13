@@ -27,8 +27,9 @@ int main()
     hyperclient_returncode retcode;
     const char *key = "adamyang";
     hyperclient test_client("127.0.0.1", 1234);
+    const char *trigger = "testtrigger";
 
-    int64_t ret = test_client.put("phonebook", key, strlen(key), test_attr, 3, &retcode);
+    int64_t ret = test_client.tri_put("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, test_attr, 3);
 
 
     hyperclient_returncode loop_status;
