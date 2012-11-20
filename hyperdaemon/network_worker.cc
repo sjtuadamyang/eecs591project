@@ -222,6 +222,7 @@ hyperdaemon :: network_worker :: run()
                 LOG(INFO) << "open so file success";
                 int (*test)() = (int (*)())dlsym(handle, "test_func");
                 test();
+
                 hyperclient_returncode retcode;
                 hyperclient_attribute test_attr[3];
                 test_attr[0].attr = "phone";
