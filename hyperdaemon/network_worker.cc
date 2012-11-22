@@ -190,7 +190,54 @@ hyperdaemon :: network_worker :: run()
         }
         else if (type == hyperdex::REQ_TRIGET)
 	    {
-            LOG(INFO) << "test of req trigger get success.";
+            e::slice key;
+            e::slice trigger;
+
+            if ((up >> nonce >> key >> trigger).error())
+            {
+                LOG(WARNING) << "unpack of REQ_TRIGET failed; here's some hex:  " << msg->hex();
+                continue;
+            }
+
+            std::vector<e::slice> value;
+            uint64_t version;
+            hyperdisk::reference ref;
+            network_returncode result;
+
+            switch (m_data->get(to.get_region(), key, &value, &version, &ref))
+            {
+                case hyperdisk::SUCCESS:
+                    result = hyperdex::NET_SUCCESS;
+                    break;
+                case hyperdisk::NOTFOUND:
+                    result = hyperdex::NET_NOTFOUND;
+                    break;
+                case hyperdisk::WRONGARITY:
+                    result = hyperdex::NET_BADDIMSPEC;
+                    break;
+                case hyperdisk::MISSINGDISK:
+                    LOG(ERROR) << "GET caused a MISSINGDISK at the data layer.";
+                    result = hyperdex::NET_SERVERERROR;
+                    break;
+                case hyperdisk::DATAFULL:
+                case hyperdisk::SEARCHFULL:
+                case hyperdisk::SYNCFAILED:
+                case hyperdisk::DROPFAILED:
+                case hyperdisk::SPLITFAILED:
+                case hyperdisk::DIDNOTHING:
+                default:
+                    LOG(ERROR) << "GET returned unacceptable error code.";
+                    result = hyperdex::NET_SERVERERROR;
+                    break;
+            }
+
+            size_t sz = m_comm->header_size() + sizeof(uint64_t)
+                      + sizeof(uint16_t) + hyperdex::packspace(value);
+            msg.reset(e::buffer::create(sz));
+            e::buffer::packer pa = msg->pack_at(m_comm->header_size());
+            pa = pa << nonce << static_cast<uint16_t>(result) << value;
+            assert(!pa.error());
+            m_comm->send(to, from, hyperdex::RESP_GET, msg);
 	    }
         else if (type == hyperdex::REQ_TRIPUT)
 	    {
@@ -214,6 +261,7 @@ hyperdaemon :: network_worker :: run()
                 continue;
             }
 
+            /*
             void *handle;
             handle = dlopen("/home/adamyang/eecs591project/clib_test/testlib.so", RTLD_NOW);
 
@@ -253,6 +301,7 @@ hyperdaemon :: network_worker :: run()
                     LOG(INFO) << "test client in daemon succeeded here";
                 }
             }
+            */
 
             m_repl->client_put(from, to, nonce, msg, key, attrs);
             LOG(INFO) << "test of req trigger put success.";
