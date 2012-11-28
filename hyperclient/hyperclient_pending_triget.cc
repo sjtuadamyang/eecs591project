@@ -110,7 +110,7 @@ hyperclient :: pending_triget :: handle_response(hyperclient* cl,
 
     hyperclient_returncode op_status;
 
-    if (!value_to_attributes(*cl->m_config, this->entity(), NULL, 0,
+    if (!fake_value_to_attributes(*cl->m_config, this->entity(), NULL, 0,
                              value, status, &op_status, m_attrs, m_attrs_sz))
     {
         set_status(op_status);

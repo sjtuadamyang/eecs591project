@@ -30,8 +30,6 @@ int main()
     const char *trigger = "testtrigger";
 
     int64_t ret = test_client.tri_put("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, test_attr, 3);
-    //int64_t ret = test_client.put("phonebook", key, strlen(key), test_attr, 3, &retcode);
-
 
     hyperclient_returncode loop_status;
     int64_t loop_id = test_client.loop(-1, &loop_status);
@@ -50,7 +48,7 @@ int main()
 
     hyperclient_attribute *test_get_attr;
     size_t get_size = 0;
-    ret = test_client.get("phonebook", key2, strlen(key2), &retcode, &test_get_attr, &get_size);
+    ret = test_client.tri_get("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, &test_get_attr, &get_size);
     
     loop_id = test_client.loop(-1, &loop_status);
 

@@ -237,7 +237,9 @@ hyperdaemon :: network_worker :: run()
             e::buffer::packer pa = msg->pack_at(m_comm->header_size());
             pa = pa << nonce << static_cast<uint16_t>(result) << value;
             assert(!pa.error());
-            m_comm->send(to, from, hyperdex::RESP_GET, msg);
+            m_comm->send(to, from, hyperdex::RESP_TRIGET, msg);
+
+            LOG(INFO) << "test of req trigger get success.";
 	    }
         else if (type == hyperdex::REQ_TRIPUT)
 	    {

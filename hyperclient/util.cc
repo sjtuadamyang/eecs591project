@@ -30,6 +30,7 @@
 
 // HyperClient
 #include "hyperclient/util.h"
+#include <iostream>
 
 bool
 value_to_attributes(const hyperdex::configuration& config,
@@ -44,6 +45,105 @@ value_to_attributes(const hyperdex::configuration& config,
 {
     *loop_status = HYPERCLIENT_SUCCESS;
     std::vector<hyperdex::attribute> dimension_names = config.dimension_names(entity.get_space());
+
+    std::cout<<"check the names of the space"<<std::endl;
+    for(int i=0; i<dimension_names.size(); i++)
+    {
+        std::cout<<dimension_names[i].name<<std::endl;
+    }
+
+    if (value.size() + 1 != dimension_names.size())
+    {
+        *op_status = HYPERCLIENT_SERVERERROR;
+        return false;
+    }
+
+    size_t sz = sizeof(hyperclient_attribute) * dimension_names.size() + key_sz
+              + dimension_names[0].name.size() + 1;
+
+    for (size_t i = 0; i < value.size(); ++i)
+    {
+        sz += dimension_names[i + 1].name.size() + 1 + value[i].size();
+    }
+
+    std::vector<hyperclient_attribute> ha;
+    ha.reserve(dimension_names.size());
+    char* ret = static_cast<char*>(malloc(sz));
+
+    if (!ret)
+    {
+        *loop_status = HYPERCLIENT_NOMEM;
+        return false;
+    }
+
+    e::guard g = e::makeguard(free, ret);
+    char* data = ret + sizeof(hyperclient_attribute) * value.size();
+
+    if (key)
+    {
+        data += sizeof(hyperclient_attribute);
+        ha.push_back(hyperclient_attribute());
+        size_t attr_sz = dimension_names[0].name.size() + 1;
+        ha.back().attr = data;
+        memmove(data, dimension_names[0].name.c_str(), attr_sz);
+        data += attr_sz;
+        ha.back().value = data;
+        memmove(data, key, key_sz);
+        data += key_sz;
+        ha.back().value_sz = key_sz;
+        ha.back().datatype = dimension_names[0].type;
+    }
+
+    for (size_t i = 0; i < value.size(); ++i)
+    {
+        ha.push_back(hyperclient_attribute());
+        size_t attr_sz = dimension_names[i + 1].name.size() + 1;
+        ha.back().attr = data;
+        memmove(data, dimension_names[i + 1].name.c_str(), attr_sz);
+        data += attr_sz;
+        ha.back().value = data;
+        memmove(data, value[i].data(), value[i].size());
+        data += value[i].size();
+        ha.back().value_sz = value[i].size();
+        ha.back().datatype = dimension_names[i + 1].type;
+    }
+
+    memmove(ret, &ha.front(), sizeof(hyperclient_attribute) * ha.size());
+    *op_status = HYPERCLIENT_SUCCESS;
+    *attrs = reinterpret_cast<hyperclient_attribute*>(ret);
+    *attrs_sz = ha.size();
+    g.dismiss();
+    return true;
+}
+
+bool
+fake_value_to_attributes(const hyperdex::configuration& config,
+                    const hyperdex::entityid& entity,
+                    const uint8_t* key,
+                    size_t key_sz,
+                    const std::vector<e::slice>& value,
+                    hyperclient_returncode* loop_status,
+                    hyperclient_returncode* op_status,
+                    hyperclient_attribute** attrs,
+                    size_t* attrs_sz)
+{
+    *loop_status = HYPERCLIENT_SUCCESS;
+    std::vector<hyperdex::attribute> dimension_names = config.dimension_names(entity.get_space());
+
+    std::cout<<"check the names of the space"<<std::endl;
+    for(int i=0; i<dimension_names.size(); i++)
+    {
+        std::cout<<dimension_names[i].name<<std::endl;
+    }
+
+    std::vector<hyperdex::attribute> dummy_dimension_names;
+    dummy_dimension_names.push_back(dimension_names[0]);
+    dummy_dimension_names.push_back(hyperdex::attribute("trigger_ret", HYPERDATATYPE_STRING));
+    for(int i=0; i<dummy_dimension_names.size(); i++)
+    {
+        std::cout<<dummy_dimension_names[i].name<<std::endl;
+    }
+
 
     if (value.size() + 1 != dimension_names.size())
     {
