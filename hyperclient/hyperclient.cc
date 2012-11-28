@@ -71,6 +71,20 @@ hyperclient :: hyperclient(const char* coordinator, in_port_t port)
     m_coord->set_announce("client");
 }
 
+hyperclient :: hyperclient(const po6::net::location& coordinator)
+    : m_coord(new hyperdex::coordinatorlink(coordinator))
+    , m_config(new hyperdex::configuration())
+    , m_busybee(new busybee_st())
+    , m_incomplete()
+    , m_complete()
+    , m_server_nonce(1)
+    , m_client_id(1)
+    , m_old_coord_fd(-1)
+    , m_have_seen_config(false)
+{
+    m_coord->set_announce("client");
+}
+
 hyperclient :: ~hyperclient() throw ()
 {
 }
@@ -664,6 +678,13 @@ hyperclient :: loop(int timeout, hyperclient_returncode* status)
     }
 
     return ret;
+}
+
+const std::auto_ptr<hyperdex::configuration>& hyperclient::get_config(hyperclient_returncode* status)
+{
+    maintain_coord_connection(status);
+
+    return m_config;
 }
 
 // XXX If we lose the coord connection, this whole thing fails.

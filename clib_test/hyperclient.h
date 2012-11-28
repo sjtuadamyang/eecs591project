@@ -640,8 +640,11 @@ class hyperclient
 {
     public:
         hyperclient(const char* coordinator, in_port_t port);
-        hyperclient(const po6::net::location& coordinator);
         ~hyperclient() throw ();
+    
+    public:
+        // defined some function that I want to use
+        
 
     public:
         int64_t get(const char* space, const char* key, size_t key_sz,
@@ -803,10 +806,12 @@ class hyperclient
                           hyperdatatype* type,
                           hyperclient_returncode* status);
 
+    //  Adam want to use m_config in the daemon
+    public:
+        const std::auto_ptr<hyperdex::configuration> m_config;
 
     private:
         const std::auto_ptr<hyperdex::coordinatorlink> m_coord;
-        const std::auto_ptr<hyperdex::configuration> m_config;
         const std::auto_ptr<busybee_st> m_busybee;
         incomplete_map_t m_incomplete;
         std::queue<completedop> m_complete;

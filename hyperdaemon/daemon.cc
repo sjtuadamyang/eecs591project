@@ -194,7 +194,8 @@ hyperdaemon :: daemon(const char* progname,
     std::ostringstream announce;
     // Create the messenger
     // fixed the coordinator's location
-    hyperclient messenger("127.0.0.1", 1234);
+    // FIXME: the coordinator's locaiton needed to be varible
+    hyperclient messenger(coordinator);
     announce << "instance\t" << comm.inst().address << "\t"
                              << comm.inst().inbound_port << "\t"
                              << comm.inst().outbound_port << "\t"

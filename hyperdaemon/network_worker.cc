@@ -200,10 +200,12 @@ hyperdaemon :: network_worker :: run()
             }
 
             std::vector<e::slice> value;
+            std::vector<e::slice> real_value;
             uint64_t version;
             hyperdisk::reference ref;
             network_returncode result;
 
+            //keep this part, we need to get the value any way
             switch (m_data->get(to.get_region(), key, &value, &version, &ref))
             {
                 case hyperdisk::SUCCESS:
@@ -231,11 +233,81 @@ hyperdaemon :: network_worker :: run()
                     break;
             }
 
+            // here we will convert value to hyperclient_attribute[] with size and pass it to handler function
+            LOG(INFO) << "test value size is "<<value.size();
+            std::vector<hyperclient_attribute> ha;  
+            size_t size = value.size() * sizeof(hyperclient_attribute);
+            hyperclient_returncode retcode;
+            std::vector<hyperdex::attribute> dimension_names = (m_messenger->get_config(&retcode))->dimension_names(to.get_space());
+            
+            for (size_t i = 0; i < value.size(); ++i)
+            {
+                size += dimension_names[i+1].name.size() + 1 + value[i].size();
+            }
+            char *ret = static_cast<char *>(malloc(size));
+            char *data = ret + sizeof(hyperclient_attribute) * value.size();
+
+            LOG(INFO) << "dimension size is "<<dimension_names.size();
+            for(int i=0; i<dimension_names.size(); i++)
+            {
+                LOG(INFO) << "test name "<< i << dimension_names[i].name;
+            }
+
+            for (size_t i = 0; i < value.size(); ++i)
+            {
+                ha.push_back(hyperclient_attribute());
+                size_t attr_sz = dimension_names[i + 1].name.size() + 1;
+                ha.back().attr = data;
+                memmove(data, dimension_names[i + 1].name.c_str(), attr_sz);
+                data += attr_sz;
+                ha.back().value = data;
+                memmove(data, value[i].data(), value[i].size());
+                data += value[i].size();
+                ha.back().value_sz = value[i].size();
+                ha.back().datatype = dimension_names[i + 1].type;
+            }
+
+            memmove(ret, &ha.front(), sizeof(hyperclient_attribute) * ha.size());
+
+            hyperclient_attribute *attrs = reinterpret_cast<hyperclient_attribute*>(ret);
+            size_t attrs_sz = ha.size();
+            for(size_t i = 0; i < attrs_sz; i++)
+            {
+                LOG(INFO) << "test attr " << i << "name: " << attrs[i].attr << " value: " << std::string(attrs[i].value, attrs[i].value_sz);
+            }
+
+            //trigger handler goes here
+            //prototype will be const string& handler(const char *key, size_t key_sz, hyperclient_attribute *attrs, size_t attrs_sz, hyperclient *messager)
+            //real_value will be ret.c_str()
+            std::string base_addr = std::string("/home/adamyang/eecs591project/clib_test/.so");
+            size_t posl = base_addr.size() - 3;
+            base_addr.insert(posl, reinterpret_cast<const char*>(trigger.data()), trigger.size());
+
+            LOG(INFO) <<"check addr: " << base_addr;
+
+            //load trigger function and execute it
+            void *handle;
+            handle = dlopen(base_addr.c_str(), RTLD_NOW);
+            std::string handle_value;
+
+            if(handle)
+            {
+                LOG(INFO) << "open so file success";
+                const std::string (*test)(const char*, size_t, hyperclient_attribute*, size_t, hyperclient*) = (const std::string (*)(const char*, size_t, hyperclient_attribute*, size_t, hyperclient*))dlsym(handle, "handler");
+                handle_value = test(reinterpret_cast<const char*>(key.data()), key.size(), attrs, attrs_sz, m_messenger);
+                real_value.push_back(e::slice(handle_value));
+                dlclose(handle);
+            }
+
+            //this free will make all the hyperclient_attribute destroyed
+            free(ret);
+
+            // normal get routine, should return the real_value to the real client
             size_t sz = m_comm->header_size() + sizeof(uint64_t)
-                      + sizeof(uint16_t) + hyperdex::packspace(value);
+                      + sizeof(uint16_t) + hyperdex::packspace(real_value);
             msg.reset(e::buffer::create(sz));
             e::buffer::packer pa = msg->pack_at(m_comm->header_size());
-            pa = pa << nonce << static_cast<uint16_t>(result) << value;
+            pa = pa << nonce << static_cast<uint16_t>(result) << real_value;
             assert(!pa.error());
             m_comm->send(to, from, hyperdex::RESP_TRIGET, msg);
 
@@ -263,47 +335,85 @@ hyperdaemon :: network_worker :: run()
                 continue;
             }
 
-            /*
+            // here we will convert attrs to hyperclient_attribute[] with size and pass it to handler function
+            LOG(INFO) << "test value attrs is "<<attrs.size();
+            std::vector<hyperclient_attribute> ha;  
+            size_t size = attrs.size() * sizeof(hyperclient_attribute);
+            hyperclient_returncode retcode;
+            std::vector<hyperdex::attribute> dimension_names = (m_messenger->get_config(&retcode))->dimension_names(to.get_space());
+            
+            for (size_t i=0; i<attrs.size(); ++i)
+            {
+                LOG(INFO) << "dimen is " << attrs[i].first <<" value is "<<std::string(reinterpret_cast<const char *>(attrs[i].second.data()), attrs[i].second.size());
+            }
+
+            for (size_t i = 0; i < attrs.size(); ++i)
+            {
+                size += dimension_names[attrs[i].first].name.size() + 1 + attrs[i].second.size();
+            }
+            char *ret = static_cast<char *>(malloc(size));
+            char *data = ret + sizeof(hyperclient_attribute) * attrs.size();
+
+            LOG(INFO) << "dimension size is "<<dimension_names.size();
+            for(int i=0; i<dimension_names.size(); i++)
+            {
+                LOG(INFO) << "test name "<< i << dimension_names[i].name;
+            }
+
+            for (size_t i = 0; i < attrs.size(); ++i)
+            {
+                ha.push_back(hyperclient_attribute());
+                size_t attr_sz = dimension_names[attrs[i].first].name.size() + 1;
+                ha.back().attr = data;
+                memmove(data, dimension_names[attrs[i].first].name.c_str(), attr_sz);
+                data += attr_sz;
+                ha.back().value = data;
+                memmove(data, attrs[i].second.data(), attrs[i].second.size());
+                data += attrs[i].second.size();
+                ha.back().value_sz = attrs[i].second.size();
+                ha.back().datatype = dimension_names[attrs[i].first].type;
+            }
+
+            memmove(ret, &ha.front(), sizeof(hyperclient_attribute) * ha.size());
+
+            hyperclient_attribute *hyper_attrs = reinterpret_cast<hyperclient_attribute*>(ret);
+            size_t hyper_attrs_sz = ha.size();
+            for(size_t i = 0; i < hyper_attrs_sz; i++)
+            {
+                LOG(INFO) << "test attr " << i << "name: " << hyper_attrs[i].attr << " value: " << std::string(hyper_attrs[i].value, hyper_attrs[i].value_sz);
+            }
+
+            //trigger handler goes here
+            //prototype will be 
+            //  const std::string 
+            //  handler(const char *key, 
+            //          size_t key_sz, 
+            //          hyperclient_attribute *attrs, 
+            //          size_t attrs_sz, 
+            //          hyperclient *messager)
+
+            std::string base_addr = std::string("/home/adamyang/eecs591project/clib_test/.so");
+            size_t posl = base_addr.size() - 3;
+            base_addr.insert(posl, reinterpret_cast<const char*>(trigger.data()), trigger.size());
+
+            LOG(INFO) <<"check addr: " << base_addr;
+
+            //load trigger function and execute it
             void *handle;
-            handle = dlopen("/home/adamyang/eecs591project/clib_test/testlib.so", RTLD_NOW);
+            handle = dlopen(base_addr.c_str(), RTLD_NOW);
+            std::string handle_value;
 
             if(handle)
             {
                 LOG(INFO) << "open so file success";
-                int (*test)() = (int (*)())dlsym(handle, "test_func");
-                test();
-
-                hyperclient_returncode retcode;
-                hyperclient_attribute test_attr[3];
-                test_attr[0].attr = "phone";
-                test_attr[0].value = "1234";
-                test_attr[0].value_sz = strlen(test_attr[0].value);
-                test_attr[0].datatype = HYPERDATATYPE_STRING;
-                test_attr[1].attr = "last";
-                test_attr[1].value = "andy";
-                test_attr[1].value_sz = strlen(test_attr[1].value);
-                test_attr[1].datatype = HYPERDATATYPE_STRING;
-                test_attr[2].attr = "first";
-                test_attr[2].value = "wang";
-                test_attr[2].value_sz = strlen(test_attr[2].value);
-                test_attr[2].datatype = HYPERDATATYPE_STRING;
-
-                const char *key = "andywang";
-                int64_t ret=m_messenger->put("phonebook", key, strlen(key), test_attr, 3, &retcode);
-
-                hyperclient_returncode loopstatus;
-                int64_t loop_id = m_messenger->loop(-1, &loopstatus);
-                
-                if(loop_id != ret)
-                {
-                    LOG(INFO) << "test client in daemon failed here";
-                }
-                else
-                {
-                    LOG(INFO) << "test client in daemon succeeded here";
-                }
+                const std::string (*test)(const char*, size_t, hyperclient_attribute*, size_t, hyperclient*) = (const std::string (*)(const char*, size_t, hyperclient_attribute*, size_t, hyperclient*))dlsym(handle, "handler");
+                handle_value = test(reinterpret_cast<const char*>(key.data()), key.size(), hyper_attrs, hyper_attrs_sz, m_messenger);
+                //real_value.push_back(e::slice(handle_value));
+                dlclose(handle);
             }
-            */
+
+            //this free will make all the hyperclient_attribute destroyed
+            free(ret);
 
             m_repl->client_put(from, to, nonce, msg, key, attrs);
             LOG(INFO) << "test of req trigger put success.";

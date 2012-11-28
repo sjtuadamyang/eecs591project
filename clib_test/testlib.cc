@@ -1,9 +1,20 @@
 #include <iostream>
+#include <string>
+#include <glog/logging.h>
+#include "hyperclient.h"
 
-using namespace std;
-
-extern "C" int test_func()
+extern "C" const std::string 
+handler(const char *key, 
+        size_t key_sz, 
+        hyperclient_attribute *attrs, 
+        size_t attrs_sz, 
+        hyperclient *messager)
 {
-    cout<<"hello world"<<endl;
+    for(size_t i=0; i<attrs_sz; i++)
+    {
+        LOG(INFO)<<"attr "<<attrs[i].attr<<", value : "<<std::string(attrs[i].value, attrs[i].value_sz);
+    }
+
+    return "test reply";
 }
  
