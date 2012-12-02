@@ -77,8 +77,9 @@
 
 /* Individual job */
 typedef struct thpool_job_t{
-	void*  (*function)(void* arg);                     /**< function pointer         */
+	void*  (*function)(void* arg,void* arg2);                     /**< function pointer         */
 	void*                     arg;                     /**< function's argument      */
+	void*			  arg2;
 	struct thpool_job_t*     next;                     /**< pointer to next job      */
 	struct thpool_job_t*     prev;                     /**< pointer to previous job  */
 }thpool_job_t;
@@ -153,7 +154,7 @@ void thpool_thread_do(thpool_t* tp_p);
  * @param  argument to the above function
  * @return int
  */
-int thpool_add_work(thpool_t* tp_p, void *(*function_p)(void*), void* arg_p);
+int thpool_add_work(thpool_t* tp_p, void *(*function_p)(void*, void*), void* arg_p,void* arg_p2);
 
 
 /**
