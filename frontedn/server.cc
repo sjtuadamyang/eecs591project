@@ -63,6 +63,11 @@ void task(char* com, void* tmp){
     //convert tmp to hyperclient*
     hyperclient *client = (hyperclient *)tmp;
 
+	//for return messages
+        int msgqid=0;
+        struct data_msgbuf *buf;
+        //return messages end
+
 	p=strtok(com,":\";");
 	while(p!=NULL){
 		//printf("%s\n",p);
@@ -110,6 +115,17 @@ void task(char* com, void* tmp){
             std::cout<<"attr "<<i<<": "<<attrs[i].attr<<", value : "<<std::string(attrs[i].value, attrs[i].value_sz)<<std::endl;
         }
     }
+	//return the message to the webpage frontend
+        buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
+        if((msgqid = msgget(atoi(id),0666))==-1){
+                printf("msgget error. id=%d\n",atoi(id));
+                exit(-1);
+        }
+        buf->mtype=1;
+        buf->mtext[0]='t';
+        buf->mtext[1]='\0';
+        msgsnd(msgqid,buf,MAXBUFFSIZE,0);
+
 
 }
 
@@ -133,17 +149,14 @@ void taskserver(){
 		printf("msgget error.\n");
 		exit(-1);
 	}	
-	buf=(struct data_msgbuf*)malloc(sizeof(struct data_msgbuf));
-	buf->mtype=m_type;
 	while(1){
-		if((ret_size=msgrcv(msgqid,buf,MAXBUFFSIZE, 1, 0))==-1)
-			printf("msgrcv error.\n");
-		printf("Get %s, %d\n", buf->mtext, ret_size);
-	/*	while(i<ret_size){
-			printf("%c ::::\n",buf->mtext[i]);
-			++i;
-		}
-	*/
+		 //modification 3
+                buf=(struct data_msgbuf*)malloc(sizeof(struct data_msgbuf));
+                buf->mtype=m_type;
+                if((ret_size=msgrcv(msgqid,buf,MAXBUFFSIZE, 1, 0))==-1)
+                        printf("msgrcv error.\n");
+                printf("Get %s, %d\n", buf->mtext, ret_size);
+
 		thpool_add_work(threadpool,(void* (*)(void *, void *))task, buf->mtext, (void*)NULL);
 	}
 	thpool_destroy(threadpool);
