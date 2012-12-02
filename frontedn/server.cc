@@ -12,94 +12,94 @@
 #define MAXBUFFSIZE	1280
 #define THREADPOOL	20
 struct id_msgbuf{
-	long mtype;
-	char mtext[32];
+    long mtype;
+    char mtext[32];
 };
 
 struct data_msgbuf{
-	long mtype;
-	char mtext[MAXBUFFSIZE];
+    long mtype;
+    char mtext[MAXBUFFSIZE];
 };
 
 void *id_service(void *t){
-	int id=30000;
-	key_t queue_key=20000;
-	int m_type=1;
-	struct id_msgbuf *buf;
-	int msgqid;
-	//create message queue
-	if((msgqid=msgget(queue_key,0666|IPC_CREAT))==-1){
-		printf("msgget error.\n");
-		exit(-1);
-	}	
-	buf=(struct id_msgbuf*)malloc(sizeof(struct id_msgbuf));
-	buf->mtype=m_type;
-	while(1)
-	{
-		sprintf(buf->mtext, "%d", id);
-		if(msgsnd(msgqid,buf,32,0)==-1)
-			printf("msgsnd error\n");
-		if(DEBUG)
-			printf("id:%s\n",buf->mtext);
-		++id;
-		if(id==40000)
-			id=30000;
-	}
-	pthread_exit(NULL);
+    int id=30000;
+    key_t queue_key=20000;
+    int m_type=1;
+    struct id_msgbuf *buf;
+    int msgqid;
+    //create message queue
+    if((msgqid=msgget(queue_key,0666|IPC_CREAT))==-1){
+        printf("msgget error.\n");
+        exit(-1);
+    }	
+    buf=(struct id_msgbuf*)malloc(sizeof(struct id_msgbuf));
+    buf->mtype=m_type;
+    while(1)
+    {
+        sprintf(buf->mtext, "%d", id);
+        if(msgsnd(msgqid,buf,32,0)==-1)
+            printf("msgsnd error\n");
+        if(DEBUG)
+            printf("id:%s\n",buf->mtext);
+        ++id;
+        if(id==40000)
+            id=30000;
+    }
+    pthread_exit(NULL);
 }
 
 
 void task(char* com, void* tmp){
-	char* p=0;
-	char id[8];
-	char operation[2];
-	char keystore[32];
-	char key[32];
-	char handler[32];
-	char value[1280];
-	int i=0;
-	int put =0;
-	
+    char* p=0;
+    char id[8];
+    char operation[2];
+    char keystore[32];
+    char key[32];
+    char handler[32];
+    char value[1280];
+    int i=0;
+    int put =0;
+
     //convert tmp to hyperclient*
     hyperclient *client = (hyperclient *)tmp;
 
-	//for return messages
-        int msgqid=0;
-        struct data_msgbuf *buf;
-        //return messages end
+    //for return messages
+    int msgqid=0;
+    struct data_msgbuf *buf;
+    //return messages end
 
-	p=strtok(com,":\";");
-	while(p!=NULL){
-		//printf("%s\n",p);
-		switch(i){
-			case 2:strcpy(id,p);break;
-			case 3:
-				strcpy(operation,p);		
-				if(operation[0]=='p') put=1;
-				break;
-			case 4:	
-				strcpy(keystore,p);
-				break;
-			case 5:
-				strcpy(key,p);
-				break;
-			case 6:
-				if(put){
-					strcpy(value,p);
-					p=strtok(NULL,":");
-				}
-				strcpy(handler,p);
-				break;		
-		}
-		++i;
-		p=strtok(NULL,":\";");		
-	}
+    p=strtok(com,":\";");
+    while(p!=NULL){
+        //printf("%s\n",p);
+        switch(i){
+            case 2:strcpy(id,p);break;
+            case 3:
+                   strcpy(operation,p);		
+                   if(operation[0]=='p') put=1;
+                   break;
+            case 4:	
+                   strcpy(keystore,p);
+                   break;
+            case 5:
+                   strcpy(key,p);
+                   break;
+            case 6:
+                   if(put){
+                       strcpy(value,p);
+                       p=strtok(NULL,":");
+                   }
+                   strcpy(handler,p);
+                   break;		
+        }
+        ++i;
+        p=strtok(NULL,":\";");		
+    }
 
-	//debug
+    //debug
     hyperclient_returncode retcode;
     hyperclient_returncode loop_status; 
     hyperclient_attribute *attrs;
-    size_t attrs_sz;  
+    size_t attrs_sz = 0;  
 
     int64_t ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &attrs, &attrs_sz);  
     int64_t loop_id = client->loop(-1, &loop_status);
@@ -109,24 +109,26 @@ void task(char* com, void* tmp){
     }
     else
     {
-        std::cout<<"we get some thing"<<std::endl;
-        for(int i=0; i<attrs_sz; i++)
-        {
-            std::cout<<"attr "<<i<<": "<<attrs[i].attr<<", value : "<<std::string(attrs[i].value, attrs[i].value_sz)<<std::endl;
-        }
-    }
-	//return the message to the webpage frontend
         buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
         if((msgqid = msgget(atoi(id),0666))==-1){
-                printf("msgget error. id=%d\n",atoi(id));
-                exit(-1);
+            printf("msgget error. id=%d\n",atoi(id));
+            exit(-1);
         }
+        //return the message to the webpage frontend
         buf->mtype=1;
-        buf->mtext[0]='t';
-        buf->mtext[1]='\0';
+        if(retcode != HYPERCLIENT_SUCCESS)
+        {
+            memcpy(buf->mtext, attrs[0].value, attrs[0].value_sz * sizeof(char));
+            memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+        }
+        else
+        {
+            std::cout<<"tri get error"<<std::endl;
+            memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+        }
         msgsnd(msgqid,buf,MAXBUFFSIZE,0);
-
-
+        free(buf);
+    }
 }
 
 void taskserver(){
