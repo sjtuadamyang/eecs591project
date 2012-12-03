@@ -59,6 +59,11 @@ void task(char* com, void* tmp){
     char value[1280];
     int i=0;
     int put =0;
+    int size=0;
+    char attrs[32][32];
+    char values[32][1280];
+    char attr[32];
+    char attr_value[32];
 
     //convert tmp to hyperclient*
     hyperclient *client = (hyperclient *)tmp;
@@ -82,12 +87,14 @@ void task(char* com, void* tmp){
                    break;
             case 5:
                    strcpy(key,p);
+		   if(operation[0]=='s') strcpy(attr,p);
                    break;
             case 6:
                    if(put){
                        strcpy(value,p);
                        p=strtok(NULL,":\";");
                    }
+		   if(operation[0]=='s') strcpy(attr_value,p);
                    strcpy(handler,p);
                    break;		
         }
@@ -95,6 +102,23 @@ void task(char* com, void* tmp){
         p=strtok(NULL,":\";");		
     }
     printf("%s:%s:%s:%s:%s",id,operation,keystore,key,handler);
+    
+    if(put){
+ 	//process the values of put operation
+    	p=strtok(value,"@");
+        size=0;
+        while(p!=NULL){
+                strcpy(attrs[size],p);
+                p=strtok(NULL,"@");
+                strcpy(values[size],p);
+                p=strtok(NULL,"@");
+                ++size;
+        }
+        for(i=0;i<size;++i){
+                printf("%d.  attrbute:%s,value:%s\n",i,attrs[i],values[i]);
+        }
+    
+    }
     if(operation[0]=='p')
         printf(":%s\n",value);
     //debug
@@ -170,6 +194,11 @@ void task(char* com, void* tmp){
             msgsnd(msgqid,buf,MAXBUFFSIZE,0);
             free(buf);
         }
+    }
+    else if(operation[0]=='s'){
+		
+
+
     }
 }
 
