@@ -6,7 +6,8 @@ using namespace std;
 int main()
 {
     cout<<"test start "<<endl;
-    //define hyper attribute
+
+    //first we put a entry into the keystore
     hyperclient_attribute test_attr[3];
 
     test_attr[0].attr = "phone";
@@ -43,7 +44,7 @@ int main()
     cout<<"put ret is "<<ret<<" return code is "<<retcode<<endl;
 
     //define the container for the attribute get
-    
+    //we then use tri_get to get the data out, which will returned triggered output
     const char *key2 = "andywang";
 
     hyperclient_attribute *test_get_attr;
@@ -73,5 +74,40 @@ int main()
 
     cout<<"get ret is "<<ret<<" return code is "<<retcode<<endl;
 
+    //This part will be used to test the search function
+    hyperclient_attribute search_attr[1];
+    search_attr[0].attr = "first";
+    search_attr[0].value = "Fred";
+    search_attr[0].value_sz = strlen(search_attr[0].value);
+    search_attr[0].datatype = HYPERDATATYPE_STRING;
+    ret = test_client.search("phonebook", search_attr, 1, NULL, 0, &retcode, &test_get_attr, &get_size);
+
+    while(1)
+    {
+        loop_id = test_client.loop(-1, &loop_status);
+        if(loop_id < 0)
+        {
+            cout<<"we break because loop_id < 0"<<endl;
+            break;
+        }
+        if(retcode == HYPERCLIENT_SEARCHDONE)
+        {
+            cout<<"we break because we finished search"<<endl;
+            break;
+        }
+        if(loop_id == ret)
+        {
+            cout<<"we get something, the retcode is "<<loop_status<<endl;
+            for(int i=0; i<get_size; i++)
+            {
+                cout<<"search out: attr "<<i<<": "<<test_get_attr[i].attr<<", value : "<<string(test_get_attr[i].value, test_get_attr[i].value_sz)<<endl;
+            }
+        }
+    }
+
+    if(loop_status != HYPERCLIENT_SEARCHDONE)
+        cout<<"search error happens loop_status is "<<loop_status<<endl;
+
+    
     return 0;
 }
