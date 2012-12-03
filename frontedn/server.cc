@@ -60,8 +60,9 @@ void task(char* com, void* tmp){
     int i=0;
     int put =0;
     int size=0;
-    char attrs[32][32];
-    char values[32][1280];
+    char raw_attrs[32][32];
+    char raw_values[32][1280];
+    hyperclient_attribute put_attrs[32];
     char attr[32];
     char attr_value[32];
 
@@ -87,14 +88,14 @@ void task(char* com, void* tmp){
                    break;
             case 5:
                    strcpy(key,p);
-		   if(operation[0]=='s') strcpy(attr,p);
+                   if(operation[0]=='s') strcpy(attr,p);
                    break;
             case 6:
                    if(put){
                        strcpy(value,p);
                        p=strtok(NULL,":\";");
                    }
-		   if(operation[0]=='s') strcpy(attr_value,p);
+                   if(operation[0]=='s') strcpy(attr_value,p);
                    strcpy(handler,p);
                    break;		
         }
@@ -104,34 +105,35 @@ void task(char* com, void* tmp){
     printf("%s:%s:%s:%s:%s",id,operation,keystore,key,handler);
     
     if(put){
- 	//process the values of put operation
-    	p=strtok(value,"@");
+        //process the values of put operation
+        p=strtok(value,"@");
         size=0;
         while(p!=NULL){
-                strcpy(attrs[size],p);
-                p=strtok(NULL,"@");
-                strcpy(values[size],p);
-                p=strtok(NULL,"@");
-                ++size;
+            strcpy(raw_attrs[size],p);
+            p=strtok(NULL,"@");
+            strcpy(raw_values[size],p);
+            p=strtok(NULL,"@");
+            ++size;
         }
         for(i=0;i<size;++i){
-                printf("%d.  attrbute:%s,value:%s\n",i,attrs[i],values[i]);
+            printf("%d.  attrbute:%s,value:%s\n",i,raw_attrs[i],raw_values[i]);
         }
-    
+
     }
-    if(operation[0]=='p')
-        printf(":%s\n",value);
+
     //debug
     hyperclient_returncode retcode;
     hyperclient_returncode loop_status; 
-    hyperclient_attribute *attrs;
-    size_t attrs_sz = 0;  
+    hyperclient_attribute *hyper_attrs;
+    size_t hyper_attrs_sz = 0;  
+    int64_t ret;
+    int64_t loop_id;
 
     if(operation[0] == 'g')
     {
         // trigger get
-        int64_t ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &attrs, &attrs_sz);  
-        int64_t loop_id = client->loop(-1, &loop_status);
+        ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &hyper_attrs, &hyper_attrs_sz);  
+        loop_id = client->loop(-1, &loop_status);
         if(ret != loop_id)
         {
             std::cout<<"error here"<<std::endl;
@@ -145,35 +147,37 @@ void task(char* com, void* tmp){
             }
             //return the message to the webpage frontend
             buf->mtype=1;
-            if(retcode != HYPERCLIENT_SUCCESS)
+            if(retcode == HYPERCLIENT_SUCCESS)
             {
-                memcpy(buf->mtext, attrs[0].value, attrs[0].value_sz * sizeof(char));
-                memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+                memcpy(buf->mtext, hyper_attrs[0].value, hyper_attrs[0].value_sz * sizeof(char));
+                memset(buf->mtext+hyper_attrs[0].value_sz, '\0', 1);
+                msgsnd(msgqid,buf,hyper_attrs[0].value_sz,0);
             }
             else
             {
                 std::cout<<"tri get error"<<std::endl;
-                memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+                memset(buf->mtext, '\0', 1);
+                msgsnd(msgqid,buf,1,0);
             }
-            msgsnd(msgqid,buf,MAXBUFFSIZE,0);
             free(buf);
         }
     }
     else if(operation[0] == 'p')
     {
-        hyperclient_attribute testattr[1];
-        testattr[0].attr = "password";
-        testattr[0].value = value;
-        testattr[0].value_sz = strlen(value);
-        testattr[0].datatype = HYPERDATATYPE_STRING;
+        for(size_t i=0; i<size; i++)
+        {
+            put_attrs[i].attr = raw_attrs[i];
+            put_attrs[i].value = raw_values[i];
+            put_attrs[i].value_sz = strlen(raw_values[i]);
+            put_attrs[i].datatype = HYPERDATATYPE_STRING;
+        }
 
         //create attrs with attrs_sz
-        int64_t ret = client->tri_put(keystore, key, strlen(key), handler, strlen(handler), &retcode, testattr, 1);  
-        hyperclient_returncode loop_status;
-        int64_t loop_id = client->loop(-1, &loop_status);
+        ret = client->tri_put(keystore, key, strlen(key), handler, strlen(handler), &retcode, put_attrs, size);  
+        loop_id = client->loop(-1, &loop_status);
         if(ret != loop_id)
         {
-            std::cout<<"error here"<<std::endl;
+            std::cout<<"error: loop_id and ret is not matched"<<std::endl;
         }
         else
         {
@@ -182,22 +186,82 @@ void task(char* com, void* tmp){
                 printf("msgget error. id=%d\n",atoi(id));
                 exit(-1);
             }
-            const char *test = "hello";
-            //memset(buf->mtext, 't', 1);
             buf->mtype = 1;
-            //memcpy(buf->mtext, test, strlen(test));
-            //memset(buf->mtext+strlen(test), '\0', 1);
-            strcpy(buf->mtext, test);
-            //printf("put4.\n");
-            //std::cout<<buf->mtext<<std::endl;
-            //printf("test %s", buf->mtext);
+            sprintf(buf->mtext, "put ends");
             msgsnd(msgqid,buf,MAXBUFFSIZE,0);
             free(buf);
         }
     }
     else if(operation[0]=='s'){
-		
 
+        hyperclient_attribute search_attr[1];
+        search_attr[0].attr = attr;
+        search_attr[0].value = value;
+        search_attr[0].value_sz = strlen(value);
+        search_attr[0].datatype = HYPERDATATYPE_STRING;
+        ret = client->search(keystore, search_attr, 1, NULL, 0, &retcode, &hyper_attrs, &hyper_attrs_sz);
+
+        while(1)
+        {
+            loop_id = client->loop(-1, &loop_status);
+            if(loop_id < 0)
+            {
+                std::cout<<"error: we break because loop_id < 0"<<std::endl;
+                break;
+            }
+            if(retcode == HYPERCLIENT_SEARCHDONE)
+            {
+                std::cout<<"we break because we finished search"<<std::endl;
+                break;
+            }
+            if(loop_id == ret)
+            {
+                std::cout<<"we get something, the retcode is "<<loop_status<<std::endl;
+
+                // creata "size@attr1@value@attr2@value2@attr3@value3"
+                int pos = 0;
+                buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
+                if((msgqid = msgget(atoi(id),0666))==-1){
+                    printf("msgget error. id=%d\n",atoi(id));
+                    exit(-1);
+                }
+                buf->mtype = 1;
+                pos += sprintf(buf->mtext, "%d", hyper_attrs_sz);
+                for(int i=0; i<hyper_attrs_sz; i++)
+                {
+                    memset(buf->mtext+pos, '@', 1);
+                    pos++;
+                    std::cout<<"search out: attr "<<i<<": "<<hyper_attrs[i].attr<<", value : "<<std::string(hyper_attrs[i].value, hyper_attrs[i].value_sz)<<std::endl;
+                    memcpy(buf->mtext+pos, hyper_attrs[i].attr, strlen(hyper_attrs[i].attr));
+                    pos += strlen(hyper_attrs[i].attr);
+                    memset(buf->mtext+pos, '@', 1);
+                    pos++;
+                    memcpy(buf->mtext+pos, hyper_attrs[i].value, hyper_attrs[i].value_sz);
+                    pos += hyper_attrs[i].value_sz;
+                }
+                if(pos > MAXBUFFSIZE)
+                {
+                    std::cout<<"error: our message is bigger than MAXBUFFSIZE"<<std::endl;
+                }
+                else
+                {
+                    msgsnd(msgqid, buf, MAXBUFFSIZE, 0);
+                }
+                free(buf);
+            }
+
+        }
+
+        //send a msg for ending
+        buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
+        if((msgqid = msgget(atoi(id),0666))==-1){
+            printf("msgget error. id=%d\n",atoi(id));
+            exit(-1);
+        }
+        buf->mtype = 1;
+        sprintf(buf->mtext, "search end");
+        msgsnd(msgqid, buf, MAXBUFFSIZE, 0);
+        free(buf);
 
     }
 }
