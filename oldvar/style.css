@@ -1,0 +1,44 @@
+#header_in { margin: 0 0 20px 0; width:100%;height:44px; background: #3B5999;}
+  .headerwarp_in { margin: 0 auto; padding: 0 0px; width: 1024px; height: 44px; background: url("image/header_in.gif") no-repeat 0 0 ; color: #3B5999; }
+    .headerwarp_in a { color: #FFF; }
+      .headerwarp_in .logo { float: left; margin: 0 30px 0 0; }
+      .headerwarp_in .globalTip{height:26px;display:inline-block;padding:0px 0px 0px 0px;width:60px;}
+      		.headerwarp_in .globalTip .notificationTip{background: url("image/tip/notification.gif") no-repeat top left;width:22px;height:20px;margin-top:0px;display:inline-block;text-align:center;cursor:pointer;border:1px solid #3b5999;font-size:8px;}
+      		.headerwarp_in .globalTip .inMailTip{background: url("image/tip/inmail.gif") no-repeat top left;width:22px;height:20px;margin-top:0px;display:inline-block;text-align:center;cursor:pointer;border:1px solid #3b5999;font-size:8px;}
+      		.headerwarp_in .globalTip .friendRequestTip{background: url("image/tip/friendreq.gif") no-repeat top left;width:22px;height:20px;margin-top:0px;display:inline-block;text-align:center;cursor:pointer;border:1px solid #3b5999;font-size:8px;}
+      .headerwarp_in .globalSearch{height:28px;display:inline-block;padding:0px 0px 0px 0px;}
+
+#header { margin: 0 0 20px 0;; width:100%; background: #3B5999;}
+  .headerwarp { margin: 0 auto; padding: 0 20px; width: 1024px; height: 50px; background: url("image/header.gif") no-repeat 0 0 ; color: #FFF; }
+    .headerwarp a { color: #FFF; }
+      .headerwarp .logo { float: left; margin: 0 30px 0 0; }
+      .headerwarp .globalTip{height:40px;display:inline-block;padding:6px 8px 0px 0px;width:60px;}
+      		.headerwarp .globalTip .notificationTip{color:red;background: url("image/tip/notification.gif") no-repeat;width:24px;height:20px;display:inline-block;text-align:center;}
+      		.headerwarp .globalTip .inMailTip{color:red;background: url("image/tip/inmail.gif") no-repeat;width:24px;height:20px;display:inline-block;text-align:center;}
+      		.headerwarp .globalTip .friendRequestTip{color:red;background: url("image/tip/friendreq.gif") no-repeat;width:24px;height:20px;display:inline-block;text-align:center;}
+      .headerwarp .globalSearch{height:40px;display:inline-block;padding:6px 8px 0px 0px;font-size:11px;}
+.numberTip{color:white;background-color:red;font-size:10px;line-height:10px;height:10px;width:12px;display:none;padding-bottom:2px;}
+*html .numberTip{color:white;background-color:red;font-size:10px;line-height:10px;height:10px;width:12px;display:none;padding-bottom:2px;margin-left:-12px;} 
+.menu { float: left; height: 20px; font-size: 11px; font-weight: bold; padding:0px 0px 0px 0px;}
+  .menu li { float: left; padding: 5px ; line-height: 20px; vertical-align: top; }
+    .menu .edit { padding-left: 4px; color: #FFF; font-size: 12px; font-weight: normal; }
+
+.nav_account { float: right; width: 200px; white-space:nowrap; overflow: hidden; }
+  .login_thumb { float: left; margin: 6px 6px 0 0; padding: 3px 0 0 3px; width: 24px; height: 24px; background: url(image/thumb20bg.gif) no-repeat; display: block; }
+  .login_thumb img{ width: 20px; height: 20px; }
+    li.notify { margin: 9px 0 0; padding: 0 0 0 18px; width: 72px; height: 20px; background: url(image/notify_bg.gif); color: #FFF; font-size: 12px; font-weight: normal; }
+
+.menu li.dropmenu { margin: 0 10px 0 0; padding: 10px 15px 10px 10px; height: 20px; background: url(image/triangle.gif) no-repeat right center; overflow: hidden; }
+  .dropmenu_drop { margin: -1px 0 0; padding: 0 10px 10px; width: 150px; border: 1px solid #E9E9E9; background: #FFF; z-index: 200; }
+      .dropmenu_drop li { padding: 5px 10px; border-bottom: 1px solid #EEE; }
+        .dropmenu_drop li a { color: #2C629E; font-size: 12px; font-weight: normal; }
+		.dropmenu_drop .active { font-weight: bold; }
+		
+.menu li.topdropmenu { margin: 0 5px 0 0; padding: 5px 15px 5px 5px; height: 20px; background: url(image/triangle.gif) no-repeat right center; overflow: hidden; }
+  .topdropmenu_drop { margin: -1px 0 0; padding: 0 10px 10px; width: 140px; border: 1px solid #3B5999; background: #FFFFFF; z-index: 200; }
+      .topdropmenu_drop li {float: left; padding: 5px 10px; border-bottom: 1px dashed #BBB; text-aglin:left; width:110px; }
+        .topdropmenu_drop li a { color: #2C629E; font-size: 12px; font-weight: normal; }
+        .topdropmenu_drop li a:hover{text-decoration:none;}
+		.topdropmenu_drop .active { font-weight: bold; }
+		.topdropmenu_drop li.lastlist{border:0px; padding-bottom:0px;}
+

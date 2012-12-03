@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<config>
+	<initMDSNum>3</initMDSNum>
+	<initOSDNum>3</initOSDNum>
+	<N>3</N>
+	<R>2</R>
+	<W>2</W>
+	<tokenNum>1021</tokenNum>
+	
+	<KeyStore name="status" tokenNum="123" N="3" R="2" W="2" jar="/home/dozenow/test1.jar" class="onePiece.mds.test.Test1" timer="-1"></KeyStore>
+	<KeyStore name="user" tokenNum="123" N="3" R="2" W="2" jar="/home/dozenow/test2.jar" class="onePiece.mds.test.Test2" timer="-1"></KeyStore>
+	<KeyStore name="friends" tokenNum="123" N="3" R="2" W="2" jar="/home/dozenow/goods.jar" class="onePiece.mds.test.Goods" timer="-1"></KeyStore>
+	<KeyStore name="photo" tokenNum="1023" N="3" R="2" W="2" jar="/home/dozenow/goods.jar" class="onePiece.mds.test.Goods" timer="-1"></KeyStore>
+	<KeyStore name="feeds" tokenNum="123" N="3" R="2" W="2" jar="/home/dozenow/goods.jar" class="onePiece.mds.test.Goods" timer="-1"></KeyStore>
+
+	<ZKIP>192.168.1.14</ZKIP>
+	<ZKPort>2181</ZKPort>
+	<OSDMulticastIP>231.0.0.12</OSDMulticastIP>
+	<OSDMulticastPort>10001</OSDMulticastPort>
+
+	<MasterMDSMonitorIP>192.168.0.16</MasterMDSMonitorIP>
+	<MasterMDSMonitorPort>33055</MasterMDSMonitorPort>
+	<MasterOSDMonitorIP>192.168.0.16</MasterOSDMonitorIP>
+	<MasterOSDMonitorPort>43055</MasterOSDMonitorPort>
+
+	<FEMDSNum>2</FEMDSNum>
+
+	<ThreadNum>20</ThreadNum>
+	<PermanentDeathSeconds>60000</PermanentDeathSeconds>
+	<UpdateLoadSeconds>20</UpdateLoadSeconds>
+	
+	<MaxMessageSize>102400</MaxMessageSize>
+	
+</config>
