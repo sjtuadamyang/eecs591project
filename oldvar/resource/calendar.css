@@ -1,0 +1,43 @@
+#calendarDlg table td 
+{
+	border: 1px solid gray;
+	text-align: center;
+	height: 30px;
+}
+
+.calendarItem 
+{
+	width: 500px;
+}
+
+.itemLi
+{
+	list-style:none;
+	border-bottom:1px dotted gray;
+}
+
+.itemLi .locSpan 
+{
+	display:block;
+}
+
+.itemLi .timeSpan
+{
+	width:300px;
+	display:inline-block;
+}
+
+.itemLi .arrangementSpan
+{
+	display:block;
+}
+
+.itemLi .delSpan
+{	
+	width:10px;
+	height:10px;
+	display:inline-block;
+	background: url('image/calendar/close.png') no-repeat;
+	cursor:pointer;
+	float:right;
+}

@@ -1,0 +1,12 @@
+<html>
+<head></head>
+<body>
+<div>
+<?php
+include("dataop.php");
+$content=direct_get("blog",$_GET['id'],"handler1");
+echo($content);
+?>
+</div>
+</body>
+</html>

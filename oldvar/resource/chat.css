@@ -1,0 +1,256 @@
+#chatBar {
+	position: fixed;
+	height: 24px;
+	bottom: 0;
+	/*
+	left: 10px;
+	right: 10px;
+	*/
+	z-index: 1000;
+	min-width: 800px;
+	width: 1030px;
+}
+
+* html #chatBar {
+	position: absolute;
+	bottom: auto;
+	top: expression(eval(document.documentElement.scrollTop +
+		document.documentElement.clientHeight-this.offsetHeight- ( parseInt(this.currentStyle.marginTop
+		, 10) || 0 ) -( parseInt(this.currentStyle.marginBottom, 10) || 0 ) )
+		);
+}
+
+#barContent {
+	position: fixed;
+	height: 24px;
+	bottom: 0;
+	/*
+	left: 10px;
+	right: 10px;
+	*/
+	min-width: 800px;
+	width: 1030px;
+	height: 24px;
+	background: #E5E5E5 url('image/barBg.png') repeat-x left top;
+	word-wrap: break-word;
+	border-top: 1px solid #B4B4B4;
+	border-left: 1px solid #B4B4B4;
+	z-index: 1000;
+}
+
+* html #barContent {
+	position: absolute;
+	bottom: auto;
+	top: expression(eval(document.documentElement.scrollTop +
+		document.documentElement.clientHeight-this.offsetHeight- ( parseInt(this.currentStyle.marginTop
+		, 10) || 0 ) -( parseInt(this.currentStyle.marginBottom, 10) || 0 ) )
+		);
+}
+
+#barContent .barBtn {
+	float: left;
+	position: relative;
+	height: 16px;
+	line-height: 16px;
+	padding: 4px 4px 4px 5px;
+	border-right: 1px solid #B5B5B5;
+	cursor: pointer;
+}
+
+.barBtn a {
+	display: inline-block;
+	text-decoration: none;
+	font-weight: normal;
+	vertical-align: middle;
+}
+
+.bar .icon {
+	vertical-align: middle;
+}
+
+.talkWindow {
+	position: absolute;
+	width: 256px;
+	height: 304px;
+	bottom: 27px;
+	z-index: 1001;
+	border: 1px solid #124680;
+	background-color: #F0F5F8;
+}
+
+.talkWindow .talkTitle {
+	height: 24px;
+	width: 243px;
+	padding-left: 5px;
+	border: 1px solid #B8D4E8;
+	background-color: #3B5999;
+	color: white;
+	display: inline-block;
+}
+
+.talkWindow .nameTalk {
+	height: 36px;
+	width: 170px;
+	overflow: hidden;
+	display: inline-block;
+	margin-top: -16px;
+	padding-top: 0px;
+	float: left;
+}
+
+.talkWindow .nameTalk .chatAvatar {
+	margin-top: 0px;
+	z-index: 100;
+}
+
+.talkWindow .nameTalk .chatName {
+	display: inline-block;
+	padding-top: 0px;
+	height: 20px;
+	margin-top: 0px;
+}
+
+.talkWindow .chatAvatar img {
+	border: 1px solid #3B5999;
+}
+
+.talkWindow .miniTalk {
+	height: 24px;
+	width: 24px;
+	display: inline-block;
+	background: url('image/chat/minimize.png') no-repeat 7px 5px;
+	float: right;
+	cursor: pointer;
+}
+
+.talkWindow .closeTalk {
+	height: 24px;
+	width: 24px;
+	display: inline-block;
+	background: url('image/chat/close.png') no-repeat 7px 5px;
+	float: right;
+	cursor: pointer;
+}
+
+.talkWindow .talkContent {
+	height: 220px;
+	width: 248px;
+	overflow-x: auto;
+	overflow-y: auto;
+	border: 1px solid #B8D4E8;
+	/*
+	scrollbar-arrow-color:#3676BC;
+	scrollbar-base-color:lightblue;
+	*/
+	background-color: white;
+}
+
+.talkWindow .talkText {
+	width: 245px;
+	height: 36px;
+	border: 1px solid #B8D4E8;
+}
+
+.talkControl {
+	width: 150px;
+	/*
+	float: right;
+	*/
+	float: left;
+	position: relative;
+	height: 16px;
+	line-height: 16px;
+	padding: 4px 2px 4px 5px;
+	border-right: 1px solid #B5B5B5;
+	cursor: pointer;
+	text-align:center;
+}
+
+.inTalking {
+	color: red;
+	font-weight:bold;
+}
+
+.talkControl .close {
+	vertical-align: middle;
+	float: right;
+	position: relative;
+	height: 7px;
+	width: 7px;
+	padding: 4px 2px 4px 5px;
+	margin: 4px 0px 0px 0px;
+	background: url('image/chat/close.png') no-repeat;
+}
+
+.talkControl .close:hover {
+	vertical-align: middle;
+	float: right;
+	position: relative;
+	height: 7px;
+	width: 7px;
+	padding: 4px 2px 4px 5px;
+	margin: 6px 0px 0px 0px;
+	background: url('image/chat/closeHover.png') no-repeat;
+}
+
+.talkUl li {
+	list-style: none;
+	border-bottom: 1px solid #D1D1D1;
+	padding-top: 2px;
+	padding-bottom: 8px;
+	padding-left: 2px;
+	padding-right: 2px;
+	margin-left: 2px;
+	margin-right: 2px;
+}
+
+.liEven {
+	background-color: #F5F5F5;
+}
+
+.talkUl li .avatar {
+	float: left;
+	position: relative;
+}
+
+.talkUl li .nameSpan {
+	display: block;
+	padding-left: 3px;
+	padding-right: 3px;
+	color: gray;
+}
+
+.talkUl li .contentSpan {
+	display: block;
+	padding-left: 3px;
+	padding-right: 3px;
+}
+
+.friendLi
+{
+	padding-top:1px;
+	padding-bottom:1px;
+	font-size:11px;
+}
+
+.friendLi tr
+{
+	height:14px;
+	overflow:hidden;
+}
+
+.friendLi td
+{
+	padding:0 0;
+}
+
+.friendUl .offline img {
+	filter: gray;
+	-moz-opacity: .4;
+	opacity: 0.4;
+}
+
+/*重新定义accordion的content的padding*/
+.ui-accordion .ui-accordion-content {
+	padding: 0.2em 0.4em;
+}
