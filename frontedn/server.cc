@@ -131,8 +131,17 @@ void task(char* com, void* tmp){
 
     if(operation[0] == 'g')
     {
-        // trigger get
-        ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &hyper_attrs, &hyper_attrs_sz);  
+        int index = 0;  
+        if(operation[1] == 't')
+        {
+            // trigger get
+            ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &hyper_attrs, &hyper_attrs_sz);  
+        }
+        else if(operation[1] == 'd')
+        {
+            //normal get
+            ret = client->get(keystore, key, strlen(key), &retcode, &hyper_attrs, &hyper_attrs_sz);  
+        }
         loop_id = client->loop(-1, &loop_status);
         if(ret != loop_id)
         {
@@ -140,6 +149,17 @@ void task(char* com, void* tmp){
         }
         else
         {
+            if(operation[1] == 'd')
+            {
+                for(int j=0; j<hyper_attrs_sz; j++)
+                {
+                    if(!strcmp(hyper_attrs[j].attr, handler) )
+                    {
+                        index = j;
+                        std::cout<<"we match the handler in the normal get function"<<std::endl;
+                    }
+                }
+            }
             buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
             if((msgqid = msgget(atoi(id),0666))==-1){
                 printf("msgget error. id=%d\n",atoi(id));
@@ -149,9 +169,9 @@ void task(char* com, void* tmp){
             buf->mtype=1;
             if(retcode == HYPERCLIENT_SUCCESS)
             {
-                memcpy(buf->mtext, hyper_attrs[0].value, hyper_attrs[0].value_sz * sizeof(char));
-                memset(buf->mtext+hyper_attrs[0].value_sz, '\0', 1);
-                msgsnd(msgqid,buf,hyper_attrs[0].value_sz,0);
+                memcpy(buf->mtext, hyper_attrs[index].value, hyper_attrs[index].value_sz * sizeof(char));
+                memset(buf->mtext+hyper_attrs[index].value_sz, '\0', 1);
+                msgsnd(msgqid,buf,hyper_attrs[index].value_sz,0);
             }
             else
             {
