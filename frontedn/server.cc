@@ -62,6 +62,8 @@ void task(char* com, void* tmp){
     int size=0;
     char attrs[32][32];
     char values[32][1280];
+    char attr[32];
+    char attr_value[32];
 
     //convert tmp to hyperclient*
     hyperclient *client = (hyperclient *)tmp;
@@ -85,12 +87,14 @@ void task(char* com, void* tmp){
                    break;
             case 5:
                    strcpy(key,p);
+		   if(operation[0]=='s') strcpy(attr,p);
                    break;
             case 6:
                    if(put){
                        strcpy(value,p);
                        p=strtok(NULL,":\";");
                    }
+		   if(operation[0]=='s') strcpy(attr_value,p);
                    strcpy(handler,p);
                    break;		
         }
@@ -190,6 +194,11 @@ void task(char* com, void* tmp){
             msgsnd(msgqid,buf,MAXBUFFSIZE,0);
             free(buf);
         }
+    }
+    else if(operation[0]=='s'){
+		
+
+
     }
 }
 
