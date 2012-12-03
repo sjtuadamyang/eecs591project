@@ -86,7 +86,7 @@ void task(char* com, void* tmp){
             case 6:
                    if(put){
                        strcpy(value,p);
-                       p=strtok(NULL,":");
+                       p=strtok(NULL,":\";");
                    }
                    strcpy(handler,p);
                    break;		
@@ -94,40 +94,82 @@ void task(char* com, void* tmp){
         ++i;
         p=strtok(NULL,":\";");		
     }
-
+    printf("%s:%s:%s:%s:%s",id,operation,keystore,key,handler);
+    if(operation[0]=='p')
+        printf(":%s\n",value);
     //debug
     hyperclient_returncode retcode;
     hyperclient_returncode loop_status; 
     hyperclient_attribute *attrs;
     size_t attrs_sz = 0;  
 
-    int64_t ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &attrs, &attrs_sz);  
-    int64_t loop_id = client->loop(-1, &loop_status);
-    if(ret != loop_id)
+    if(operation[0] == 'g')
     {
-        std::cout<<"error here"<<std::endl;
-    }
-    else
-    {
-        buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
-        if((msgqid = msgget(atoi(id),0666))==-1){
-            printf("msgget error. id=%d\n",atoi(id));
-            exit(-1);
-        }
-        //return the message to the webpage frontend
-        buf->mtype=1;
-        if(retcode != HYPERCLIENT_SUCCESS)
+        // trigger get
+        int64_t ret = client->tri_get(keystore, key, strlen(key), handler, strlen(handler), &retcode, &attrs, &attrs_sz);  
+        int64_t loop_id = client->loop(-1, &loop_status);
+        if(ret != loop_id)
         {
-            memcpy(buf->mtext, attrs[0].value, attrs[0].value_sz * sizeof(char));
-            memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+            std::cout<<"error here"<<std::endl;
         }
         else
         {
-            std::cout<<"tri get error"<<std::endl;
-            memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+            buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
+            if((msgqid = msgget(atoi(id),0666))==-1){
+                printf("msgget error. id=%d\n",atoi(id));
+                exit(-1);
+            }
+            //return the message to the webpage frontend
+            buf->mtype=1;
+            if(retcode != HYPERCLIENT_SUCCESS)
+            {
+                memcpy(buf->mtext, attrs[0].value, attrs[0].value_sz * sizeof(char));
+                memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+            }
+            else
+            {
+                std::cout<<"tri get error"<<std::endl;
+                memset(buf->mtext+attrs[0].value_sz, '\0', 1);
+            }
+            msgsnd(msgqid,buf,MAXBUFFSIZE,0);
+            free(buf);
         }
-        msgsnd(msgqid,buf,MAXBUFFSIZE,0);
-        free(buf);
+    }
+    else if(operation[0] == 'p')
+    {
+        hyperclient_attribute testattr[1];
+        testattr[0].attr = "password";
+        testattr[0].value = value;
+        testattr[0].value_sz = strlen(value);
+        testattr[0].datatype = HYPERDATATYPE_STRING;
+
+        //create attrs with attrs_sz
+        int64_t ret = client->tri_put(keystore, key, strlen(key), handler, strlen(handler), &retcode, testattr, 1);  
+        hyperclient_returncode loop_status;
+        int64_t loop_id = client->loop(-1, &loop_status);
+        if(ret != loop_id)
+        {
+            std::cout<<"error here"<<std::endl;
+        }
+        else
+        {
+            buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
+            if((msgqid = msgget(atoi(id),0666))==-1){
+                printf("msgget error. id=%d\n",atoi(id));
+                exit(-1);
+            }
+            const char *test = "hello";
+            //memset(buf->mtext, 't', 1);
+            buf->mtype = 1;
+            //memcpy(buf->mtext, test, strlen(test));
+            //memset(buf->mtext+strlen(test), '\0', 1);
+            strcpy(buf->mtext, test);
+            //printf("put4.\n");
+            //std::cout<<buf->mtext<<std::endl;
+            //printf("test %s", buf->mtext);
+            msgsnd(msgqid,buf,MAXBUFFSIZE,0);
+            free(buf);
+        }
     }
 }
 
