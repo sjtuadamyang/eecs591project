@@ -59,6 +59,9 @@ void task(char* com, void* tmp){
     char value[1280];
     int i=0;
     int put =0;
+    int size=0;
+    char attrs[32][32];
+    char values[32][1280];
 
     //convert tmp to hyperclient*
     hyperclient *client = (hyperclient *)tmp;
@@ -95,6 +98,23 @@ void task(char* com, void* tmp){
         p=strtok(NULL,":\";");		
     }
     printf("%s:%s:%s:%s:%s",id,operation,keystore,key,handler);
+    
+    if(put){
+ 	//process the values of put operation
+    	p=strtok(value,"@");
+        size=0;
+        while(p!=NULL){
+                strcpy(attrs[size],p);
+                p=strtok(NULL,"@");
+                strcpy(values[size],p);
+                p=strtok(NULL,"@");
+                ++size;
+        }
+        for(i=0;i<size;++i){
+                printf("%d.  attrbute:%s,value:%s\n",i,attrs[i],values[i]);
+        }
+    
+    }
     if(operation[0]=='p')
         printf(":%s\n",value);
     //debug
