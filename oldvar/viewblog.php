@@ -4,8 +4,9 @@
 <div>
 <?php
 include("dataop.php");
-$content=direct_get("blog",$_GET['id'],"handler1");
-echo($content);
+$content=search("phonebook","first","adam");
+foreach ($content as $cont)
+    echo($cont);
 ?>
 </div>
 </body>

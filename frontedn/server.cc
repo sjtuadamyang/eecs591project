@@ -216,6 +216,7 @@ void task(char* com, void* tmp){
     }
     else if(operation[0]=='s'){
 
+        std::cout<<"search operation: with attr: "<<attr<<" value: "<<value<<std::endl;
         hyperclient_attribute search_attr[1];
         search_attr[0].attr = attr;
         search_attr[0].value = value;
