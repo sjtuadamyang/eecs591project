@@ -1,0 +1,30 @@
+body {
+	padding-top: 60px;
+	padding-bottom: 40px;
+}
+
+#profile {
+	float: left;
+	margin-right: 20px;
+}
+
+.span3 {
+	background-color: lightyellow;
+	border-width: 2px;
+}
+
+.mainbody {
+	background-color: none;
+	margin-left: auto;
+	margin-right: auto;
+	display: block;
+    /*text-align: center;*/
+}
+
+.mainbody img {
+	margin: 5px;
+	width: 560px;
+	-moz-border-radius: 7px;
+	-webkit-border-radius: 7px;
+	border-radius: 7px;
+}
