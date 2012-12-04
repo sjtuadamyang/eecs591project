@@ -1,6 +1,5 @@
 <?php
 //flush now
-
 function flush_now(){
 	ob_flush();
 	flush();
@@ -45,7 +44,7 @@ function search($keystore,$attr,$value){
         msg_receive($rec_queue,1,$message_type,102400,$message,false);
         //remove the message queue
         msg_remove_queue($rec_queue);
-        return split("@",$message);
+        return $message;
 }
 
 function prep_get($keystore,$key,$handler){
