@@ -298,6 +298,10 @@ hyperdaemon :: network_worker :: run()
                 real_value.push_back(e::slice(handle_value));
                 dlclose(handle);
             }
+            else
+            {
+                LOG(ERROR) << "open so file failed error msg: "<<dlerror();
+            }
 
             //this free will make all the hyperclient_attribute destroyed
             free(ret);
@@ -410,6 +414,10 @@ hyperdaemon :: network_worker :: run()
                 handle_value = test(reinterpret_cast<const char*>(key.data()), key.size(), hyper_attrs, hyper_attrs_sz, m_messenger);
                 //real_value.push_back(e::slice(handle_value));
                 dlclose(handle);
+            }
+            else
+            {
+                LOG(ERROR) << "open so file failed error msg: "<<dlerror();
             }
 
             //this free will make all the hyperclient_attribute destroyed
