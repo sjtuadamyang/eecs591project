@@ -4,6 +4,7 @@ function flush_now(){
 	ob_flush();
 	flush();
 }
+//the handler here means the name of attribute
 function direct_get($keystore,$key,$handler){
         //first get the id of receive queue
         $message_queue=msg_get_queue(20000,0666);
@@ -17,12 +18,33 @@ function direct_get($keystore,$key,$handler){
         //send the message to request something
 	$content=$id.":g:".$keystore.":".$key.":".$handler;
 	echo $content;
-        msg_send($message_queue,1,$id.":g:".$keystore.":".$key.":".$handler);
+        msg_send($message_queue,1,$id.":gd:".$keystore.":".$key.":".$handler);
         //receive the return message
         msg_receive($rec_queue,1,$message_type,102400,$message,false);
         //remove the message queue
         msg_remove_queue($rec_queue);
         return $message;
+}
+
+function search($keystore,$attr,$value){
+	//first get the id of receive queue
+        $message_queue=msg_get_queue(20000,0666);
+        msg_receive($message_queue,1,$message_type,32,$id,false);
+        $id=intval($id);
+        //get id ok
+        echo $id;
+        $message_queue=msg_get_queue(20123,0666);
+        //create a receive queue
+        $rec_queue=msg_get_queue($id,0666);
+        //send the message to request something
+        $content=$id.":s:".$keystore.":".$attr.":".$value;
+        echo $content;
+        msg_send($message_queue,1,$content);
+        //receive the return message
+        msg_receive($rec_queue,1,$message_type,102400,$message,false);
+        //remove the message queue
+        msg_remove_queue($rec_queue);
+        return split("@",$message);
 }
 
 function prep_get($keystore,$key,$handler){
@@ -35,7 +57,7 @@ function prep_get($keystore,$key,$handler){
 	//create a receive queue
 	$rec_queue=msg_get_queue($id,0666);
 	//send the message to request something
-	msg_send($message_queue,1,$id.":g:".$keystore.":".$key.":".$handler);
+	msg_send($message_queue,1,$id.":gt:".$keystore.":".$key.":".$handler);
 	return $rec_queue;
 	//receive the return message
 	//msg_receive($rec_queue,1,$message_type,102400,$message,false);
