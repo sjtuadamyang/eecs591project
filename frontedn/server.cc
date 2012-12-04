@@ -9,7 +9,7 @@
 #include "thpool.h"
 #include "hyperclient.h"
 #define DEBUG	1
-#define MAXBUFFSIZE	1280
+#define MAXBUFFSIZE	128000
 #define THREADPOOL	20
 struct id_msgbuf{
     long mtype;
@@ -56,12 +56,12 @@ void task(char* com, void* tmp){
     char keystore[32];
     char key[32];
     char handler[32];
-    char value[1280];
+    char value[MAXBUFFSIZE];
     int i=0;
     int put =0;
     int size=0;
-    char raw_attrs[32][32];
-    char raw_values[32][1280];
+    char raw_attrs[4][32];
+    char raw_values[4][MAXBUFFSIZE];
     hyperclient_attribute put_attrs[32];
     char attr[32];
     char attr_value[32];
@@ -207,8 +207,10 @@ void task(char* com, void* tmp){
                 exit(-1);
             }
             buf->mtype = 1;
-            sprintf(buf->mtext, "put ends");
-            msgsnd(msgqid,buf,MAXBUFFSIZE,0);
+            buf->mtext[0]='e';
+            buf->mtext[1]='n';
+            buf->mtext[2]='d';
+            msgsnd(msgqid,buf,3,0);
             free(buf);
         }
     }
@@ -221,6 +223,15 @@ void task(char* com, void* tmp){
         search_attr[0].datatype = HYPERDATATYPE_STRING;
         ret = client->search(keystore, search_attr, 1, NULL, 0, &retcode, &hyper_attrs, &hyper_attrs_sz);
 
+        //use handler to denote the attr that you want for search result
+        //we will send a message as value1@value2@value3@value4
+        int pos = 0;
+        buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
+        if((msgqid = msgget(atoi(id),0666))==-1){
+            printf("msgget error. id=%d\n",atoi(id));
+            exit(-1);
+        }
+        buf->mtype = 1;
         while(1)
         {
             loop_id = client->loop(-1, &loop_status);
@@ -237,52 +248,28 @@ void task(char* com, void* tmp){
             if(loop_id == ret)
             {
                 std::cout<<"we get something, the retcode is "<<loop_status<<std::endl;
-
-                // creata "size@attr1@value@attr2@value2@attr3@value3"
-                int pos = 0;
-                buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
-                if((msgqid = msgget(atoi(id),0666))==-1){
-                    printf("msgget error. id=%d\n",atoi(id));
-                    exit(-1);
-                }
-                buf->mtype = 1;
-                pos += sprintf(buf->mtext, "%d", hyper_attrs_sz);
-                for(int i=0; i<hyper_attrs_sz; i++)
+                if(pos != 0)
                 {
+                    //append a @ after pos + hyper_attrs[i].value_sz
                     memset(buf->mtext+pos, '@', 1);
                     pos++;
-                    std::cout<<"search out: attr "<<i<<": "<<hyper_attrs[i].attr<<", value : "<<std::string(hyper_attrs[i].value, hyper_attrs[i].value_sz)<<std::endl;
-                    memcpy(buf->mtext+pos, hyper_attrs[i].attr, strlen(hyper_attrs[i].attr));
-                    pos += strlen(hyper_attrs[i].attr);
-                    memset(buf->mtext+pos, '@', 1);
-                    pos++;
-                    memcpy(buf->mtext+pos, hyper_attrs[i].value, hyper_attrs[i].value_sz);
-                    pos += hyper_attrs[i].value_sz;
                 }
-                if(pos > MAXBUFFSIZE)
-                {
-                    std::cout<<"error: our message is bigger than MAXBUFFSIZE"<<std::endl;
-                }
-                else
-                {
-                    msgsnd(msgqid, buf, MAXBUFFSIZE, 0);
-                }
-                free(buf);
+                //only send the keys back
+                memcpy(buf->mtext+pos, hyper_attrs[0].value, hyper_attrs[0].value_sz);
+                pos += hyper_attrs[0].value_sz;
             }
 
         }
-
-        //send a msg for ending
-        buf = (struct data_msgbuf*) malloc(sizeof(struct data_msgbuf));
-        if((msgqid = msgget(atoi(id),0666))==-1){
-            printf("msgget error. id=%d\n",atoi(id));
-            exit(-1);
+        if(pos > MAXBUFFSIZE)
+        {
+            std::cout<<"error: our message is bigger than MAXBUFFSIZE"<<std::endl;
+            msgsnd(msgqid, buf, MAXBUFFSIZE, 0);
         }
-        buf->mtype = 1;
-        sprintf(buf->mtext, "search end");
-        msgsnd(msgqid, buf, MAXBUFFSIZE, 0);
+        else
+        {
+            msgsnd(msgqid, buf, pos, 0);
+        }
         free(buf);
-
     }
 }
 
