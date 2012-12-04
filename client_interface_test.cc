@@ -77,7 +77,7 @@ int main()
     //This part will be used to test the search function
     hyperclient_attribute search_attr[1];
     search_attr[0].attr = "first";
-    search_attr[0].value = "Fred";
+    search_attr[0].value = "adam";
     search_attr[0].value_sz = strlen(search_attr[0].value);
     search_attr[0].datatype = HYPERDATATYPE_STRING;
     ret = test_client.search("phonebook", search_attr, 1, NULL, 0, &retcode, &test_get_attr, &get_size);

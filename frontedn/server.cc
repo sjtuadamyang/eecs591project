@@ -215,11 +215,11 @@ void task(char* com, void* tmp){
         }
     }
     else if(operation[0]=='s'){
-
+        std::cout<<"search operation: with attr: "<<attr<<" value: "<<attr_value<<std::endl;
         hyperclient_attribute search_attr[1];
         search_attr[0].attr = attr;
-        search_attr[0].value = value;
-        search_attr[0].value_sz = strlen(value);
+        search_attr[0].value = attr_value;
+        search_attr[0].value_sz = strlen(attr_value);
         search_attr[0].datatype = HYPERDATATYPE_STRING;
         ret = client->search(keystore, search_attr, 1, NULL, 0, &retcode, &hyper_attrs, &hyper_attrs_sz);
 
