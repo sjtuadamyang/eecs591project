@@ -1,6 +1,5 @@
 <?php
 //flush now
-
 function flush_now(){
 	ob_flush();
 	flush();
