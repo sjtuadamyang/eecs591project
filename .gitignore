@@ -9,5 +9,6 @@
 *~
 .libs/
 client_interface_test
+/frontedn/server
 hyperdex-binary-test
 hyperdex-simple-consistency-stress-test

@@ -87,10 +87,12 @@
 	      <!--Body content-->
 	      <?php
 	      	//tri_put version: triget and foreach get
-	      	$photolist = triget("user", "Andy", "getpid");
-	      	$photo = explode("@", $photolist);
+	      	$photolist = get(prep_get("user", $username, "getpid"));
+	      	echo "-----" . $photolist . "-----" . "<br /";
+            $photo = explode("@", $photolist);
 	      	foreach ($photo as $p) {
-	      		$imagedata = direct_get("photo_l", $p);
+	      		echo "---" . $p . "<br />";
+                $imagedata = direct_get("photo_l", $p, "null");
 	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
 	      	}
 
@@ -126,8 +128,25 @@
 	      <!--Sidebar content-->
 	      My Photos <br />
 	      <?php
-	      	//get a photo from database 
-	      ?>	      
+	      	//tri_put version: triget and foreach get
+	      	foreach ($photo as $p) {
+	      		echo "---" . $p . "<br />";
+                $imagedata = direct_get("photo_s", $p, "null");
+	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
+	      	}
+
+	      	//noraml put: call search and foreach get
+	      	/*
+	      	$searchval = "11";
+	      	$photolist = search("photoinfo", "time", $searchval);
+
+	      	//loop
+	      	$photot_id = $photolist[0]["photoid"];
+	      	$imagedata = get("photo_l", $photot_id);
+	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
+	        echo "<p>@User1 uploaded a photo</p>";
+            */
+	      ?>
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>

@@ -37,7 +37,7 @@ handler(const char *key,
 
     //chop the image x_off = 100, y_off = 100, x = 100, y = 100
     Magick::Image image(blob);
-    image.crop(Magick::Geometry(100, 100, 0, 0));
+    image.crop(Magick::Geometry(100, 100, 100, 100));
 
     //put this image into image_s space
     Magick::Blob out_blob;

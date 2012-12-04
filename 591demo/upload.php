@@ -18,11 +18,11 @@
       echo "Size: " . ($_FILES["file"]["size"] / 1024) . " kB<br>";
       echo "Temp file: " . $_FILES["file"]["tmp_name"] . "<br>";
 
-      if (file_exists("upload/" . $_FILES["file"]["name"])) {
-        echo $_FILES["file"]["name"] . " already exists. ";
-      }
-      else {
-        $filename = $_FILES["file"]["name"];
+      //if (file_exists("upload/" . $_FILES["file"]["name"])) {
+       // echo $_FILES["file"]["name"] . " already exists. ";
+     // }
+     // else {
+        $filename = uniqid();
         move_uploaded_file($_FILES["file"]["tmp_name"], "upload/" . $filename);
         echo "Stored in: " . "upload/" . $filename;
 
@@ -44,13 +44,13 @@
         echo prep_put("photoinfo", $photoid, $values, "null"); //should be tri_put
 
         $values=array("content"=>$imagedata);
-        echo prep_put("photo_l", $photoid, $values, "null"); //should be tri_put
+        echo prep_put("photo_l", $photoid, $values, "photo"); //should be tri_put
        
         /*
         $values=array("username"=>$username, "content"=>$imagedata, "time"=>$currtime);
         echo prep_put("photo_l", $photoid, $values, "handler"); //should be tri_put
         */
-      }
+     // }
     }
   }
   else {

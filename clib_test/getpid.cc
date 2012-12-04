@@ -27,7 +27,7 @@ handler(const char *key,
 
     int64_t loop_id;
     int64_t ret = message->search("photoinfo", search_attr, 1, NULL, 0, &retcode, &hyper_attr, &hyper_attr_sz);
-    size_t pos = 0;
+    bool pos = true;
 
     while(1)
     {
@@ -45,12 +45,13 @@ handler(const char *key,
         if(loop_id == ret)
         {
             LOG(INFO)<<"we get something, format the result";
-            if(pos != 0)
+            if(!pos)
             {
                 result.append(1, '@');
-                pos = 1;
             }
+            pos = false;
             result.append(hyper_attr[0].value, hyper_attr[0].value_sz);
+            LOG(INFO)<<"current result "<<result;
         }
     }
 
