@@ -61,13 +61,6 @@ fake_value_to_attributes(const hyperdex::configuration& config,
                     size_t* attrs_sz);
 
 bool
-really_fake_value_to_attributes(const hyperdex::configuration& config,
-                    const hyperdex::entityid& entity,
-                    const std::vector<e::slice>& value,
-                    hyperclient_attribute** attrs,
-                    size_t* attrs_sz);
-
-bool
 compare_for_microop_sort(const hyperdex::microop& lhs,
                          const hyperdex::microop& rhs);
 
