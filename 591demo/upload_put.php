@@ -56,7 +56,7 @@
 
 
 	$values=array("username"=>$username, "time"=>$currtime);
-    echo prep_put("photoinfo", $photoid, $values, "null");
+  echo prep_put("photoinfo", $photoid, $values, "null");
 	$values=array("content"=>$imagedata);
 	echo prep_put("photo_s", $photoid, $values, "null");
 
