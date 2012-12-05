@@ -88,10 +88,10 @@
 	      <?php
 	      	//tri_put version: triget and foreach get
 	      	$photolist = get(prep_get("user", $username, "getpid"));
-	      	echo "-----" . $photolist . "-----" . "<br /";
+	      	//echo "-----" . $photolist . "-----" . "<br /";
             $photo = explode("@", $photolist);
 	      	foreach ($photo as $p) {
-	      		echo "---" . $p . "<br />";
+	      		//echo "---" . $p . "<br />";
                 $imagedata = direct_get("photo_l", $p, "null");
 	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
 	      	}
@@ -100,18 +100,14 @@
 	      	/*
 	      	$searchval = "11";
 	      	$photolist = search("photoinfo", "time", $searchval);
-
-	      	//loop
-	      	$photot_id = $photolist[0]["photoid"];
-	      	$imagedata = get("photo_l", $photot_id);
-	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
-	        echo "<p>@User1 uploaded a photo</p>";
+            $photo = explode("@", $photolist);
+	      	foreach ($photo as $p) {
+                $imagedata = direct_get("photo_l", $p, "null");
+	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
+	      	}
             */
 	      ?>
-	      <!--
-		  <img src="data:image/png;base64, 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">
-		  <img src="data:image/png;base64, iVBORw0KGgoAAAANSUhEUgAAABwAAAASCAMAAAB/2U7WAAAABlBMVEUAAAD///+l2Z/dAAAASUlEQVR4XqWQUQoAIAxC2/0vXZDrEX4IJTRkb7lobNUStXsB0jIXIAMSsQnWlsV+wULF4Avk9fLq2r8a5HSE35Q3eO2XP1A1wQkZSgETvDtKdQAAAABJRU5ErkJggg==">
-		  -->
+
 		  <img src="img/1.jpg">
 		  <p>@User1 uploaded a photo</p>
 		  <img src="img/2.jpg">
@@ -128,24 +124,10 @@
 	      <!--Sidebar content-->
 	      My Photos <br />
 	      <?php
-	      	//tri_put version: triget and foreach get
 	      	foreach ($photo as $p) {
-	      		echo "---" . $p . "<br />";
                 $imagedata = direct_get("photo_s", $p, "null");
 	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
 	      	}
-
-	      	//noraml put: call search and foreach get
-	      	/*
-	      	$searchval = "11";
-	      	$photolist = search("photoinfo", "time", $searchval);
-
-	      	//loop
-	      	$photot_id = $photolist[0]["photoid"];
-	      	$imagedata = get("photo_l", $photot_id);
-	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
-	        echo "<p>@User1 uploaded a photo</p>";
-            */
 	      ?>
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>
