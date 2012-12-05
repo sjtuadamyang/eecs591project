@@ -1,5 +1,8 @@
 #include <iostream>
 #include <string>
+#include <stdlib.h>
+#include <vector>
+#include <time.h>
 #include <glog/logging.h>
 #include <Magick++.h>
 #include "base64.h"
@@ -31,6 +34,8 @@ handler(const char *key,
     int64_t ret = message->search("photoinfo", search_attr, 1, NULL, 0, &retcode, &hyper_attr, &hyper_attr_sz);
     bool pos = true;
 
+    std::vector<std::string> results;
+
     while(1)
     {
         loop_id = message->loop(-1, &loop_status);
@@ -53,14 +58,51 @@ handler(const char *key,
             }
             pos = false;
             result.append(hyper_attr[0].value, hyper_attr[0].value_sz);
+
+            std::string str (hyper_attr[0].value, hyper_attr[0].value_sz);
+
+            results.push_back(str);
+
             LOG(INFO)<<"current result "<<result;
         }
     }
-
     //dummy operation
+    int waste;
+    for(int i=0; i < 10000; i++) {
+        waste++;
+    }
 
+    hyperclient_attribute *hyper_get_attr;
+    size_t get_size = 0;
+
+    srand ( time(NULL) );
+
+    int id = rand() % results.size();
     //get content
+    ret = message->get("photo_l", results[id].c_str(), strlen(results[id].c_str()), &retcode, &hyper_get_attr, &get_size);
+
+    loop_id = message->loop(-1, &loop_status);
+
+    if(ret != loop_id)
+    {
+        LOG(INFO)<<"some ERROR here";
+        exit(1);
+    }
+
+    if(get_size!=0)
+    {
+        LOG(INFO)<<"we get something";
+
+        return string(hyper_get_attr[0].value, hyper_get_attr[0].value_sz);
+
+    }
+    else
+    {
+        LOG(INFO)<<"we get Nothing, get size is 0";
+    }
 
     //build string fill with the content
-    return result;
+    std::string dummy = "nothing";
+
+    return dummy;
 }
