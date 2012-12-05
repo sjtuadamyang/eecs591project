@@ -1,7 +1,12 @@
 <!DOCTYPE html>
 
 <?php
-//echo put("user",$_POST['username'],$_POST['password']."@".$_POST['gender']."@".$_POST['birth']);
+		$username = $_GET['username'];
+		$password = $_GET['password'];
+		$userinfo = $_GET['info'];
+
+        $values=array("password"=>$password, "info"=>$userinfo);
+        echo prep_put("user", $username, $values, "null");
 ?>
 
 <html lang="en">

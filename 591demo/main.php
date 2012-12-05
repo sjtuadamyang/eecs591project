@@ -76,7 +76,7 @@
 	    <div class="span3 leftsidebar">
 	      <!--Sidebar content-->
 			Upload a Photo <br /><br />
-			<form class="form" name="uploadform" action="upload.php?username=Andy" method="post" enctype="multipart/form-data">
+			<form class="form" name="uploadform" action="<?php echo 'upload.php?username=' . $username; ?>" method="post" enctype="multipart/form-data">
 			<label for="file">Filename:</label>
 			<input type="file" name="file" id="file"><br>
 			<input type="submit" class="btn btn-success" name="submit" value="Upload">
