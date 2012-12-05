@@ -46,11 +46,13 @@ value_to_attributes(const hyperdex::configuration& config,
     *loop_status = HYPERCLIENT_SUCCESS;
     std::vector<hyperdex::attribute> dimension_names = config.dimension_names(entity.get_space());
 
+    /*
     std::cout<<"check the names of the space"<<std::endl;
     for(int i=0; i<dimension_names.size(); i++)
     {
         std::cout<<dimension_names[i].name<<std::endl;
     }
+    */
 
     if (value.size() + 1 != dimension_names.size())
     {
@@ -130,19 +132,23 @@ fake_value_to_attributes(const hyperdex::configuration& config,
     *loop_status = HYPERCLIENT_SUCCESS;
     std::vector<hyperdex::attribute> dimension_names = config.dimension_names(entity.get_space());
 
+    /*
     std::cout<<"check the names of the space"<<std::endl;
     for(int i=0; i<dimension_names.size(); i++)
     {
         std::cout<<dimension_names[i].name<<std::endl;
     }
+    */
 
     std::vector<hyperdex::attribute> dummy_dimension_names;
     dummy_dimension_names.push_back(dimension_names[0]);
     dummy_dimension_names.push_back(hyperdex::attribute("trigger_ret", HYPERDATATYPE_STRING));
+    /*
     for(int i=0; i<dummy_dimension_names.size(); i++)
     {
         std::cout<<dummy_dimension_names[i].name<<std::endl;
     }
+    */
 
 
     if (value.size() + 1 != dummy_dimension_names.size())
@@ -207,41 +213,6 @@ fake_value_to_attributes(const hyperdex::configuration& config,
     *attrs_sz = ha.size();
     g.dismiss();
     return true;
-}
-
-bool
-really_fake_value_to_attributes(const hyperdex::configuration& config,
-                    const hyperdex::entityid& entity,
-                    const std::vector<e::slice>& value,
-                    hyperclient_attribute** attrs,
-                    size_t* attrs_sz)
-{
-    /*
-    std::vector<hyperdex::attribute> dimension_names = config.dimension_names(entity.get_space());
-
-    std::cout<<"check the names of the space"<<std::endl;
-    for(int i=0; i<dimension_names.size(); i++)
-    {
-        std::cout<<dimension_names[i].name<<std::endl;
-    }
-
-    std::vector<hyperdex::attribute> dummy_dimension_names;
-    dummy_dimension_names.push_back(dimension_names[0]);
-    dummy_dimension_names.push_back(hyperdex::attribute("trigger_ret", HYPERDATATYPE_STRING));
-    for(int i=0; i<dummy_dimension_names.size(); i++)
-    {
-        std::cout<<dummy_dimension_names[i].name<<std::endl;
-    }
-
-    if (value.size() + 1 != dummy_dimension_names.size())
-    {
-        *op_status = HYPERCLIENT_SERVERERROR;
-        return false;
-    }
-    
-    //malloc the space to hold the attributes
-    &attrs = malloc()
-    */
 }
 
 bool
