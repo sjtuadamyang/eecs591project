@@ -66,6 +66,7 @@ handler(const char *key,
             LOG(INFO)<<"current result "<<result;
         }
     }
+
     //dummy operation
     int waste;
     for(int i=0; i < 10000; i++) {
@@ -77,28 +78,31 @@ handler(const char *key,
 
     srand ( time(NULL) );
 
-    int id = rand() % results.size();
-    //get content
-    ret = message->get("photo_l", results[id].c_str(), strlen(results[id].c_str()), &retcode, &hyper_get_attr, &get_size);
-
-    loop_id = message->loop(-1, &loop_status);
-
-    if(ret != loop_id)
+    if(result.size()>0)
     {
-        LOG(INFO)<<"some ERROR here";
-        exit(1);
-    }
+        int id = rand() % results.size();
+        //get content
+        ret = message->get("photo_l", results[id].c_str(), strlen(results[id].c_str()), &retcode, &hyper_get_attr, &get_size);
 
-    if(get_size!=0)
-    {
-        LOG(INFO)<<"we get something";
+        loop_id = message->loop(-1, &loop_status);
 
-        return string(hyper_get_attr[0].value, hyper_get_attr[0].value_sz);
+        if(ret != loop_id)
+        {
+            LOG(INFO)<<"some ERROR here";
+            exit(1);
+        }
 
-    }
-    else
-    {
-        LOG(INFO)<<"we get Nothing, get size is 0";
+        if(get_size!=0)
+        {
+            LOG(INFO)<<"we get something";
+
+            return std::string(hyper_get_attr[0].value, hyper_get_attr[0].value_sz);
+
+        }
+        else
+        {
+            LOG(INFO)<<"we get Nothing, get size is 0";
+        }
     }
 
     //build string fill with the content

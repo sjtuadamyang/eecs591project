@@ -87,7 +87,7 @@
 	      <!--Body content-->
 	      <?php
 	      	//noraml put: call search and foreach get
-	      	$searchval = "somename";
+	      	$searchval = $username;
 	      	$photolist = search("photoinfo", "username", $searchval);
             $photo = explode("@", $photolist);
             $waste = 0;
