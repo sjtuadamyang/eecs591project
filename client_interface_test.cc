@@ -72,7 +72,7 @@ int main()
         keybase.flush();
         key = (keybase.str()).c_str();
         cout<<"to get key "<<key<<endl;
-        ret = test_client.tri_get("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, &test_get_attr, &get_size);
+        ret = test_client.get("phonebook", key, strlen(key), &retcode, &test_get_attr, &get_size);
 
         loop_id = test_client.loop(-1, &loop_status);
 
