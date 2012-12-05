@@ -3,3 +3,4 @@ g++ dummy.cc -lglog -lhyperclient -fPIC -shared -o dummy.so
 g++ dummyS.cc -lglog -lhyperclient -fPIC -shared -o dummyS.so
 g++ getpid.cc -lglog -lhyperclient -fPIC -shared -o getpid.so
 g++ null.cc -lglog -lhyperclient -fPIC -shared -o null.so
+g++ testlib.cc -lglog -lhyperclient -fPIC -shared -o testtrigger.so

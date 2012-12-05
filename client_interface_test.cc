@@ -1,11 +1,13 @@
 #include "hyperclient/hyperclient.h"
 #include <iostream>
+#include <sstream>
 
 using namespace std;
 
 int main()
 {
     cout<<"test start "<<endl;
+    hyperclient test_client("127.0.0.1", 1234);
 
     //first we put a entry into the keystore
     hyperclient_attribute test_attr[3];
@@ -26,31 +28,79 @@ int main()
     test_attr[2].datatype = HYPERDATATYPE_STRING;
 
     hyperclient_returncode retcode;
-    const char *key = "adamyang";
-    hyperclient test_client("127.0.0.1", 1234);
-    const char *trigger = "testtrigger";
-
-    int64_t ret = test_client.tri_put("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, test_attr, 3);
-
     hyperclient_returncode loop_status;
-    int64_t loop_id = test_client.loop(-1, &loop_status);
+    int64_t ret;
+    int64_t loop_id;
+    const char *trigger = "testtrigger";
+    const char *key;
 
-    if(ret != loop_id)
+    //trigger put for 100 times
+    for(int j=0; j<50; j++)
     {
-        cout <<"exit here 1"<<endl;
-        exit(1);
+        ostringstream keybase;
+        keybase << j;
+        keybase.flush();
+        key = (keybase.str()).c_str();
+        cout<<"to put key "<<key<<endl;;
+        do
+        {
+        //ret = test_client.tri_put("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, test_attr, 3);
+        ret = test_client.put("phonebook", key, strlen(key), test_attr, 3, &retcode);
+        loop_id = test_client.loop(-1, &loop_status);
+        if(ret != loop_id)
+        {
+            cout <<"exit here 1"<<endl;
+            exit(1);
+        }
+        cout<<"loop status "<< loop_status<<endl;
+        }
+        while(retcode != HYPERCLIENT_SUCCESS);
+        cout<<"put ret is "<<ret<<" return code is "<<retcode<<endl;
     }
 
-    cout<<"put ret is "<<ret<<" return code is "<<retcode<<endl;
-
-    //define the container for the attribute get
+    //define the container for the trigger get
     //we then use tri_get to get the data out, which will returned triggered output
     const char *key2 = "andywang";
-
     hyperclient_attribute *test_get_attr;
     size_t get_size = 0;
+
+    // trigger get 100 times here
+    for(int j=0; j< 50; j++)
+    {
+        ostringstream keybase;
+        keybase << j;
+        keybase.flush();
+        key = (keybase.str()).c_str();
+        cout<<"to get key "<<key<<endl;
+        ret = test_client.tri_get("phonebook", key, strlen(key), trigger, strlen(trigger), &retcode, &test_get_attr, &get_size);
+
+        loop_id = test_client.loop(-1, &loop_status);
+
+        if(ret != loop_id)
+        {
+            cout <<"exit here 2"<<endl;
+            exit(1);
+        }
+
+        if(get_size!=0)
+        {
+            cout<<"we get something "<<endl;
+            for(int i=0; i<get_size; i++)
+            {
+                cout<<"attr "<<i<<": "<<test_get_attr[i].attr<<", value : "<<string(test_get_attr[i].value, test_get_attr[i].value_sz)<<endl;
+            }
+        }
+        else
+        {
+            cout<<"we get nothing"<<endl;
+        }
+
+        cout<<"get ret is "<<ret<<" return code is "<<retcode<<endl;
+    }
+
+    // trigger get again
     ret = test_client.tri_get("phonebook", key2, strlen(key2), trigger, strlen(trigger), &retcode, &test_get_attr, &get_size);
-    
+
     loop_id = test_client.loop(-1, &loop_status);
 
     if(ret != loop_id)
@@ -72,9 +122,8 @@ int main()
         cout<<"we get nothing"<<endl;
     }
 
-    cout<<"get ret is "<<ret<<" return code is "<<retcode<<endl;
-
     //This part will be used to test the search function
+    //search
     hyperclient_attribute search_attr[1];
     search_attr[0].attr = "first";
     search_attr[0].value = "adam";
@@ -108,6 +157,6 @@ int main()
     if(loop_status != HYPERCLIENT_SEARCHDONE)
         cout<<"search error happens loop_status is "<<loop_status<<endl;
 
-    
+
     return 0;
 }
