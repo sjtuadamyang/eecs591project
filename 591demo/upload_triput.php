@@ -6,7 +6,7 @@
   $imageraw = $_POST['imageraw'];
 
   $currtime  = time() % 3600;
-  $imagedata = base64_encode($imageraw);
+  $imagedata = $imageraw;
 
   $values=array("username"=>$username, "time"=>$currtime);
   echo prep_put("photoinfo", $photoid, $values, "null"); //should be tri_put
