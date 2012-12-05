@@ -90,13 +90,6 @@
 	      	$photolist = get(prep_get("user", $username, "dummy"));
 	      	//echo "-----" . $photolist . "-----" . "<br /";
   			echo "<img src='data:image/png;base64, " . $photolist . "'>";
-	      	/*
-	      	foreach ($photo as $p) {
-	      		//echo "---" . $p . "<br />";
-                $imagedata = direct_get("photo_l", $p, "null");
-	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
-	      	}
-			*/
 	      ?>
 
 		  <img src="img/1.jpg">
@@ -115,11 +108,10 @@
 	      <!--Sidebar content-->
 	      My Photos <br />
 	      <?php
-	      	foreach ($photo as $p) {
-                $imagedata = direct_get("photo_s", $p, "null");
-	      		echo "<img src='data:image/png;base64, " . $imagedata . "', width=90>";
-	      	}
+	      	$photolist = get(prep_get("user", $username, "dummyS"));
+  			echo "<img src='data:image/png;base64, " . $photolist . "'>";
 	      ?>
+
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>

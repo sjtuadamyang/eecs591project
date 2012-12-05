@@ -86,23 +86,6 @@
 	    <div class="span6 mainbody well">
 	      <!--Body content-->
 	      <?php
-	      	//tri_put version
-	      	/*
-	      	$photolist = get(prep_get("user", $username, "getpid"));
-	      	//echo "-----" . $photolist . "-----" . "<br /";
-            $photo = explode("@", $photolist);
-
-            $waste = 0;
-            for ($i=1; $i<10000; $i++) {
-            	$waste = $waste + 1;
-  			}
-
-	      	foreach ($photo as $p) {
-	      		//echo "---" . $p . "<br />";
-                $imagedata = direct_get("photo_l", $p, "null");
-	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
-	      	}
-			*/
 	      	//noraml put: call search and foreach get
 	      	$searchval = "somename";
 	      	$photolist = search("photoinfo", "username", $searchval);
@@ -114,13 +97,6 @@
   			$id = rand(0, count($photo)) % count($photo);
   			$imagedata = direct_get("photo_l", $photo[$id], "null");
 	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
-
-	      	/*
-	      	foreach ($photo as $p) {
-                $imagedata = direct_get("photo_l", $p, "null");
-	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
-	      	}
-	      	*/
 	      ?>
 
 		  <img src="img/1.jpg">
@@ -139,11 +115,14 @@
 	      <!--Sidebar content-->
 	      My Photos <br />
 	      <?php
-	      	foreach ($photo as $p) {
-                $imagedata = direct_get("photo_s", $p, "null");
-	      		echo "<img src='data:image/png;base64, " . $imagedata . "', width=90>";
-	      	}
+	      	for ($i=1; $i<10000; $i++) {
+            	$waste = $waste + 1;
+  			}
+  			$id = rand(0, count($photo)) % count($photo);
+  			$imagedata = direct_get("photo_s", $photo[$id], "null");
+	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
 	      ?>
+
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>
 	      <img src="img/wuyanzu.png" width=90>
