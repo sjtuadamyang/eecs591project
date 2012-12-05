@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 
 <?php
+  		include("dataop.php");
+	
 		$username = $_GET['username'];
 		$password = $_GET['password'];
-		$userinfo = $_GET['info'];
 
-        $values=array("password"=>$password, "info"=>$userinfo);
+        $values=array("password"=>$password);
         echo prep_put("user", $username, $values, "null");
 ?>
 
