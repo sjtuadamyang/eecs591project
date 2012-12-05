@@ -233,6 +233,8 @@ hyperdaemon :: network_worker :: run()
                     break;
             }
 
+            if(value.size() > 0)
+            {
             // here we will convert value to hyperclient_attribute[] with size and pass it to handler function
             LOG(INFO) << "test value size is "<<value.size();
             std::vector<hyperclient_attribute> ha;  
@@ -305,6 +307,7 @@ hyperdaemon :: network_worker :: run()
 
             //this free will make all the hyperclient_attribute destroyed
             free(ret);
+            }
 
             // normal get routine, should return the real_value to the real client
             size_t sz = m_comm->header_size() + sizeof(uint64_t)
@@ -412,7 +415,6 @@ hyperdaemon :: network_worker :: run()
                 LOG(INFO) << "open so file success";
                 const std::string (*test)(const char*, size_t, hyperclient_attribute*, size_t, hyperclient*) = (const std::string (*)(const char*, size_t, hyperclient_attribute*, size_t, hyperclient*))dlsym(handle, "handler");
                 handle_value = test(reinterpret_cast<const char*>(key.data()), key.size(), hyper_attrs, hyper_attrs_sz, m_messenger);
-                //real_value.push_back(e::slice(handle_value));
                 dlclose(handle);
             }
             else

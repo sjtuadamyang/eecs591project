@@ -26,6 +26,7 @@ handler(const char *key,
     if(index_content == -1) 
     {
         LOG(INFO)<<"photo content not found";
+        return "";
     }
 
     //decode the photo content
@@ -65,7 +66,7 @@ handler(const char *key,
         LOG(INFO)<<"loop on put failed in trigger handler";
     }
 
-    LOG(INFO)<<"put success and the return code is "<<retcode;
+    LOG(INFO)<<"put in photo.so success and the return code is "<<retcode;
 
     return "";
 }

@@ -8,6 +8,7 @@
 *.swo
 *~
 .libs/
+591demo/upload/
 client_interface_test
 /frontedn/server
 hyperdex-binary-test
