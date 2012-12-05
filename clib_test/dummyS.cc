@@ -88,7 +88,7 @@ handler(const char *key,
         if(ret != loop_id)
         {
             LOG(INFO)<<"some ERROR here";
-            exit(1);
+            return "nothing";
         }
 
         if(get_size!=0)
