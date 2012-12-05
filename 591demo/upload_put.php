@@ -2,7 +2,7 @@
   include("dataop.php");
 
   $username = $_POST['username'];
-  $photoid  = $_POST['photoid'];
+  $photoid  = uniqid();
   $imageraw = $_POST['imageraw'];
   //$imageraw = 'iVBORw0KGgoAAAANSUhEUgAAABwAAAASCAMAAAB/2U7WAAAABl'
     //          . 'BMVEUAAAD///+l2Z/dAAAASUlEQVR4XqWQUQoAIAxC2/0vXZDr'

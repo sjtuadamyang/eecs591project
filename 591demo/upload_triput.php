@@ -2,7 +2,7 @@
   include("dataop.php");
 
   $username = $_POST['username'];
-  $photoid  = $_POST['photoid'];
+  $photoid  = uniqid();
   $imageraw = $_POST['imageraw'];
 
   $currtime  = time() % 3600;
