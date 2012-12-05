@@ -126,7 +126,7 @@
 	      <?php
 	      	foreach ($photo as $p) {
                 $imagedata = direct_get("photo_s", $p, "null");
-	      		echo "<img src='data:image/png;base64, " . $imagedata . "'>";
+	      		echo "<img src='data:image/png;base64, " . $imagedata . "', width=90>";
 	      	}
 	      ?>
 	      <img src="img/wuyanzu.png" width=90>
