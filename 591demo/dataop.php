@@ -1,1 +1,1 @@
-/var/www/oldvar/dataop.php
+../oldvar/dataop.php
