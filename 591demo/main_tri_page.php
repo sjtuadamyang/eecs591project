@@ -2,8 +2,7 @@
 
 <?php
 include("dataop.php");
-//$username = $_GET['username'];
-$username = "Andy";
+$username = $_GET['username'];
 if (!empty($_POST)) {
 	$blogpost = $_POST['blogpost'];
 }
@@ -136,11 +135,11 @@ $content2=prep_get("user", $username, "dummyS");
                                 ++$i;
                                 $complete[$j]=true;
                                 //LOAD THE PAGELET
-                                echo "start loading the pagelet.";
-                                echo "<script>show('",$pagelet_name[$j],"','<img src='data:image/jpeg;base64, ",$message,"'>')</script>";
+                                //echo "start loading the pagelet.";
+                                echo "<script>show('",$pagelet_name[$j],"','<img src=\"data:image/png;base64, ",$message,"\">')</script>";
                                 //e//cho "get the message from queue",$j;
                                 flush_now();
-                          }
+                                }
                                 }
                                 ++$j;
                      }
