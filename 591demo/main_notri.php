@@ -88,14 +88,14 @@
 	      <?php
 	      	//noraml put: call search and foreach get
 	      	$searchval = $username;
-	      	$photolist = search("photoinfo", "username", $searchval);
-            $photo = explode("@", $photolist);
+	      //	$photolist = search("photoinfo", "username", $searchval);
+//            $photo = explode("@", $photolist);
             $waste = 0;
             for ($i=1; $i<10000; $i++) {
             	$waste = $waste + 1;
   			}
-  			$id = rand(0, count($photo)) % count($photo);
-  			$imagedata = direct_get("photo_l", $photo[$id], "null");
+  			$id = rand($username*20, $username*20+20);
+  			$imagedata = direct_get("photo_l", $id, "null");
 	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
 	      ?>
 
@@ -118,8 +118,8 @@
 	      	for ($i=1; $i<10000; $i++) {
             	$waste = $waste + 1;
   			}
-  			$id = rand(0, count($photo)) % count($photo);
-  			$imagedata = direct_get("photo_s", $photo[$id], "null");
+  			$id = rand($username*20, $username*20+20);
+  			$imagedata = direct_get("photo_s", $id, "null");
 	      	echo "<img src='data:image/png;base64, " . $imagedata . "'>";
 	      ?>
 
